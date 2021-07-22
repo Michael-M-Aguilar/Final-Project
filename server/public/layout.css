@@ -1,0 +1,56 @@
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-column-reverse {
+  flex-direction: column-reverse;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.logoWidth {
+  width: 340px;
+}
+
+.container {
+  max-width: 575px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 500px;
+  }
+
+  /* To show the mobile version on Chrome. */
+  .hiddenInDesktop {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  thead,
+  /* To hide the desktop List.*/
+  .hiddenInMobile {
+    display: none;
+  }
+
+  .container {
+    min-width: 520px;
+  }
+}
