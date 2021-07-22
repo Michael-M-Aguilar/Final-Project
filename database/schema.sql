@@ -5,7 +5,6 @@ set client_min_messages to warning;
 drop schema "public" cascade;
 
 create schema "public";
-
 CREATE TABLE "users" (
 	"userId" serial NOT NULL,
 	"firstName" TEXT NOT NULL,
@@ -48,7 +47,7 @@ CREATE TABLE "accounts" (
 
 CREATE TABLE "categories" (
 	"categoryId" serial NOT NULL,
-	"name" serial NOT NULL,
+	"name" TEXT NOT NULL,
 	CONSTRAINT "categories_pk" PRIMARY KEY ("categoryId")
 ) WITH (
   OIDS=FALSE
@@ -56,11 +55,11 @@ CREATE TABLE "categories" (
 
 
 
-CREATE TABLE "Budgets" (
+CREATE TABLE "budgets" (
 	"budgetId" serial NOT NULL,
 	"userId" integer NOT NULL,
 	"amount" integer NOT NULL,
-	CONSTRAINT "Budgets_pk" PRIMARY KEY ("budgetId")
+	CONSTRAINT "budgets_pk" PRIMARY KEY ("budgetId")
 ) WITH (
   OIDS=FALSE
 );
@@ -70,9 +69,9 @@ CREATE TABLE "Budgets" (
 
 ALTER TABLE "entries" ADD CONSTRAINT "entries_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
 ALTER TABLE "entries" ADD CONSTRAINT "entries_fk1" FOREIGN KEY ("accountId") REFERENCES "accounts"("accountId");
-ALTER TABLE "entries" ADD CONSTRAINT "entries_fk2" FOREIGN KEY ("categoryId") REFERENCES "Budgets"("categoryId");
+ALTER TABLE "entries" ADD CONSTRAINT "entries_fk2" FOREIGN KEY ("categoryId") REFERENCES "categories"("categoryId");
 
 ALTER TABLE "accounts" ADD CONSTRAINT "accounts_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
 
 
-ALTER TABLE "Budgets" ADD CONSTRAINT "Budgets_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
+ALTER TABLE "budgets" ADD CONSTRAINT "budgets_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");

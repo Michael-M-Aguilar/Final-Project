@@ -1,3 +1,23 @@
+#root {
+  background-color: #1f2933;
+}
+
+.desktopBody {
+  background-color: #3e4c59;
+}
+
 .logoIcon {
   color: #03dac5;
+}
+
+.dmTextColor {
+  color: #deedf0;
+}
+
+.desktopSecondary {
+  background-color: #486581;
+}
+
+.text-style-heading {
+  font-family: 'Poppins', sans-serif;
 }

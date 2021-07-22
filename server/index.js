@@ -1,8 +1,16 @@
 require('dotenv/config');
 const express = require('express');
+const pg = require('pg');
 const errorMiddleware = require('./error-middleware');
 const jsonMiddleware = express.json();
 const staticMiddleware = require('./static-middleware');
+
+const db = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 const app = express();
 
@@ -12,23 +20,25 @@ app.use(jsonMiddleware);
 // firstEndPoint --> Get Request
 app.get('/api/entries', (req, res) => {
 
-  // const sql = `
-  // SELECT
-  // "todoId",
-  // "name",
-  // "details",
-  // "firstName"
-  // FROM "todos"
-  // JOIN "users" using ("userId");
-  // `;
-  // // no params so no 2nd argumnet needed.
-  // db.query(sql)
-  //   .then(result => {
-  //     // console.log('DB Result: ', result);
-  //     const todos = result.rows;
-  //     // res.json({ test: 'This a test' });
-  //     res.json({ todos });
-  //   });
+  const sql = `
+  SELECT
+  "userId",
+  "amount",
+  "note",
+  "location",
+  "firstName"
+  FROM "entries"
+  JOIN "users" using ("userId");
+  `;
+  // no params so no 2nd argumnet needed.
+  db.query(sql)
+    .then(result => {
+      // console.log('DB Result: ', result);
+      // console.log('DB Result', result);
+      const userInfo = result.rows;
+      // res.json({ test: 'This a test' });
+      res.json({ userInfo });
+    });
 
 });
 
