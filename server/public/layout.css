@@ -27,14 +27,16 @@
 }
 
 .container {
-  max-width: 575px;
+  /* max-width: 575px; */
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    width: 500px;
+    /* width: 500px; */
+
+    /* max-width: 1600px */
   }
 
   /* To show the mobile version on Chrome. */
