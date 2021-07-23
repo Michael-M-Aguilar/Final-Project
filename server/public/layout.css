@@ -26,6 +26,14 @@
   justify-content: space-evenly;
 }
 
+.recentTW {
+  width: 460px;
+}
+
+.spendingC {
+  width: 560px;
+}
+
 .padding-right-sm {
   padding-right: 10px;
 }
@@ -40,6 +48,10 @@
 
 .header-width {
   width: 450px;
+}
+
+.logoSize {
+  width: 100px;
 }
 
 .container {

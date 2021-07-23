@@ -7,11 +7,11 @@ export default class Header extends React.Component {
         <div className="flex space-between hiddenInMobile">
           <div>
             Logo
-            {/* <img src={LogoDM}/> */}
+            <img className="logoSize" src="/images/logo-dm.png" alt="LogoDM" />
           </div>
           <div className="flex flex-column-reverse header-width">
             <div className="flex space-evenly">
-              <div className="dmTextColor text-style-heading padding-right-med ">Home</div>
+              <div className="dmTextColor text-style-heading padding-right-med">Home</div>
               <div className="dmTextColor text-style-heading padding-right-med">Transactions</div>
               <div className="dmTextColor text-style-heading padding-right-med">Folder</div>
               <div className="dmTextColor text-style-heading padding-right-med">Chart</div>

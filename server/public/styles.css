@@ -18,6 +18,11 @@
   background-color: #486581;
 }
 
-.text-style-heading {
+.text-header {
   font-family: 'Poppins', sans-serif;
+}
+
+.raleway {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.4rem;
 }
