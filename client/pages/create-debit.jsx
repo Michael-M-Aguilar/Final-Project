@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class CreateCredit extends React.Component {
+export default class CreateDebit extends React.Component {
   render() {
     return (
       <div className="container ctcontainer desktopBody my-4">
@@ -23,10 +23,7 @@ export default class CreateCredit extends React.Component {
             <i className="fas fa-money-bill-alt fa-2x logoIcon"></i>
           </div>
           <div>
-            <p className="dmTextColor raleway fs-2 mx-4 mt-2">Note:</p>
-          </div>
-          <div>
-            <p className="dmTextColor raleway fs-2 mx-4 my-1">Category:</p>
+            <p className="dmTextColor raleway fs-2 mx-4 mt-2">Note: From selling Shoes.</p>
           </div>
         </div>
       </div>

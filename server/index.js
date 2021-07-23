@@ -33,7 +33,6 @@ app.get('/api/entries', (req, res) => {
   // no params so no 2nd argumnet needed.
   db.query(sql)
     .then(result => {
-      // console.log('DB Result: ', result);
       // console.log('DB Result', result);
       const userInfo = result.rows;
       // res.json({ test: 'This a test' });

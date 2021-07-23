@@ -12,12 +12,16 @@ export default class CreateTransaction extends React.Component {
             <h3 className="text-header dmTextColor px-5 py-5">Which would you like to add?</h3>
           </div>
           <div className="flex justify-content-evenly">
-            <div className="border border-4 border-dark rounded">
-              <h5 className="raleway dmTextColor px-5 py-2">Credit</h5>
-            </div>
-            <div className="border border-4 border-dark rounded">
-              <h5 className="raleway dmTextColor px-5 py-2">Debit</h5>
-            </div>
+            <a href="#create-transaction/credit">
+              <div className="border border-4 border-dark rounded">
+                <h5 className="raleway dmTextColor px-5 py-2">Credit</h5>
+              </div>
+            </a>
+            <a href="#create-transaction/debit">
+              <div className="border border-4 border-dark rounded">
+                <h5 className="raleway dmTextColor px-5 py-2">Debit</h5>
+              </div>
+            </a>
           </div>
         </div>
       </div>
