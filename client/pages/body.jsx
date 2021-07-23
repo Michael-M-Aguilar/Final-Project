@@ -17,10 +17,10 @@ export default class Body extends React.Component {
             <h3 className="text-center dmTextColor text-header my-3 mx-3">Budget: $5000.00</h3>
           </div>
           <div className="space-evenly desktopSecondary border border-dark border-3 rounded">
-            <h3 className="text-center dmTextColor text-header my-3 mx-3">Income: $500.00</h3>
+            <h3 className="text-center text-header my-3 mx-3 dmPositiveColor">Income: $500.00</h3>
           </div>
           <div className="space-evenly desktopSecondary border border-dark border-3 rounded">
-            <h3 className="text-center dmTextColor text-header my-3 mx-3">Transactions: $400.00 </h3>
+            <h3 className="text-center text-header my-3 mx-3 dmNegativeColor">Transactions: $400.00 </h3>
           </div>
         </div>
         <div className="row3 flex space-evenly pt-5">
@@ -29,28 +29,28 @@ export default class Body extends React.Component {
             <div className="flex space-between border-top border-2 py-2 mx-3">
               <p className="dmTextColor mx-3 raleway"> Jordan 4 Oreo Whites</p>
               <div className="flex flex-column mx-3">
-                <p className="dmTextColor raleway">-$209.50</p>
+                <p className="dmTextColor raleway dmNegativeColor">-$209.50</p>
                 <p className="dmTextColor raleway">July 16, 2021</p>
               </div>
             </div>
             <div className="flex space-between border-top border-2 py-2 mx-3">
               <p className="dmTextColor mx-3 raleway"> Nike Store</p>
               <div className="flex flex-column mx-3">
-                <p className="dmTextColor raleway">-$56.18</p>
+                <p className="dmTextColor raleway dmNegativeColor">-$56.18</p>
                 <p className="dmTextColor raleway">July 15, 2021</p>
               </div>
             </div>
             <div className="flex space-between border-top border-2 py-2 mx-3">
               <p className="dmTextColor mx-3 raleway"> Din Tai Fung </p>
               <div className="flex flex-column mx-3">
-                <p className="dmTextColor raleway">-$134.98</p>
+                <p className="dmTextColor raleway dmNegativeColor">-$134.98</p>
                 <p className="dmTextColor raleway">July 13, 2021</p>
               </div>
             </div>
             <div className="flex space-between border-top border-2 py-2 mx-3">
               <p className="dmTextColor mx-3 raleway"> Sold Oreos </p>
               <div className="flex flex-column mx-3">
-                <p className="dmTextColor raleway">+$358.14</p>
+                <p className="dmTextColor raleway dmPositiveColor ">+$358.14</p>
                 <p className="dmTextColor raleway">July 10, 2021</p>
               </div>
             </div>

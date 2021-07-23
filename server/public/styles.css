@@ -6,6 +6,10 @@
   background-color: #3e4c59;
 }
 
+.desktopSecondary {
+  background-color: #486581;
+}
+
 .logoIcon {
   color: #03dac5;
 }
@@ -14,8 +18,12 @@
   color: #deedf0;
 }
 
-.desktopSecondary {
-  background-color: #486581;
+.dmPositiveColor {
+  color: #7afa87;
+}
+
+.dmNegativeColor {
+  color: #fb8686;
 }
 
 .text-header {

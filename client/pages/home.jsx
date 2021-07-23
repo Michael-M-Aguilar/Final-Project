@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from './header';
 import Body from './body';
-// import CreateTransaction from './create-transaction';
+import CreateTransaction from './create-transaction';
+import CreateCredit from './create-credit';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -30,8 +31,10 @@ export default class Home extends React.Component {
     return (
       <div className="container">
         <Header />
-        <h1 className='hiddenInDesktop'>this is just a header!</h1>
+        {/* <h1 className='hiddenInDesktop'>this is just a header!</h1> */}
         <Body />
+        <CreateTransaction />
+        <CreateCredit />
      </div>
     );
   }
