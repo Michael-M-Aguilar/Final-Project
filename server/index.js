@@ -44,7 +44,7 @@ app.get('/api/entries', (req, res) => {
 // Code in here.
 // also need to add JSON middleware.
 
-app.post('/api/entries', (req, res) => {
+app.post('/api/entries/', (req, res) => {
   const { userId, accountId, categoryId, amount, note, location } = req.body;
   if (!amount) {
     res.status(400).json({

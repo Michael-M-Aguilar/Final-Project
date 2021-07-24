@@ -11,15 +11,40 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      route: ParseRoute(window.location.hash)
+      route: ParseRoute(window.location.hash),
+      entries: []
     };
+    // this.addEntry = this.addEntry.bind(this);
   }
 
   componentDidMount() {
     window.addEventListener('hashchange', () => {
       this.setState({ route: ParseRoute(window.location.hash) });
     });
+
+    fetch('/api/entries')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          entries: data
+        });
+      });
   }
+
+  // addEntry(newEntry) {
+  //   fetch('/api/entries', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(newEntry)
+  //   })
+  //     .then(res => res.json())
+  //   .then(data => {
+  //     this.setState({
+  //       entries: this.state.entries.
+  //     });
+  //   });
+
+  // }
 
   renderPage() {
     const { route } = this.state;

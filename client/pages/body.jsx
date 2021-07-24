@@ -1,12 +1,38 @@
 import React from 'react';
 
 export default class Body extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      info: []
+      // isSatisfied: false
+    };
+  }
+
+  componentDidMount() {
+    this.getEntries();
+  }
+
+  getEntries() {
+    fetch('api/entries')
+      .then(res => res.json())
+      .then(info => {
+        // console.log(info);
+        this.setState({ info: info });
+      });
+  }
+
   render() {
+    // const { info } = this.state;
+    // // console.log('info.userinfo:', info.userInfo);
+    // console.log('What is state:', this.state);
+    // console.log('this.state.info.userInfo:', this.state.info.userInfo);
+    // console.log('Typeof', typeof this.state.info[0]);
     return (
       <div className="container hiddenInMobile desktopBody my-4">
         <div className="row1 flex space-between">
           <div>
-            <p className="fs-1 dmTextColor text-header">Accounts</p>
+            <p className="fs-1 dmTextColor text-header">{this.state.info[1]}</p>
           </div>
           <div>
             <p className="fs-1 dmTextColor text-header">July (Current Month)</p>

@@ -3,13 +3,6 @@ import React from 'react';
 import Body from './body';
 
 export default class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      info: []
-      // isSatisfied: false
-    };
-  }
 
   // handleClick(e) {
   //   if (e.target.className === 'fas fa-plus-circle') {
@@ -17,18 +10,18 @@ export default class Home extends React.Component {
   //   }
   // }
 
-  componentDidMount() {
-    this.getTodos();
-  }
+  // componentDidMount() {
+  //   this.getTodos();
+  // }
 
-  getTodos() {
-    fetch('api/entries')
-      .then(res => res.json())
-      .then(info => {
-        // console.log(info);
-        this.setState({ info: info });
-      });
-  }
+  // getTodos() {
+  //   fetch('api/entries')
+  //     .then(res => res.json())
+  //     .then(info => {
+  //       console.log(info);
+  //       this.setState({ info: info });
+  //     });
+  // }
 
   render() {
     // console.log('State:', this.state);
