@@ -24,7 +24,7 @@ export default class CreateDebit extends React.Component {
               <span className="input-group-text"><i className="fas fa-money-bill-alt fa-2x logoIcon"></i></span>
               <span className="input-group-text">$</span>
               <label htmlFor="amount" className="form-label raleway dmTextColor"></label>
-              <input type="text" id="amount" name="amount" className="form-control inputBackground numbers dmTextColor"></input>
+              <input type="number" id="amount" name="amount" className="form-control inputBackground numbers dmTextColor"></input>
             </div>
             <div className="input-group my-4">
               <label htmlFor="notes" className="form-label raleway dmTextColor fs-3 mx-4">Notes:</label>

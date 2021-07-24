@@ -23,7 +23,7 @@ CREATE TABLE "entries" (
 	"userId" integer NOT NULL,
 	"accountId" integer NOT NULL,
 	"categoryId" integer NOT NULL,
-	"amount" integer NOT NULL,
+	"amount" DECIMAL NOT NULL,
 	"note" TEXT NOT NULL,
 	"location" TEXT NOT NULL,
 	CONSTRAINT "entries_pk" PRIMARY KEY ("entryId")
@@ -58,7 +58,7 @@ CREATE TABLE "categories" (
 CREATE TABLE "budgets" (
 	"budgetId" serial NOT NULL,
 	"userId" integer NOT NULL,
-	"amount" integer NOT NULL,
+	"amount" DECIMAL NOT NULL,
 	CONSTRAINT "budgets_pk" PRIMARY KEY ("budgetId")
 ) WITH (
   OIDS=FALSE

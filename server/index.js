@@ -44,6 +44,34 @@ app.get('/api/entries', (req, res) => {
 // Code in here.
 // also need to add JSON middleware.
 
+app.post('/api/entries', (req, res) => {
+  const { userId, accountId, categoryId, amount, note, location } = req.body;
+  if (!amount) {
+    res.status(400).json({
+      error: 'amount is a required field'
+    });
+    return;
+  }
+  const sql = `
+  INSERT INTO "entries" ("userId", "accountId", "categoryId", "amount", "note", "location")
+  VALUES ($1, $2, $3, $4, $5, $6)
+  RETURNING *
+  `;
+  const params = [userId, accountId, categoryId, amount, note, location];
+  db.query(sql, params)
+    .then(result => {
+      const [entry] = result.rows;
+      // console.log(entry);
+      res.status(201).json(entry);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occured'
+      });
+    });
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
