@@ -35,8 +35,6 @@ export default class Home extends React.Component {
     return (
       <div className="container">
         <Body />
-        {/* <CreateTransaction />
-        <CreateCredit /> */}
      </div>
     );
   }

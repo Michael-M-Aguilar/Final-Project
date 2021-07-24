@@ -10,33 +10,29 @@ export default class Header extends React.Component {
               <img className="logoSize pt-3" src="/images/logo-dm.png" alt="LogoDM" />
             </a>
           </div>
-          <div className="flex header-width py-3">
-            <div className="flex justify-content-between">
-              <a href="#">
-                <div>
-                  <span className="logoIcon" ><i className="fas fa-home fa-2x"></i></span>
-                  <div className="dmTextColor text-style-heading">Home</div>
-                </div>
+          <div className="flex flex-column header-width py-4">
+            <div className="flex justify-content-between align-items-center">
+              <a href="#" className="items-center">
+                  <span className="logoIcon ps-1" ><i className="fas fa-home fa-3x"></i></span>
+                  <div className="dmTextColor text-style-heading fs-4">Home</div>
               </a>
-              <div>
-                <span className="logoIcon"><i className="fas fa-list fa-2x"></i></span>
-                <div className="dmTextColor text-style-heading">Transactions</div>
-              </div>
-              <div>
-                <span className="logoIcon"><i className="fas fa-folder-open fa-2x"></i></span>
-                <div className="dmTextColor text-style-heading">Folder</div>
-              </div>
-              <div>
-                <span className="logoIcon"><i className="fas fa-chart-pie fa-2x"></i></span>
-                <div className="dmTextColor text-style-heading">Chart</div>
-              </div>
-              <div>
-                <span className="logoIcon"><i className="fas fa-cog fa-2x"></i></span>
-                <div className="dmTextColor text-style-heading">Settings</div>
-              </div>
+              <a>
+                <span className="logoIcon padding-left"><i className="fas fa-list fa-3x"></i></span>
+                <div className="dmTextColor text-style-heading fs-4">Transactions</div>
+              </a>
+              <a>
+                <span className="logoIcon ps-1"><i className="fas fa-folder-open fa-3x"></i></span>
+                <div className="dmTextColor text-style-heading fs-4">Folder</div>
+              </a>
+              <a>
+                <span className="logoIcon ps-1"><i className="fas fa-chart-pie fa-3x"></i></span>
+                <div className="dmTextColor text-style-heading fs-4">Chart</div>
+              </a>
+              <a>
+                <span className="logoIcon ps-3"><i className="fas fa-cog fa-3x"></i></span>
+                <div className="dmTextColor text-style-heading fs-4">Settings</div>
+              </a>
             </div>
-            {/* <div className="flex justify-content-around ">
-            </div> */}
           </div>
         </div>
       </div>
