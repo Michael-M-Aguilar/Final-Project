@@ -19,15 +19,33 @@ export default class CreateCredit extends React.Component {
               </div>
             </a>
           </div>
-          <div className="row-2 border border-3 border-dark rounded ">
-            <i className="fas fa-money-bill-alt fa-2x logoIcon"></i>
-          </div>
-          <div>
-            <p className="dmTextColor raleway fs-2 mx-4 mt-2">Note:</p>
-          </div>
-          <div>
-            <p className="dmTextColor raleway fs-2 mx-4 my-1">Category:</p>
-          </div>
+          <form className="">
+            <div className="input-row-1 input-group mx-3 border border-4 border-dark rounded ">
+              <span className="input-group-text"><i className="fas fa-money-bill-alt fa-2x logoIcon"></i></span>
+              <span className="input-group-text fs-5 text-header">$</span>
+              <label htmlFor="amount" className="form-label raleway dmTextColor"></label>
+              <input type="text" id="amount" name="amount" className="form-control inputBackground numbers dmTextColor"></input>
+            </div>
+            <div className="input-group my-4">
+              <label htmlFor="notes" className="form-label raleway dmTextColor fs-3 mx-4">Notes:</label>
+              <textarea placeholder="Add a note... (optional)" className="form-control mx-4 inputBackground border border-4 rounded-pill border-dark dmTextColor fs-4 raleway" id="notes" name="notes" rows="1"></textarea>
+            </div>
+            <div className="input-group my-4">
+              <label htmlFor="category" className="form-label raleway dmTextColor fs-3 mx-4">Categories:</label>
+              <select className="form-select categories inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark" id="inputGroupSelect01">
+                <option selected className="raleway fs-5 dmTextColor">Choose a category...</option>
+                <option value="1" className="raleway fs-5 dmTextColor">Auto</option>
+                <option value="2" className="raleway fs-5 dmTextColor">Bills</option>
+                <option value="3" className="raleway fs-5 dmTextColor">Gifts</option>
+                <option value="4" className="raleway fs-5 dmTextColor">Shopping</option>
+                <option value="5" className="raleway fs-5 dmTextColor">Travel</option>
+              </select>
+            </div>
+            <div className="input-group my-4">
+              <label htmlFor="location" className="form-label raleway dmTextColor fs-3 mx-4">Location:</label>
+              <input type="text" id="location" name="location" className="form-control mx-4 inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark"></input>
+            </div>
+          </form>
         </div>
       </div>
     );

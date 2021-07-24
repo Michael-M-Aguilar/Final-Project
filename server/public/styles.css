@@ -11,7 +11,28 @@ a {
   background-color: #3e4c59;
 }
 
-.desktopSecondary {
+input,
+textarea {
+  resize: none;
+  outline: none;
+}
+
+input,
+textarea,
+.input-row-1 {
+  max-width: 450px;
+}
+
+.categories {
+  max-width: 445px;
+}
+
+input:focus {
+  background-color: lawngreen;
+}
+
+.desktopSecondary,
+.inputBackground {
   background-color: #486581;
 }
 

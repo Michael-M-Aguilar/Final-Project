@@ -24,8 +24,8 @@ export default class Body extends React.Component {
          </div>
         </div>
         <div className="row3 flex space-evenly pt-5">
-          <div className="desktopSecondary recentTW py-4">
-            <p className="fs-4 dmTextColor text-header mx-3">Recent Transactions: </p>
+          <div className="desktopSecondary recentTW py-4 border border-dark border-4">
+            <p className="fs-3 dmTextColor text-header mx-3">Recent Transactions: </p>
             <div className="flex space-between border-top border-2 py-2 mx-3">
               <p className="fs-5 dmTextColor mx-3 raleway"> Jordan 4 Oreo Whites</p>
               <div className="flex flex-column mx-3">
@@ -58,10 +58,10 @@ export default class Body extends React.Component {
               <p className="fs-3 dmTextColor text-header">View All </p>
            </div>
           </div>
-          <div className="desktopSecondary spendingC flex flex-column">
-            <p className="fs-4 dmTextColor text-header mx-3 my-3">Spending Chart: </p>
+          <div className="desktopSecondary spendingC flex flex-column border border-dark border-4 py-2">
+            <p className="fs-3 dmTextColor text-header mx-3 my-3">Spending Chart: </p>
             <img className="mx-5" src="/images/pie.png" alt="Pie Chart" />
-            <div className="flex justify-content-end border-2 py-5 mx-5">
+            <div className="flex justify-content-end border-2 pt-4 mx-5">
               <p className="fs-3 dmTextColor text-header">View More </p>
            </div>
           </div>

@@ -19,12 +19,24 @@ export default class CreateDebit extends React.Component {
               </div>
             </a>
           </div>
-          <div className="row-2 border border-3 border-dark rounded ">
-            <i className="fas fa-money-bill-alt fa-2x logoIcon"></i>
-          </div>
-          <div>
-            <p className="dmTextColor raleway fs-2 mx-4 mt-2">Note: From selling Shoes.</p>
-          </div>
+         <form className="">
+            <div className="input-row-1 input-group mx-3 border border-4 border-dark rounded ">
+              <span className="input-group-text"><i className="fas fa-money-bill-alt fa-2x logoIcon"></i></span>
+              <span className="input-group-text">$</span>
+              <label htmlFor="amount" className="form-label raleway dmTextColor"></label>
+              <input type="text" id="amount" name="amount" className="form-control inputBackground numbers dmTextColor"></input>
+            </div>
+            <div className="input-group my-4">
+              <label htmlFor="notes" className="form-label raleway dmTextColor fs-3 mx-4">Notes:</label>
+              <textarea placeholder="Add a note... (optional)" className="fs-5 raleway dmTextColor form-control mx-4 inputBackground border border-4 border-dark rounded-pill" id="notes" name="notes" rows="1"></textarea>
+            </div>
+            <div className="btn-group btn-dark flex" role="group" aria-label="Basic radio toggle button group">
+              <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off"></input>
+              <label className="btn btn-outline-primary" htmlFor="btnradio1">Deposit</label>
+              <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off"></input>
+              <label className="btn btn-outline-primary" htmlFor="btnradio2">Salary</label>
+            </div>
+          </form>
         </div>
       </div>
     );
