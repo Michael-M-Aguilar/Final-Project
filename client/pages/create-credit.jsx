@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Component to create credit transaction
 export default class CreateCredit extends React.Component {
   constructor(props) {
     super(props);

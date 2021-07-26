@@ -1,18 +1,21 @@
 import React from 'react';
 
+// Component to create our body component.
 export default class Body extends React.Component {
   constructor(props) {
     super(props);
+    // array to hold our entries to present on the page.
     this.state = {
       info: []
-      // isSatisfied: false
     };
   }
 
+  // If component is mounted, this is to start getEntries method
   componentDidMount() {
     this.getEntries();
   }
 
+  // our get request to present information on the page
   getEntries() {
     fetch('api/entries')
       .then(res => res.json())
@@ -34,10 +37,12 @@ export default class Body extends React.Component {
           <div>
             <p className="fs-1 dmTextColor text-header">{this.state.info[1]}</p>
           </div>
+          {/* Should add something here to automatically have the current month be here. */}
           <div>
             <p className="fs-1 dmTextColor text-header">July (Current Month)</p>
           </div>
         </div>
+        {/* Top row holding our Budget, Income and Transactions */}
         <div className="row2 flex space-evenly pt-4">
           <div className="space-evenly desktopSecondary border border-dark border-3 rounded">
             <p className="fs-3 text-center dmTextColor text-header my-3 mx-3">Budget: <span className="numbers">$5000.00</span></p>
@@ -50,6 +55,7 @@ export default class Body extends React.Component {
          </div>
         </div>
         <div className="row3 flex space-evenly pt-5">
+          {/* Holds our 4 most recent transactions */}
           <div className="desktopSecondary recentTW py-4 border border-dark border-4">
             <p className="fs-3 dmTextColor text-header mx-3">Recent Transactions: </p>
             <div className="flex space-between border-top border-2 py-2 mx-3">
@@ -84,6 +90,7 @@ export default class Body extends React.Component {
               <p className="fs-3 dmTextColor text-header">View All </p>
            </div>
           </div>
+          {/* Holds our Spending Chart */}
           <div className="desktopSecondary spendingC flex flex-column border border-dark border-4 py-2">
             <p className="fs-3 dmTextColor text-header mx-3 my-3">Spending Chart: </p>
             <img className="mx-5" src="/images/pie.png" alt="Pie Chart" />
@@ -92,6 +99,7 @@ export default class Body extends React.Component {
            </div>
           </div>
         </div>
+        {/* If pressing the + Button, sends user to create a transaction */}
         <div className="logoIcon flex justify-content-end ">
           <a href="#create-transaction">
             <i className="fas fa-plus-circle fa-6x my-5"></i>

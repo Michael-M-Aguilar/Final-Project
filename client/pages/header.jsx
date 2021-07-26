@@ -1,5 +1,6 @@
 import React from 'react';
 
+// This is the navbar
 export default class Header extends React.Component {
   render() {
     return (
@@ -17,7 +18,7 @@ export default class Header extends React.Component {
                   <div className="dmTextColor text-style-heading fs-4">Home</div>
               </a>
               <a>
-                <span className="logoIcon padding-left"><i className="fas fa-list fa-3x"></i></span>
+                <span className="logoIcon transaction-p"><i className="fas fa-list fa-3x"></i></span>
                 <div className="dmTextColor text-style-heading fs-4">Transactions</div>
               </a>
               <a>

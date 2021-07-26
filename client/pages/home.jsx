@@ -26,6 +26,7 @@ export default class Home extends React.Component {
   render() {
     // console.log('State:', this.state);
     return (
+      // Loads our body inside a container.
       <div className="container">
         <Body />
      </div>

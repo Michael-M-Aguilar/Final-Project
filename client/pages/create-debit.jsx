@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Component to create a debit transaction
 export default class CreateDebit extends React.Component {
   render() {
     return (
