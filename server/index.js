@@ -36,7 +36,7 @@ app.get('/api/entries', (req, res) => {
       // console.log('DB Result', result);
       const userInfo = result.rows;
       // res.json({ test: 'This a test' });
-      res.json({ userInfo });
+      res.json(userInfo);
     });
 
 });
@@ -45,23 +45,25 @@ app.get('/api/entries', (req, res) => {
 // also need to add JSON middleware.
 
 app.post('/api/entries/', (req, res) => {
-  const { userId, accountId, categoryId, amount, note, location } = req.body;
-  if (!amount) {
-    res.status(400).json({
-      error: 'amount is a required field'
-    });
-    return;
-  }
+  // const { userId, accountId, categoryId, amount, note, location } = req.body;
+  const { amount, note, location } = req.body;
+  // if (!amount) {
+  //   res.status(400).json({
+  //     error: 'amount is a required field'
+  //   });
+  //   return;
+  // }
+  // console.log('The value of req.body', req.body);
   const sql = `
   INSERT INTO "entries" ("userId", "accountId", "categoryId", "amount", "note", "location")
   VALUES ($1, $2, $3, $4, $5, $6)
   RETURNING *
   `;
-  const params = [userId, accountId, categoryId, amount, note, location];
+  const params = [1, 1, 1, amount, note, location];
   db.query(sql, params)
     .then(result => {
       const [entry] = result.rows;
-      // console.log(entry);
+      // console.log('This is the CL of entry only', entry);
       res.status(201).json(entry);
     })
     .catch(err => {

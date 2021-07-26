@@ -10,6 +10,10 @@ export default class Body extends React.Component {
     };
   }
 
+  // getCategories() {
+
+  // }
+
   // If component is mounted, this is to start getEntries method
   componentDidMount() {
     this.getEntries();
@@ -28,14 +32,15 @@ export default class Body extends React.Component {
   render() {
     // const { info } = this.state;
     // // console.log('info.userinfo:', info.userInfo);
-    // console.log('What is state:', this.state);
-    // console.log('this.state.info.userInfo:', this.state.info.userInfo);
+    // console.log('What is this.state.info:', this.state.info);
+    // console.log('What is this.state.info.userInfo:', this.state.info.userInfo);
     // console.log('Typeof', typeof this.state.info[0]);
+    const lastIndex = this.state.info.length - 1;
     return (
       <div className="container hiddenInMobile desktopBody my-4">
         <div className="row1 flex space-between">
           <div>
-            <p className="fs-1 dmTextColor text-header">{this.state.info[1]}</p>
+            <p className="fs-1 dmTextColor text-header">{(!this.state.info.length) ? 'Loading ...' : this.state.info[lastIndex].note}</p>
           </div>
           {/* Should add something here to automatically have the current month be here. */}
           <div>
@@ -46,22 +51,22 @@ export default class Body extends React.Component {
         <div className="row2 flex space-evenly pt-4">
           <div className="space-evenly desktopSecondary border border-dark border-3 rounded">
             <p className="fs-3 text-center dmTextColor text-header my-3 mx-3">Budget: <span className="numbers">$5000.00</span></p>
-         </div>
+          </div>
           <div className="space-evenly desktopSecondary border border-dark border-3 rounded">
             <p className="fs-3 text-center text-header my-3 mx-3 dmTextColor">Income: <span className="dmPositiveColor numbers">$358.14</span></p>
-         </div>
+          </div>
           <div className="space-evenly desktopSecondary border border-dark border-3 rounded">
             <p className="fs-3 text-center text-header my-3 mx-3 dmTextColor">Transactions: <span className="dmNegativeColor numbers">$400.66</span></p>
-         </div>
+          </div>
         </div>
         <div className="row3 flex space-evenly pt-5">
           {/* Holds our 4 most recent transactions */}
           <div className="desktopSecondary recentTW py-4 border border-dark border-4">
             <p className="fs-3 dmTextColor text-header mx-3">Recent Transactions: </p>
             <div className="flex space-between border-top border-2 py-2 mx-3">
-              <p className="fs-5 dmTextColor mx-3 raleway"> Jordan 4 Oreo Whites</p>
+              <p className="fs-5 dmTextColor mx-3 raleway">{(!this.state.info.length) ? 'Loading ...' : this.state.info[lastIndex].note}</p>
               <div className="flex flex-column mx-3">
-                <p className="fs-5 dmTextColor numbers dmNegativeColor numbers">-$209.50</p>
+                <p className="fs-5 dmTextColor numbers dmNegativeColor numbers">{(!this.state.info.length) ? 'Loading ...' : this.state.info[lastIndex].amount}</p>
                 <p className="fs-5 dmTextColor raleway">July 16, 2021</p>
               </div>
             </div>
