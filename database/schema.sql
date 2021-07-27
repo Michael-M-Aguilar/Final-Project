@@ -26,6 +26,7 @@ CREATE TABLE "entries" (
 	"amount" DECIMAL NOT NULL,
 	"note" TEXT NOT NULL,
 	"location" TEXT NOT NULL,
+	"date" DATE NOT NULL,
 	CONSTRAINT "entries_pk" PRIMARY KEY ("entryId")
 ) WITH (
   OIDS=FALSE
@@ -47,7 +48,7 @@ CREATE TABLE "accounts" (
 
 CREATE TABLE "categories" (
 	"categoryId" serial NOT NULL,
-	"name" TEXT NOT NULL,
+	"catName" TEXT NOT NULL,
 	CONSTRAINT "categories_pk" PRIMARY KEY ("categoryId")
 ) WITH (
   OIDS=FALSE

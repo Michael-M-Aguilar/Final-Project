@@ -10,10 +10,6 @@ export default class Body extends React.Component {
     };
   }
 
-  // getCategories() {
-
-  // }
-
   // If component is mounted, this is to start getEntries method
   componentDidMount() {
     this.getEntries();

@@ -27,8 +27,12 @@ textarea,
   max-width: 445px;
 }
 
+input {
+  background-color: #486581;
+}
+
 input:focus {
-  background-color: lawngreen;
+  background-color: #486581;
 }
 
 .desktopSecondary,

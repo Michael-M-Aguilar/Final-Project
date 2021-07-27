@@ -17,7 +17,7 @@ const app = express();
 app.use(staticMiddleware);
 app.use(jsonMiddleware);
 
-// firstEndPoint --> Get Request
+// firstEndPoint --> Get Request for entries
 app.get('/api/entries', (req, res) => {
 
   const sql = `
@@ -41,12 +41,29 @@ app.get('/api/entries', (req, res) => {
 
 });
 
+app.get('/api/categories', (req, res) => {
+  const sql = `
+  SELECT DISTINCT
+  "catName",
+  "categoryId"
+  FROM "categories"
+  JOIN "entries" using ("categoryId")
+  `;
+
+  db.query(sql)
+    .then(result => {
+      // console.log('DB GetResult', result);
+      const categories = result.rows;
+      res.json(categories);
+    });
+});
+
 // Code in here.
 // also need to add JSON middleware.
 
 app.post('/api/entries/', (req, res) => {
   // const { userId, accountId, categoryId, amount, note, location } = req.body;
-  const { amount, note, location } = req.body;
+  const { amount, note, location, date } = req.body;
   // if (!amount) {
   //   res.status(400).json({
   //     error: 'amount is a required field'
@@ -55,11 +72,12 @@ app.post('/api/entries/', (req, res) => {
   // }
   // console.log('The value of req.body', req.body);
   const sql = `
-  INSERT INTO "entries" ("userId", "accountId", "categoryId", "amount", "note", "location")
-  VALUES ($1, $2, $3, $4, $5, $6)
+  INSERT INTO "entries" ("userId", "accountId", "categoryId", "amount", "note", "location", "date")
+  VALUES ($1, $2, $3, $4, $5, $6, $7)
   RETURNING *
   `;
-  const params = [1, 1, 1, amount, note, location];
+
+  const params = [1, 1, 2, amount, note, location, date];
   db.query(sql, params)
     .then(result => {
       const [entry] = result.rows;

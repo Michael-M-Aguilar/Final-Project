@@ -13,13 +13,13 @@ insert into "accounts"
     (2, 'Credit', 'Credit');
 
 insert into "categories"
-("categoryId", "name")
+("categoryId", "catName")
   values
   (1, 'Auto'),
   (2, 'Bills');
 
 insert into "entries"
-("userId", "accountId", "categoryId", "amount", "note", "location")
+("userId", "accountId", "categoryId", "amount", "note", "location", "date")
   values
-    (1, 1, 1, 100.00, 'Jim Deposit', 'N/A'),
-    (2, 2, 1, 200.00, 'Jane Deposit', 'N/A');
+    (1, 1, 1, 100.00, 'Jim Deposit', 'N/A', '2021-07-26'),
+    (2, 2, 1, 200.00, 'Jane Deposit', 'N/A', '2021-07-26');
