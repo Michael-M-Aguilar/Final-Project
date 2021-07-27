@@ -8,14 +8,19 @@ export default class CreateCredit extends React.Component {
       amount: '',
       note: '',
       category: '',
-      location: ''
+      location: '',
+      date: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.todaysDate = this.todaysDate.bind(this);
   }
 
   todaysDate() {
-
+    document.getElementById('date').valueAsDate = new Date();
+    // eslint-disable-next-line no-undef
+    const today = format('YYYY-MM-DD');
+    document.getElementById('date').value = today;
   }
 
   handleChange(event) {
@@ -37,6 +42,11 @@ export default class CreateCredit extends React.Component {
     if (event.target.id === 'location') {
       this.setState({
         location: event.target.value
+      });
+    }
+    if (event.target.id === 'date') {
+      this.setState({
+        date: event.target.value
       });
     }
     // console.log(this.state);
@@ -70,15 +80,11 @@ export default class CreateCredit extends React.Component {
           <h1 className="text-header dmTextColor">Creating New Transactions: </h1>
         </div>
         <div className="flex flex-column border border-5 border-dark rounded cdPosition desktopSecondary">
-          <div className="flex justify-content-between">
+          <div className="flex justify-content-end">
             <a href="#create-transaction">
               <i className="fas fa-times-circle fa-2x mx-3 my-4 logoIcon"></i>
             </a>
             {/* <p className="fs-2 mx-3 my-4 text-header dmTextColor">Date (July 23, 2021)</p> */}
-            <div>
-              <label htmlFor="date">Entry Date:</label>
-              <input type="date" id="date" name="entry-date" value="2020-01-01" min="2020-01-01"></input>
-            </div>
             {/* <a href="#">
               <div className="border border-3 border-dark rounded mx-3 my-3">
                 <p className="mx-4 my-2 text-header dmTextColor fs-2"> Save </p>
@@ -91,6 +97,10 @@ export default class CreateCredit extends React.Component {
               <span className="input-group-text fs-5 text-header">$</span>
               <label htmlFor="amount" className="form-label raleway dmTextColor"></label>
               <input type="number" step="0.01" id="amount" name="amount" className=" fs-5 form-control inputBackground numbers dmTextColor" value={this.state.amount} onChange={this.handleChange}></input>
+            </div>
+            <div>
+              <label htmlFor="date">Entry Date:</label>
+              <input type="date" id="date" name="entry-date" onChange={this.handleChange} min="2020-01-01"></input>
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="note" className="form-label raleway dmTextColor fs-3 mx-4">Notes:</label>
