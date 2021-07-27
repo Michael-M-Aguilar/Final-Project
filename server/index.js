@@ -17,7 +17,7 @@ const app = express();
 app.use(staticMiddleware);
 app.use(jsonMiddleware);
 
-// firstEndPoint --> Get Request for entries
+// Get information necessary for entries to present in body.
 app.get('/api/entries', (req, res) => {
 
   const sql = `
@@ -40,7 +40,7 @@ app.get('/api/entries', (req, res) => {
     });
 
 });
-
+// To get my categories from it's respective table
 app.get('/api/categories', (req, res) => {
   const sql = `
   SELECT DISTINCT
@@ -59,17 +59,9 @@ app.get('/api/categories', (req, res) => {
 });
 
 // Code in here.
-// also need to add JSON middleware.
-
+// To help post credit entries
 app.post('/api/entries/', (req, res) => {
-  // const { userId, accountId, categoryId, amount, note, location } = req.body;
-  const { amount, note, location, date } = req.body;
-  // if (!amount) {
-  //   res.status(400).json({
-  //     error: 'amount is a required field'
-  //   });
-  //   return;
-  // }
+  const { category, amount, note, location, date } = req.body;
   // console.log('The value of req.body', req.body);
   const sql = `
   INSERT INTO "entries" ("userId", "accountId", "categoryId", "amount", "note", "location", "date")
@@ -77,7 +69,7 @@ app.post('/api/entries/', (req, res) => {
   RETURNING *
   `;
 
-  const params = [1, 1, 2, amount, note, location, date];
+  const params = [1, 1, category, amount, note, location, date];
   db.query(sql, params)
     .then(result => {
       const [entry] = result.rows;
@@ -92,6 +84,29 @@ app.post('/api/entries/', (req, res) => {
     });
 });
 
+app.post('/api/debit/', (req, res) => {
+  const { category, amount, note, location, date } = req.body;
+  // console.log('The value of req.body', req.body);
+  const sql = `
+  INSERT INTO "entries" ("userId", "accountId", "categoryId", "amount", "note", "location", "date")
+  VALUES ($1, $2, $3, $4, $5, $6, $7)
+  RETURNING *
+  `;
+
+  const params = [1, 1, category, amount, note, location, date];
+  db.query(sql, params)
+    .then(result => {
+      const [entry] = result.rows;
+      // console.log('This is the CL of entry only', entry);
+      res.status(201).json(entry);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occured'
+      });
+    });
+});
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {

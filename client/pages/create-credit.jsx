@@ -8,6 +8,7 @@ export default class CreateCredit extends React.Component {
       amount: '',
       note: '',
       category: '',
+      categories: '',
       location: '',
       date: ''
     };
@@ -26,7 +27,7 @@ export default class CreateCredit extends React.Component {
       .then(res => res.json())
       .then(data => {
         // console.log(data);
-        this.setState({ category: data });
+        this.setState({ categories: data });
         // console.log('value of this.category', this.state.category);
         // console.log('value of the index 0', this.state.category[0]);
       });
@@ -83,16 +84,10 @@ export default class CreateCredit extends React.Component {
   }
 
   render() {
-    const { category } = this.state;
-    // const test = new Set();
-    // const newArray = this.state.category.slice();
-    // test.add(newArray.categoryId);
-    // const asd = newArray.map(categoryId => (
-    //   test.add(categoryId.categoryId)
-    // ));
-    // console.log('next log', [...new Set(asd)]);
-    // console.log('log of asd', asd);
-    // console.log('vaue of this.state', this.state);
+    // console.log('values of categories', this.state.categories);
+    // console.log('values of category', this.state.category);
+    // const { category } = this.state;
+    const { categories } = this.state;
     return (
       <div className="container ctcontainer desktopBody my-4">
         <div>
@@ -112,8 +107,8 @@ export default class CreateCredit extends React.Component {
               <input type="number" max="0" step="0.01" id="amount" name="amount" className=" fs-5 form-control inputBackground numbers dmTextColor" value={this.state.amount} onChange={this.handleChange}></input>
             </div>
             <div>
-              <label htmlFor="date">Entry Date:</label>
-              <input type="date" id="date" name="entry-date" value={this.state.date} onChange={this.handleChange} min="2020-01-01"></input>
+              <label className="raleway dmTextColor mx-3" htmlFor="date">Entry Date:</label>
+              <input type="date" id="date" className="raleway dmTextColor" name="entry-date" value={this.state.date} onChange={this.handleChange} min="2020-01-01"></input>
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="note" className="form-label raleway dmTextColor fs-3 mx-4">Notes:</label>
@@ -121,16 +116,15 @@ export default class CreateCredit extends React.Component {
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="category" className="form-label raleway dmTextColor fs-3 mx-4">Categories:</label>
-              <select className="form-select categories inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark" id="categories" value={this.state.category} onChange={this.handleChange}>
+              <select className="form-select categories inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark" id="categories" onChange={this.handleChange}>
                 <option selected className="raleway fs-5 dmTextColor">Choose a category...</option>
-                {category.map((cat, index) => (
-                  <option key={cat[index].categoryId} value={cat[index].categoryId}>{cat[index].categoryName}</option>
-                ))}
-                {/* <option className="raleway fs-5 dmTextColor">Auto</option>
-                <option value="Bills" className="raleway fs-5 dmTextColor">Bills</option> */}
-                {/* <option value="Gifts" className="raleway fs-5 dmTextColor">Gifts</option>
-                <option value="Shopping" className="raleway fs-5 dmTextColor">Shopping</option>
-                <option value="Travel" className="raleway fs-5 dmTextColor">Travel</option> */}
+                {
+                (!this.state.categories.length)
+                  ? '...'
+                  : categories.map(cat => (
+                  <option key={cat.categoryId} value={cat.categoryId}>{cat.catName}</option>
+                  ))
+                }
               </select>
             </div>
             <div className="form-group input-group my-4">
