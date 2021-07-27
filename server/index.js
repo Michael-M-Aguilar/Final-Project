@@ -59,7 +59,6 @@ app.get('/api/categories', (req, res) => {
 // To help post credit entries
 app.post('/api/entries/', (req, res) => {
   const { category, amount, note, location, date } = req.body;
-  // console.log('The value of req.body', req.body);
   const sql = `
   INSERT INTO "entries" ("userId", "accountId", "categoryId", "amount", "note", "location", "date")
   VALUES ($1, $2, $3, $4, $5, $6, $7)
