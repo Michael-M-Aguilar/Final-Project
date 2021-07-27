@@ -1,0 +1,69 @@
+#root {
+  background-color: #1f2933;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.desktopBody {
+  background-color: #3e4c59;
+}
+
+input,
+textarea {
+  resize: none;
+  outline: none;
+}
+
+input,
+textarea,
+.input-row-1 {
+  max-width: 450px;
+}
+
+.categories {
+  max-width: 445px;
+}
+
+input {
+  background-color: #486581;
+}
+
+input:focus {
+  background-color: #486581;
+}
+
+.desktopSecondary,
+.inputBackground {
+  background-color: #486581;
+}
+
+.logoIcon {
+  color: #03dac5;
+}
+
+.dmTextColor {
+  color: #deedf0;
+}
+
+.dmPositiveColor {
+  color: #7afa87;
+}
+
+.dmNegativeColor {
+  color: #fb8686;
+}
+
+.text-header {
+  font-family: 'Poppins', sans-serif;
+}
+
+.raleway {
+  font-family: 'Raleway', sans-serif;
+}
+
+.numbers {
+  font-family: 'Ubuntu', sans-serif;
+}

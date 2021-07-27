@@ -1,0 +1,93 @@
+.flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.transaction-p {
+  padding-left: 42px;
+}
+
+/* Width of Body, Recent transactions */
+.recentTW {
+  width: 460px;
+}
+
+/* Width of Body, Spending Chart */
+.spendingC {
+  width: 560px;
+}
+
+/* Set width of the header nav-bar */
+.header-width {
+  width: 480px;
+}
+
+/* Size of Logo */
+.logoSize {
+  width: 100px;
+}
+
+/* Size of container */
+.container {
+  max-width: 1800px;
+}
+
+/* Create a transaction Page */
+
+/* Create a transaction box */
+.transactionPosition {
+  position: relative;
+  top: 90px;
+  left: 350px;
+  width: 780px;
+  height: 400px;
+}
+
+/* Credit/Debit Page CSS */
+
+/* Dimension of create debit/credit container */
+.ctcontainer {
+  height: 1000px;
+  width: 1470px;
+}
+
+/* Size of the box of credit/debit */
+.cdPosition {
+  position: relative;
+  top: 90px;
+  left: 230px;
+  width: 1000px;
+  height: 500px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    /* width: 500px; */
+
+    /* max-width: 1600px */
+  }
+
+  /* To show the mobile version on Chrome. */
+  .hiddenInDesktop {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  thead,
+  /* To hide the desktop List.*/
+  .hiddenInMobile {
+    display: none;
+  }
+
+  .container {
+    min-width: 520px;
+  }
+}
