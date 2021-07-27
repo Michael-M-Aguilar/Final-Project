@@ -26,10 +26,7 @@ export default class CreateCredit extends React.Component {
     fetch('/api/categories')
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
         this.setState({ categories: data });
-        // console.log('value of this.category', this.state.category);
-        // console.log('value of the index 0', this.state.category[0]);
       });
   }
 

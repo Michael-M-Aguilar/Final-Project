@@ -20,17 +20,11 @@ export default class Body extends React.Component {
     fetch('api/entries')
       .then(res => res.json())
       .then(info => {
-        // console.log(info);
         this.setState({ info: info });
       });
   }
 
   render() {
-    // const { info } = this.state;
-    // // console.log('info.userinfo:', info.userInfo);
-    // console.log('What is this.state.info:', this.state.info);
-    // console.log('What is this.state.info.userInfo:', this.state.info.userInfo);
-    // console.log('Typeof', typeof this.state.info[0]);
     const lastIndex = this.state.info.length - 1;
     return (
       <div className="container hiddenInMobile desktopBody my-4">

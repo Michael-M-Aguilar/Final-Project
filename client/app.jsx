@@ -14,7 +14,6 @@ export default class App extends React.Component {
       route: ParseRoute(window.location.hash),
       entries: []
     };
-    // this.addEntry = this.addEntry.bind(this);
   }
 
   // Hash Routing
@@ -31,21 +30,6 @@ export default class App extends React.Component {
         });
       });
   }
-
-  // addEntry(newEntry) {
-  //   fetch('/api/entries', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(newEntry)
-  //   })
-  //     .then(res => res.json())
-  //   .then(data => {
-  //     this.setState({
-  //       entries: this.state.entries.
-  //     });
-  //   });
-
-  // }
 
   renderPage() {
     const { route } = this.state;
