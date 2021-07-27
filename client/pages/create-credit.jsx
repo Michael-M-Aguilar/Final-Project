@@ -66,11 +66,9 @@ export default class CreateCredit extends React.Component {
         date: event.target.value
       });
     }
-    // console.log(this.state);
   }
 
   handleSubmit(event) {
-    // console.log(this.state);
     fetch('/api/entries', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -84,14 +82,11 @@ export default class CreateCredit extends React.Component {
   }
 
   render() {
-    // console.log('values of categories', this.state.categories);
-    // console.log('values of category', this.state.category);
-    // const { category } = this.state;
     const { categories } = this.state;
     return (
       <div className="container ctcontainer desktopBody my-4">
         <div>
-          <h1 className="text-header dmTextColor">Creating New Transactions: </h1>
+          <h1 className="text-header dmTextColor">Creating New Credit Transaction: </h1>
         </div>
         <div className="flex flex-column border border-5 border-dark rounded cdPosition desktopSecondary">
           <div className="flex justify-content-end">

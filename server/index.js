@@ -33,9 +33,7 @@ app.get('/api/entries', (req, res) => {
   // no params so no 2nd argumnet needed.
   db.query(sql)
     .then(result => {
-      // console.log('DB Result', result);
       const userInfo = result.rows;
-      // res.json({ test: 'This a test' });
       res.json(userInfo);
     });
 
@@ -52,7 +50,6 @@ app.get('/api/categories', (req, res) => {
 
   db.query(sql)
     .then(result => {
-      // console.log('DB GetResult', result);
       const categories = result.rows;
       res.json(categories);
     });
@@ -73,7 +70,6 @@ app.post('/api/entries/', (req, res) => {
   db.query(sql, params)
     .then(result => {
       const [entry] = result.rows;
-      // console.log('This is the CL of entry only', entry);
       res.status(201).json(entry);
     })
     .catch(err => {
@@ -85,19 +81,17 @@ app.post('/api/entries/', (req, res) => {
 });
 
 app.post('/api/debit/', (req, res) => {
-  const { category, amount, note, location, date } = req.body;
-  // console.log('The value of req.body', req.body);
+  const { amount, note, date } = req.body;
   const sql = `
   INSERT INTO "entries" ("userId", "accountId", "categoryId", "amount", "note", "location", "date")
   VALUES ($1, $2, $3, $4, $5, $6, $7)
   RETURNING *
   `;
 
-  const params = [1, 1, category, amount, note, location, date];
+  const params = [1, 3, null, amount, note, null, date];
   db.query(sql, params)
     .then(result => {
       const [entry] = result.rows;
-      // console.log('This is the CL of entry only', entry);
       res.status(201).json(entry);
     })
     .catch(err => {

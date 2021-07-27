@@ -22,10 +22,10 @@ CREATE TABLE "entries" (
 	"entryId" serial NOT NULL,
 	"userId" integer NOT NULL,
 	"accountId" integer NOT NULL,
-	"categoryId" integer NOT NULL,
+	"categoryId" integer,
 	"amount" DECIMAL NOT NULL,
 	"note" TEXT NOT NULL,
-	"location" TEXT NOT NULL,
+	"location" TEXT,
 	"date" DATE NOT NULL,
 	CONSTRAINT "entries_pk" PRIMARY KEY ("entryId")
 ) WITH (

@@ -20,8 +20,8 @@ insert into "accounts"
     (2, 'Credit', 'Credit'),
     (2, 'Credit', 'Credit'),
     (2, 'Credit', 'Credit'),
-    (3, 'Deposit', 'Deposit Note'),
-    (4, 'Salary', 'Salary Note');
+    (3, 'Deposit/Salary', 'Deposit Note'),
+    (3, 'Deposit/Salary', 'Salary Note');
 
 insert into "categories"
 ("categoryId", "catName")
@@ -45,4 +45,4 @@ insert into "entries"
     (1, 1, 5, 100.00, 'Jim Deposit', 'N/A', '2021-07-26'),
     (2, 2, 6, 200.00, 'Jane Deposit', 'N/A', '2021-07-26'),
     (1, 3, 7, 100.00, 'Jim Deposit', 'N/A', '2021-07-26'),
-    (2, 4, 8, 200.00, 'Jane Deposit', 'N/A', '2021-07-26');
+    (2, 3, 8, 200.00, 'Jane Deposit', 'N/A', '2021-07-26');
