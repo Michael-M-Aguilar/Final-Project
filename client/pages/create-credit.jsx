@@ -7,7 +7,7 @@ export default class CreateCredit extends React.Component {
     this.state = {
       amount: '',
       note: '',
-      category: [],
+      category: '',
       location: '',
       date: ''
     };
@@ -27,7 +27,8 @@ export default class CreateCredit extends React.Component {
       .then(data => {
         // console.log(data);
         this.setState({ category: data });
-        // console.log(this.state.category);
+        // console.log('value of this.category', this.state.category);
+        // console.log('value of the index 0', this.state.category[0]);
       });
   }
 
@@ -122,8 +123,8 @@ export default class CreateCredit extends React.Component {
               <label htmlFor="category" className="form-label raleway dmTextColor fs-3 mx-4">Categories:</label>
               <select className="form-select categories inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark" id="categories" value={this.state.category} onChange={this.handleChange}>
                 <option selected className="raleway fs-5 dmTextColor">Choose a category...</option>
-                {category.map(cat => (
-                  <option key={cat.categoryId}>{cat.catName}</option>
+                {category.map((cat, index) => (
+                  <option key={cat[index].categoryId} value={cat[index].categoryId}>{cat[index].categoryName}</option>
                 ))}
                 {/* <option className="raleway fs-5 dmTextColor">Auto</option>
                 <option value="Bills" className="raleway fs-5 dmTextColor">Bills</option> */}
