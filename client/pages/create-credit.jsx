@@ -79,6 +79,7 @@ export default class CreateCredit extends React.Component {
   }
 
   render() {
+    // console.log(this.state);
     const { categories } = this.state;
     return (
       <div className="container ctcontainer desktopBody my-4">
