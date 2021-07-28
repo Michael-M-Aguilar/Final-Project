@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.overflow {
+  overflow: auto;
+}
+
 .space-between {
   justify-content: space-between;
 }
@@ -65,6 +69,12 @@
   left: 230px;
   width: 1000px;
   height: 500px;
+}
+
+/* Size of the Transactions container */
+.transactionHistory {
+  width: 1440px;
+  height: 900px;
 }
 
 @media screen and (min-width: 768px) {

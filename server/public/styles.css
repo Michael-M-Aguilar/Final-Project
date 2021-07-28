@@ -1,5 +1,6 @@
 #root {
   background-color: #1f2933;
+  height: 100vh;
 }
 
 a {
@@ -58,6 +59,7 @@ input:focus {
 
 .text-header {
   font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
 }
 
 .raleway {
@@ -66,4 +68,8 @@ input:focus {
 
 .numbers {
   font-family: 'Ubuntu', sans-serif;
+}
+
+.text-end {
+  text-align: end;
 }

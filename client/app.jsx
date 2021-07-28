@@ -6,6 +6,7 @@ import CreateCredit from './pages/create-credit';
 import CreateDebit from './pages/create-debit';
 import ParseRoute from '../server/parse-route';
 import NotFound from './pages/not-found';
+import Transactions from './pages/transactions';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -48,6 +49,10 @@ export default class App extends React.Component {
     // If route.path is equal to the debit page
     if (route.path === 'create-transaction/debit') {
       return <CreateDebit />;
+    }
+    // If route.path is equal to Transactions
+    if (route.path === 'transactions') {
+      return <Transactions />;
     }
     // Else if there's an error, direct user to error page.
     return <NotFound />;
