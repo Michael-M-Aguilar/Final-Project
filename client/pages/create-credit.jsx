@@ -72,6 +72,9 @@ export default class CreateCredit extends React.Component {
       body: JSON.stringify(this.state)
     })
       .then(res => res.json())
+      .then(() => {
+        location.hash = '#';
+      })
       .catch(err => {
         console.error(err);
       });
