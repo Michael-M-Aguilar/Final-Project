@@ -145,6 +145,44 @@ app.post('/api/categories', (req, res) => {
     });
 });
 
+// To get the current budgets from the DB.
+app.get('/api/budget', (req, res) => {
+  const sql = `
+  SELECT "userId",
+  "amount"
+  FROM "budgets"
+  ORDER BY "budgetId";
+  `;
+
+  db.query(sql)
+    .then(result => {
+      const categories = result.rows;
+      res.json(categories);
+    });
+});
+// To post a new budget onto the page.
+app.post('/api/budget', (req, res) => {
+  const { amount } = req.body;
+  const sql = `
+  INSERT INTO "budgets" ("userId", "amount")
+  VALUES ($1, $2)
+  RETURNING *
+  `;
+
+  const params = [1, amount];
+  db.query(sql, params)
+    .then(result => {
+      const [category] = result.rows;
+      res.status(201).json(category);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error ocurred'
+      });
+    });
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
