@@ -6,14 +6,18 @@ export default class Body extends React.Component {
     super(props);
     // array to hold our entries to present on the page.
     this.state = {
-      info: []
+      info: [],
+      budget: '',
+      showModal: false
     };
     this.getEntries = this.getEntries.bind(this);
+    this.getBudget = this.getBudget.bind(this);
   }
 
   // If component is mounted, this is to start getEntries method
   componentDidMount() {
     this.getEntries();
+    this.getBudget();
   }
 
   // our get request to present information on the page
@@ -25,7 +29,16 @@ export default class Body extends React.Component {
       });
   }
 
+  getBudget() {
+    fetch('api/budget')
+      .then(res => res.json())
+      .then(budget => {
+        this.setState({ budget: budget });
+      });
+  }
+
   render() {
+    // console.log(this.state);
     return (
       <div className="container hiddenInMobile desktopBody my-4">
         <div className="row1 flex space-between">
@@ -40,7 +53,7 @@ export default class Body extends React.Component {
         {/* Top row holding our Budget, Income and Transactions */}
         <div className="row2 flex space-evenly pt-4">
           <div className="space-evenly desktopSecondary border border-dark border-3 rounded">
-            <p className="fs-3 text-center dmTextColor text-header my-3 mx-3">Budget: <span className="numbers">$5000.00</span></p>
+            <p className="fs-3 text-center dmTextColor text-header my-3 mx-3">Budget: <span className="numbers">${(!this.state.budget.length) ? 'Loading...' : this.state.budget[0].amount}</span></p>
           </div>
           <div className="space-evenly desktopSecondary border border-dark border-3 rounded">
             <p className="fs-3 text-center text-header my-3 mx-3 dmTextColor">Income: <span className="dmPositiveColor numbers">$358.14</span></p>

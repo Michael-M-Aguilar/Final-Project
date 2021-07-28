@@ -149,15 +149,16 @@ app.post('/api/categories', (req, res) => {
 app.get('/api/budget', (req, res) => {
   const sql = `
   SELECT "userId",
-  "amount"
+  "amount",
+  "budgetId"
   FROM "budgets"
-  ORDER BY "budgetId";
+  ORDER BY "budgetId" desc;
   `;
 
   db.query(sql)
     .then(result => {
-      const categories = result.rows;
-      res.json(categories);
+      const budget = result.rows;
+      res.json(budget);
     });
 });
 // To post a new budget onto the page.
@@ -172,8 +173,8 @@ app.post('/api/budget', (req, res) => {
   const params = [1, amount];
   db.query(sql, params)
     .then(result => {
-      const [category] = result.rows;
-      res.status(201).json(category);
+      const [budget] = result.rows;
+      res.status(201).json(budget);
     })
     .catch(err => {
       console.error(err);
