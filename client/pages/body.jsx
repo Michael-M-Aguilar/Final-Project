@@ -26,7 +26,6 @@ export default class Body extends React.Component {
   }
 
   render() {
-    // console.log('This State:', this.state);
     return (
       <div className="container hiddenInMobile desktopBody my-4">
         <div className="row1 flex space-between">
@@ -57,28 +56,28 @@ export default class Body extends React.Component {
             <div className="flex space-between border-top border-2 py-2 mx-3">
               <p className="fs-5 dmTextColor mx-3 raleway">{(!this.state.info.length) ? 'Loading ...' : this.state.info[0].note}</p>
               <div className="flex flex-column mx-3">
-                <p className={(!this.state.info.length) ? 'Loading...' : (this.state.info[0].amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers' : 'fs-5 dmTextColor numbers dmPositiveColor numbers'}>{(!this.state.info.length) ? 'Loading ...' : this.state.info[0].amount}</p>
+                <p className={(!this.state.info.length) ? 'Loading...' : (this.state.info[0].amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>{(!this.state.info.length) ? 'Loading ...' : '$ ' + this.state.info[0].amount}</p>
                 <p className="fs-5 dmTextColor raleway">{(!this.state.info.length) ? 'Loading ...' : moment(this.state.info[0].date).format('MMMM Do YYYY')}</p>
               </div>
             </div>
             <div className="flex space-between border-top border-2 py-2 mx-3">
               <p className="fs-5 dmTextColor mx-3 raleway">{(!this.state.info.length) ? 'Loading ...' : this.state.info[1].note}</p>
               <div className="flex flex-column mx-3">
-                <p className={(!this.state.info.length) ? 'Loading...' : (this.state.info[1].amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers' : 'fs-5 dmTextColor numbers dmPositiveColor numbers'}>{(!this.state.info.length) ? 'Loading ...' : this.state.info[1].amount}</p>
+                <p className={(!this.state.info.length) ? 'Loading...' : (this.state.info[1].amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>{(!this.state.info.length) ? 'Loading ...' : '$ ' + this.state.info[1].amount}</p>
                 <p className="fs-5 dmTextColor raleway">{(!this.state.info.length) ? 'Loading ...' : moment(this.state.info[1].date).format('MMMM Do YYYY')}</p>
               </div>
             </div>
             <div className="flex space-between border-top border-2 py-2 mx-3">
               <p className="fs-5 dmTextColor mx-3 raleway">{(!this.state.info.length) ? 'Loading ...' : this.state.info[2].note}</p>
               <div className="flex flex-column mx-3">
-                <p className={(!this.state.info.length) ? 'Loading...' : (this.state.info[2].amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers' : 'fs-5 dmTextColor numbers dmPositiveColor numbers'}>{(!this.state.info.length) ? 'Loading ...' : this.state.info[2].amount}</p>
+                <p className={(!this.state.info.length) ? 'Loading...' : (this.state.info[2].amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>{(!this.state.info.length) ? 'Loading ...' : '$ ' + this.state.info[2].amount}</p>
                 <p className="fs-5 dmTextColor raleway">{(!this.state.info.length) ? 'Loading ...' : moment(this.state.info[2].date).format('MMMM Do YYYY')}</p>
               </div>
             </div>
             <div className="flex space-between border-top border-2 py-2 mx-3">
               <p className="fs-5 dmTextColor mx-3 raleway">{(!this.state.info.length) ? 'Loading ...' : this.state.info[3].note}</p>
               <div className="flex flex-column mx-3">
-                <p className={(!this.state.info.length) ? 'Loading...' : (this.state.info[3].amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers' : 'fs-5 dmTextColor numbers dmPositiveColor numbers'}>{(!this.state.info.length) ? 'Loading ...' : this.state.info[3].amount}</p>
+                <p className={(!this.state.info.length) ? 'Loading...' : (this.state.info[3].amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>{(!this.state.info.length) ? 'Loading ...' : '$ ' + this.state.info[3].amount}</p>
                 <p className="fs-5 dmTextColor raleway">{(!this.state.info.length) ? 'Loading ...' : moment(this.state.info[3].date).format('MMMM Do YYYY')}</p>
               </div>
             </div>

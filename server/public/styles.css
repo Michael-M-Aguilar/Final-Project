@@ -69,3 +69,7 @@ input:focus {
 .numbers {
   font-family: 'Ubuntu', sans-serif;
 }
+
+.text-end {
+  text-align: end;
+}

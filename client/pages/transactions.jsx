@@ -27,7 +27,6 @@ export default class Transactions extends React.Component {
 
   render() {
     const { infos } = this.state;
-    // console.log('The value of this.state', this.state);
     return (
       <div className="container ctcontainer desktopBody my-3">
         <div className="my-3 mx-2">
@@ -45,8 +44,8 @@ export default class Transactions extends React.Component {
             <div key={key.entryId} className="flex space-between border-top border-2 py-2 mx-3">
               <p className="fs-5 dmTextColor mx-3 raleway">{key.note}</p>
               <div className="flex flex-column mx-3">
-                <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers' : 'fs-5 dmTextColor numbers dmPositiveColor numbers'}>{key.amount}</p>
-                <p className="fs-5 dmTextColor raleway">{moment(key.date).format('MMMM Do YYYY')}</p>
+                <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end ' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>$ {key.amount}</p>
+                <p className="fs-5 dmTextColor raleway text-end">{moment(key.date).format('MMMM Do YYYY')}</p>
               </div>
             </div>
             ))
