@@ -33,7 +33,7 @@ export default class Folders extends React.Component {
           <div className="flex justify-content-between">
             <p className="text-header dmTextColor mx-4">Current Categories:</p>
             <a href="#create-category">
-              <i className="fas fa-plus-circle fa-6x my-5 logoIcon"></i>
+              <i className="fas fa-plus-circle fa-5x mx-4 my-4 logoIcon"></i>
             </a>
           </div>
           <div>

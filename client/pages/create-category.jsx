@@ -24,6 +24,9 @@ export default class CreateCategory extends React.Component {
       body: JSON.stringify(this.state)
     })
       .then(res => res.json())
+      .then(() => {
+        location.hash = 'folder';
+      })
       .catch(err => {
         console.error(err);
       });
