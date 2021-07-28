@@ -21,7 +21,7 @@ export default class Header extends React.Component {
                 <span className="logoIcon transaction-p"><i className="fas fa-list fa-3x"></i></span>
                 <div className="dmTextColor text-style-heading fs-4">Transactions</div>
               </a>
-              <a>
+              <a href="#folder">
                 <span className="logoIcon ps-1"><i className="fas fa-folder-open fa-3x"></i></span>
                 <div className="dmTextColor text-style-heading fs-4">Folder</div>
               </a>

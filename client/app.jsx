@@ -7,6 +7,8 @@ import CreateDebit from './pages/create-debit';
 import ParseRoute from '../server/parse-route';
 import NotFound from './pages/not-found';
 import Transactions from './pages/transactions';
+import Folder from './pages/folder';
+import CreateCategory from './pages/create-category';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -53,6 +55,12 @@ export default class App extends React.Component {
     // If route.path is equal to Transactions
     if (route.path === 'transactions') {
       return <Transactions />;
+    }
+    if (route.path === 'folder') {
+      return <Folder />;
+    }
+    if (route.path === 'create-category') {
+      return <CreateCategory />;
     }
     // Else if there's an error, direct user to error page.
     return <NotFound />;

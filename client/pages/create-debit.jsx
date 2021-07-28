@@ -53,7 +53,7 @@ export default class CreateDebit extends React.Component {
           <h1 className="text-header dmTextColor">Creating New Debit Transaction: </h1>
         </div>
         <div className="flex flex-column border border-5 border-dark rounded cdPosition desktopSecondary">
-          <div className="flex justify-content-between">
+          <div className="flex justify-content-start">
             <a href="#create-transaction">
               <i className="fas fa-times-circle fa-3x mx-3 my-4 logoIcon"></i>
             </a>
@@ -75,7 +75,7 @@ export default class CreateDebit extends React.Component {
               <label htmlFor="note" className="form-label raleway dmTextColor fs-3 mx-4">Notes:</label>
               <textarea placeholder="Add a note... (optional)" id="note" className="form-control mx-4 inputBackground border border-4 rounded-pill border-dark dmTextColor fs-4 raleway" name="note" rows="1" onChange={this.handleChange}></textarea>
             </div>
-            <div className="form-group flex justify-content-end">
+            <div className="form-group flex justify-content-center">
               <button type="submit" className="btn btn-dark my-3">Save</button>
             </div>
           </form>

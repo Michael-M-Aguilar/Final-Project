@@ -19,7 +19,6 @@ app.use(jsonMiddleware);
 
 // Get information necessary for entries to present in body.
 app.get('/api/entries', (req, res) => {
-
   const sql = `
   SELECT
   "entryId",
@@ -30,6 +29,27 @@ app.get('/api/entries', (req, res) => {
   FROM "entries"
   JOIN "users" using ("userId")
   order by "entryId" desc
+  `;
+  // no params so no 2nd argumnet needed.
+  db.query(sql)
+    .then(result => {
+      const userInfo = result.rows;
+      res.json(userInfo);
+    });
+});
+
+// Get request to GET from entries BUT date descend.
+app.get('/api/transactions', (req, res) => {
+  const sql = `
+  SELECT
+  "entryId",
+  "amount",
+  "note",
+  "date",
+  "location"
+  FROM "entries"
+  JOIN "users" using ("userId")
+  order by "date" desc
   `;
   // no params so no 2nd argumnet needed.
   db.query(sql)
@@ -114,8 +134,8 @@ app.post('/api/categories', (req, res) => {
   const params = [catName];
   db.query(sql, params)
     .then(result => {
-      const [entry] = result.rows;
-      res.status(201).json(entry);
+      const [category] = result.rows;
+      res.status(201).json(category);
     })
     .catch(err => {
       console.error(err);
