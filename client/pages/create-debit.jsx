@@ -50,7 +50,7 @@ export default class CreateDebit extends React.Component {
     return (
       <div className="container ctcontainer desktopBody my-4">
         <div>
-          <h1 className="text-header dmTextColor">Creating New DebitTransaction: </h1>
+          <h1 className="text-header dmTextColor">Creating New Debit Transaction: </h1>
         </div>
         <div className="flex flex-column border border-5 border-dark rounded cdPosition desktopSecondary">
           <div className="flex justify-content-between">

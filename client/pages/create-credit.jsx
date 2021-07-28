@@ -63,6 +63,7 @@ export default class CreateCredit extends React.Component {
         date: event.target.value
       });
     }
+    // console.log(this.state);
   }
 
   handleSubmit(event) {

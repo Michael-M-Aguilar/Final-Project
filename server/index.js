@@ -22,13 +22,14 @@ app.get('/api/entries', (req, res) => {
 
   const sql = `
   SELECT
-  "userId",
+  "entryId",
   "amount",
   "note",
-  "location",
-  "firstName"
+  "date",
+  "location"
   FROM "entries"
-  JOIN "users" using ("userId");
+  JOIN "users" using ("userId")
+  order by "entryId" desc
   `;
   // no params so no 2nd argumnet needed.
   db.query(sql)
