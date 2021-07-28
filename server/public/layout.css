@@ -6,6 +6,10 @@
   overflow: auto;
 }
 
+.align-self-c {
+  align-self: center;
+}
+
 .space-between {
   justify-content: space-between;
 }

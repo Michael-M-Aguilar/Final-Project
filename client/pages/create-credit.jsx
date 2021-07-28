@@ -88,7 +88,7 @@ export default class CreateCredit extends React.Component {
         <div className="flex flex-column border border-5 border-dark rounded cdPosition desktopSecondary">
           <div className="flex justify-content-start">
             <a href="#create-transaction">
-              <i className="fas fa-times-circle fa-2x mx-3 my-4 logoIcon"></i>
+              <i className="fas fa-times-circle fa-3x mx-3 my-4 logoIcon"></i>
             </a>
           </div>
           <form className="input-group" onSubmit={this.handleSubmit}>

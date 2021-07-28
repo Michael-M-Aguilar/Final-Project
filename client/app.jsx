@@ -24,14 +24,6 @@ export default class App extends React.Component {
     window.addEventListener('hashchange', () => {
       this.setState({ route: ParseRoute(window.location.hash) });
     });
-
-    fetch('/api/entries')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          entries: data
-        });
-      });
   }
 
   renderPage() {

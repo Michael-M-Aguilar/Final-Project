@@ -163,14 +163,14 @@ app.get('/api/budget', (req, res) => {
 });
 // To post a new budget onto the page.
 app.post('/api/budget', (req, res) => {
-  const { amount } = req.body;
+  const { budget } = req.body;
   const sql = `
   INSERT INTO "budgets" ("userId", "amount")
   VALUES ($1, $2)
   RETURNING *
   `;
 
-  const params = [1, amount];
+  const params = [1, budget];
   db.query(sql, params)
     .then(result => {
       const [budget] = result.rows;
