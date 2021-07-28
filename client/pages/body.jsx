@@ -7,12 +7,14 @@ export default class Body extends React.Component {
     super(props);
     this.state = {
       info: [],
-      budget: ''
+      budget: '',
+      budgetInput: ''
     };
     this.getEntries = this.getEntries.bind(this);
     this.getBudget = this.getBudget.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.justSubmitted = this.justSubmitted.bind(this);
   }
 
   // If component is mounted, this is to start these methods after my render
@@ -23,39 +25,41 @@ export default class Body extends React.Component {
 
   // our get request to present information on the page
   getEntries() {
-    fetch('api/entries')
+    fetch('/api/entries')
       .then(res => res.json())
       .then(info => {
         this.setState({ info: info });
       });
   }
 
+  // Fetch current budget set.
   getBudget() {
-    fetch('api/budget')
+    fetch('/api/budget')
       .then(res => res.json())
       .then(budget => {
         this.setState({ budget: budget });
       });
   }
 
+  // Keeping tracks of the update of the budget.
   handleChange(event) {
-    if (event.target.id === 'budget') {
+    if (event.target.id === 'budgetInput') {
       this.setState({
-        budget: event.target.value
+        budgetInput: event.target.value
       });
     }
   }
 
+  // The submission of our budget.
   handleSubmit(event) {
-    // console.log('Something is submitted');
     fetch('/api/budget', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.state)
+      body: JSON.stringify({ budget: this.state.budgetInput })
     })
       .then(res => res.json())
       .then(() => {
-        location.hash = '#';
+        this.getBudget();
       })
       .catch(err => {
         console.error(err);
@@ -77,11 +81,8 @@ export default class Body extends React.Component {
         </div>
         {/* Top row holding our Budget, Income and Transactions */}
         <div className="row2 flex space-evenly pt-4">
-          {/* <div id="budget" className="space-evenly desktopSecondary border border-dark border-3 rounded" onClick={this.handleClickWhenOn}>
-            <p className="fs-3 text-center dmTextColor text-header my-3 mx-3">Budget: <span className="numbers">${(!this.state.budget.length) ? 'Loading...' : this.state.budget[0].amount}</span></p>
-          </div> */}
           <div className="align-self-c desktopSecondary border border-dark border-3 rounded">
-            <button type="button" id="budgetBtn" className="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" id="budgetBtn" className="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
               <p className="fs-3 text-center dmTextColor text-header my-2">Budget: <span className="numbers">${(!this.state.budget.length) ? 'Loading...' : this.state.budget[0].amount}</span></p>
             </button>
           </div>
@@ -157,11 +158,11 @@ export default class Body extends React.Component {
               <form onSubmit={this.handleSubmit}>
                 <div className="flex justify-content-center">
                   <label htmlFor="budget" className="form-label raleway dmTextColor"></label>
-                  <input type="number" min="0" step="0.01" id="budget" name="budget" className=" fs-5 form-control inputBackground numbers dmTextColor border-4 border-dark" onChange={this.handleChange}></input>
+                  <input type="number" min="0" step="0.01" id="budgetInput" name="budgetInput" className=" fs-5 form-control inputBackground numbers dmTextColor border-4 border-dark" onChange={this.handleChange}></input>
                 </div>
                 <div className="modal-footer flex justify-content-between">
                   <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" className="btn btn-dark rounded mx-4">Save</button>
+                  <button type="submit" id="submit" className="btn btn-dark rounded mx-4" onClick={this.justSubmitted}>Save</button>
                 </div>
               </form>
             </div>
