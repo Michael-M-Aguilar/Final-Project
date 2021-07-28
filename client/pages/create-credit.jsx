@@ -86,7 +86,7 @@ export default class CreateCredit extends React.Component {
           <h1 className="text-header dmTextColor">Creating New Credit Transaction: </h1>
         </div>
         <div className="flex flex-column border border-5 border-dark rounded cdPosition desktopSecondary">
-          <div className="flex justify-content-end">
+          <div className="flex justify-content-start">
             <a href="#create-transaction">
               <i className="fas fa-times-circle fa-2x mx-3 my-4 logoIcon"></i>
             </a>
@@ -123,7 +123,7 @@ export default class CreateCredit extends React.Component {
               <label htmlFor="location" className="form-label raleway dmTextColor fs-3 mx-4">Location:</label>
               <input type="text" id="location" name="location" className="form-control mx-4 inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark" value={this.state.location} onChange={this.handleChange}></input>
             </div>
-            <div className="form-group flex justify-content-end">
+            <div className="flex justify-content-center">
               <button type="submit" className="btn btn-dark">Save</button>
             </div>
           </form>

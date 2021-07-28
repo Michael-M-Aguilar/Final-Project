@@ -19,7 +19,6 @@ app.use(jsonMiddleware);
 
 // Get information necessary for entries to present in body.
 app.get('/api/entries', (req, res) => {
-
   const sql = `
   SELECT
   "entryId",
@@ -37,26 +36,29 @@ app.get('/api/entries', (req, res) => {
       const userInfo = result.rows;
       res.json(userInfo);
     });
-
 });
-// To get my categories from it's respective table
-app.get('/api/categories', (req, res) => {
-  const sql = `
-  SELECT DISTINCT
-  "catName",
-  "categoryId"
-  FROM "categories"
-  JOIN "entries" using ("categoryId")
-  `;
 
+// Get request to GET from entries BUT date descend.
+app.get('/api/transactions', (req, res) => {
+  const sql = `
+  SELECT
+  "entryId",
+  "amount",
+  "note",
+  "date",
+  "location"
+  FROM "entries"
+  JOIN "users" using ("userId")
+  order by "date" desc
+  `;
+  // no params so no 2nd argumnet needed.
   db.query(sql)
     .then(result => {
-      const categories = result.rows;
-      res.json(categories);
+      const userInfo = result.rows;
+      res.json(userInfo);
     });
 });
 
-// Code in here.
 // To help post credit entries
 app.post('/api/entries/', (req, res) => {
   const { category, amount, note, location, date } = req.body;
@@ -80,6 +82,7 @@ app.post('/api/entries/', (req, res) => {
     });
 });
 
+// Serves to only post debit entries.
 app.post('/api/debit/', (req, res) => {
   const { amount, note, date } = req.body;
   const sql = `
@@ -101,6 +104,47 @@ app.post('/api/debit/', (req, res) => {
       });
     });
 });
+
+// To get my categories from it's respective table
+app.get('/api/categories', (req, res) => {
+  const sql = `
+  SELECT DISTINCT
+  "catName",
+  "categoryId"
+  FROM "categories"
+  ORDER BY "catName";
+  `;
+
+  db.query(sql)
+    .then(result => {
+      const categories = result.rows;
+      res.json(categories);
+    });
+});
+
+// Allows user to add their own categories.
+app.post('/api/categories', (req, res) => {
+  const { catName } = req.body;
+  const sql = `
+  INSERT INTO "categories" ("catName")
+  VALUES ($1)
+  RETURNING *
+  `;
+
+  const params = [catName];
+  db.query(sql, params)
+    .then(result => {
+      const [category] = result.rows;
+      res.status(201).json(category);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error ocurred'
+      });
+    });
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {

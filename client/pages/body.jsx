@@ -91,7 +91,7 @@ export default class Body extends React.Component {
           <div className="desktopSecondary spendingC flex flex-column border border-dark border-4 py-2">
             <p className="fs-3 dmTextColor text-header mx-3 my-3">Spending Chart: </p>
             <img className="mx-5" src="/images/pie.png" alt="Pie Chart" />
-            <a href="#transactions">
+            <a href="#">
               <div className="flex justify-content-end border-2 pt-4 mx-5">
                 <p className="fs-3 dmTextColor text-header">View More </p>
               </div>

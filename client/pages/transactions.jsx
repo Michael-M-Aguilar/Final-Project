@@ -18,7 +18,7 @@ export default class Transactions extends React.Component {
 
   // our get request to present information on the page
   getEntries() {
-    fetch('api/entries')
+    fetch('api/transactions')
       .then(res => res.json())
       .then(data => {
         this.setState({ infos: data });

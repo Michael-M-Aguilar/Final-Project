@@ -18,6 +18,17 @@ textarea {
   outline: none;
 }
 
+.btn {
+  height: 58px;
+  width: 100px;
+  font-size: 1.5rem;
+  background-color: #1f2933;
+}
+
+.btn:hover {
+  background-color: #3e4c59;
+}
+
 input,
 textarea,
 .input-row-1 {
