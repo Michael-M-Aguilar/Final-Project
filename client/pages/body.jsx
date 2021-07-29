@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import PieChart from './pie-chart';
 
 // Component to create our body component.
 export default class Body extends React.Component {
@@ -125,8 +126,10 @@ export default class Body extends React.Component {
           {/* Holds our Spending Chart */}
           <div className="desktopSecondary spendingC flex flex-column border border-dark border-4 py-1">
             <p className="fs-3 dmTextColor text-header mx-1 my-3">Spending Chart: </p>
-            <img className="mx-5" src="/images/pie.png" alt="Pie Chart" />
-            <a href="">
+            <div className="piechart">
+              <PieChart />
+            </div>
+            <a href="#spending-chart">
               <div className="flex justify-content-end border-2 pt-4 mx-5">
                 <p className="fs-3 dmTextColor text-header">View More </p>
               </div>
