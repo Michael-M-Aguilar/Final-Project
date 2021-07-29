@@ -30,13 +30,10 @@ export default class Transactions extends React.Component {
   deleteEntries(event) {
     const trial = event.target.id;
     const entryId = parseInt(trial);
-    // const trial = { entryId: id };
-    // this.setState({ entryId: entryid });
-    // console.log(this.state.entryId);
     fetch('/api/entries/', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(entryId)
+      body: JSON.stringify({ entryId })
     })
       .then(() => {
         this.getEntries();
@@ -47,7 +44,6 @@ export default class Transactions extends React.Component {
   }
 
   render() {
-    // console.log(this.state);
     const { infos } = this.state;
     return (
       <div className="container ctcontainer desktopBody my-3">

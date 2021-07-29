@@ -94,7 +94,8 @@ export default class CreateCredit extends React.Component {
               <i className="fas fa-times-circle fa-3x mx-3 my-4 logoIcon"></i>
             </a>
           </div>
-          <form className="input-group" onSubmit={this.handleSubmit}>
+          <form className="" onSubmit={this.handleSubmit}>
+            <div className="flex justify-content-between">
             <div className="form-group input-row-1 input-group mx-3 border border-4 border-dark rounded ">
               <span className="input-group-text"><i className="fas fa-money-bill-alt fa-2x logoIcon"></i></span>
               <span className="input-group-text fs-5 text-header">$</span>
@@ -104,6 +105,7 @@ export default class CreateCredit extends React.Component {
             <div>
               <label className="raleway dmTextColor mx-3" htmlFor="date">Entry Date:</label>
               <input type="date" id="date" className="raleway dmTextColor" name="entry-date" value={this.state.date} onChange={this.handleChange} min="2020-01-01"></input>
+            </div>
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="note" className="form-label raleway dmTextColor fs-3 mx-4">Notes:</label>

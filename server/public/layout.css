@@ -2,10 +2,6 @@
   height: 1300px;
 }
 
-/* .container{
-  height: 30px;
-} */
-
 .height {
   height: 950px;
 }
@@ -55,60 +51,59 @@
   width: 25%;
 }
 
-/* Size of container */
-
-/* .container {
-  max-width: 1800px;
-} */
-
-/* Create a transaction Page */
-
 /* Create a transaction box */
 .transactionPosition {
   position: relative;
-  top: 20%;
-  left: 20%;
-  width: 780px;
-  height: 400px;
+  top: 8%;
+  left: 12%;
+  width: 75%;
+  height: 50%;
 }
 
 /* Credit/Debit Page CSS */
 
 /* Dimension of create debit/credit container */
 
-/* .ctcontainer {
+.ctcontainer {
   height: 1000px;
   width: 1470px;
-} */
+}
 
 /* Size of the box of credit/debit */
 
-/* .cdPosition {
+.cdPosition {
   position: relative;
-  top: 20%;
-  left: 20%;
-  width: 1000px;
-  height: 500px; */
+  top: 8%;
+  left: 12%;
+  width: 75%;
+  height: 50%;
+}
+
+.dbPosition {
+  position: relative;
+  top: 8%;
+  left: 12%;
+  width: 75%;
+  height: 50%;
+}
 
 @media screen and (max-width: 769px) {
   /* To hide the desktop List.  */
   .container {
-    /* min-width: 869; */
     width: 50px;
     max-height: 100%;
   }
 }
-} */
+
 /* Size of the Transactions container */
-/* .transactionHistory {
+.transactionHistory {
   width: 95%;
-  height: 75%
-} */
-/*
+  height: 80%;
+}
+
 @media screen and (min-width: 768px) {
-   .container {
+  .container {
     min-width: 869px;
-    max-height: 100%
-  } */
-  /* To show the mobile version on Chrome. */
+    max-height: 100%;
+  }
 }

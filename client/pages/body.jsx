@@ -14,7 +14,6 @@ export default class Body extends React.Component {
     this.getBudget = this.getBudget.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.justSubmitted = this.justSubmitted.bind(this);
   }
 
   // If component is mounted, this is to start these methods after my render
@@ -68,6 +67,7 @@ export default class Body extends React.Component {
   }
 
   render() {
+    const { info } = this.state;
     return (
       <div className="container hiddenInMobile desktopBody my-4">
         <section>
@@ -102,34 +102,20 @@ export default class Body extends React.Component {
           {/* Holds our 4 most recent transactions */}
           <div className="desktopSecondary recentTW py-4 border border-dark border-4">
             <p className="fs-3 dmTextColor text-header mx-1">Recent Transactions: </p>
-            <div className="flex space-between border-top border-2 py-1 mx-1">
-              <p className="fs-5 dmTextColor mx-1 raleway">{(!this.state.info.length) ? 'Loading ...' : this.state.info[0].note}</p>
-              <div className="flex flex-column mx-1">
-                <p className={(!this.state.info.length) ? 'Loading...' : (this.state.info[0].amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>{(!this.state.info.length) ? 'Loading ...' : '$ ' + this.state.info[0].amount}</p>
-                <p className="fs-5 dmTextColor raleway">{(!this.state.info.length) ? 'Loading ...' : moment(this.state.info[0].date).format('MMMM Do YYYY')}</p>
-              </div>
-            </div>
-            <div className="flex space-between border-top border-2 py-1 mx-1">
-              <p className="fs-5 dmTextColor mx-1 raleway">{(!this.state.info.length) ? 'Loading ...' : this.state.info[1].note}</p>
-              <div className="flex flex-column mx-1">
-                <p className={(!this.state.info.length) ? 'Loading...' : (this.state.info[1].amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>{(!this.state.info.length) ? 'Loading ...' : '$ ' + this.state.info[1].amount}</p>
-                <p className="fs-5 dmTextColor raleway">{(!this.state.info.length) ? 'Loading ...' : moment(this.state.info[1].date).format('MMMM Do YYYY')}</p>
-              </div>
-            </div>
-            <div className="flex space-between border-top border-2 py-1 mx-1">
-              <p className="fs-5 dmTextColor mx-1 raleway">{(!this.state.info.length) ? 'Loading ...' : this.state.info[2].note}</p>
-              <div className="flex flex-column mx-1">
-                <p className={(!this.state.info.length) ? 'Loading...' : (this.state.info[2].amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>{(!this.state.info.length) ? 'Loading ...' : '$ ' + this.state.info[2].amount}</p>
-                <p className="fs-5 dmTextColor raleway">{(!this.state.info.length) ? 'Loading ...' : moment(this.state.info[2].date).format('MMMM Do YYYY')}</p>
-              </div>
-            </div>
-            <div className="flex space-between border-top border-2 py-1 mx-1">
-              <p className="fs-5 dmTextColor mx-1 raleway">{(!this.state.info.length) ? 'Loading ...' : this.state.info[3].note}</p>
-              <div className="flex flex-column mx-1">
-                <p className={(!this.state.info.length) ? 'Loading...' : (this.state.info[3].amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>{(!this.state.info.length) ? 'Loading ...' : '$ ' + this.state.info[3].amount}</p>
-                <p className="fs-5 dmTextColor raleway">{(!this.state.info.length) ? 'Loading ...' : moment(this.state.info[3].date).format('MMMM Do YYYY')}</p>
-              </div>
-            </div>
+            {/* The mapping of our recent transaction entry box */}
+            {
+                (!this.state.info.length)
+                  ? <p className="text-header mx-2 dmTextColor">Insert an entry using the plus sign on the bottom right!</p>
+                  : info.slice(0, 4).map(key => (
+                    <div key={key.entryId} className="flex space-between border-top border-2 py-1 mx-1">
+                      <p className="fs-5 dmTextColor mx-1 raleway">{(!key) ? '...' : key.note}</p>
+                      <div className="flex flex-column mx-1">
+                        <p className={(!key) ? '...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>{(!key) ? 'Loading ...' : '$ ' + key.amount}</p>
+                        <p className="fs-5 dmTextColor raleway">{(!key) ? '...' : moment(key.date).format('MMMM Do YYYY')}</p>
+                      </div>
+                    </div>
+                  ))
+            }
             <a href="#transactions">
               <div className="border-top flex justify-content-end border-2 py-1 mx-1">
                 <p className="fs-3 dmTextColor text-header">View All </p>
@@ -140,7 +126,7 @@ export default class Body extends React.Component {
           <div className="desktopSecondary spendingC flex flex-column border border-dark border-4 py-1">
             <p className="fs-3 dmTextColor text-header mx-1 my-3">Spending Chart: </p>
             <img className="mx-5" src="/images/pie.png" alt="Pie Chart" />
-            <a href="#transactions">
+            <a href="">
               <div className="flex justify-content-end border-2 pt-4 mx-5">
                 <p className="fs-3 dmTextColor text-header">View More </p>
               </div>
@@ -154,6 +140,7 @@ export default class Body extends React.Component {
             <i className="fas fa-plus-circle fa-6x my-5"></i>
           </a>
         </div>
+        {/* Modal to pop up when inserting a budget. */}
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
