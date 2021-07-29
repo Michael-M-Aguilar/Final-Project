@@ -1,3 +1,15 @@
+#root {
+  height: 1300px;
+}
+
+/* .container{
+  height: 30px;
+} */
+
+.height {
+  height: 950px;
+}
+
 .flex {
   display: flex;
 }
@@ -24,36 +36,38 @@
 
 /* Width of Body, Recent transactions */
 .recentTW {
-  width: 460px;
+  width: 35%;
+  height: 100%;
 }
 
 /* Width of Body, Spending Chart */
 .spendingC {
-  width: 560px;
+  width: 40%;
 }
 
 /* Set width of the header nav-bar */
 .header-width {
-  width: 480px;
+  width: 50%;
 }
 
 /* Size of Logo */
 .logoSize {
-  width: 100px;
+  width: 25%;
 }
 
 /* Size of container */
-.container {
+
+/* .container {
   max-width: 1800px;
-}
+} */
 
 /* Create a transaction Page */
 
 /* Create a transaction box */
 .transactionPosition {
   position: relative;
-  top: 90px;
-  left: 350px;
+  top: 20%;
+  left: 20%;
   width: 780px;
   height: 400px;
 }
@@ -61,47 +75,40 @@
 /* Credit/Debit Page CSS */
 
 /* Dimension of create debit/credit container */
-.ctcontainer {
+
+/* .ctcontainer {
   height: 1000px;
   width: 1470px;
-}
+} */
 
 /* Size of the box of credit/debit */
-.cdPosition {
+
+/* .cdPosition {
   position: relative;
-  top: 90px;
-  left: 230px;
+  top: 20%;
+  left: 20%;
   width: 1000px;
-  height: 500px;
-}
+  height: 500px; */
 
+@media screen and (max-width: 769px) {
+  /* To hide the desktop List.  */
+  .container {
+    /* min-width: 869; */
+    width: 50px;
+    max-height: 100%;
+  }
+}
+} */
 /* Size of the Transactions container */
-.transactionHistory {
-  width: 1440px;
-  height: 900px;
-}
-
+/* .transactionHistory {
+  width: 95%;
+  height: 75%
+} */
+/*
 @media screen and (min-width: 768px) {
-  .container {
-    /* width: 500px; */
-
-    /* max-width: 1600px */
-  }
-
+   .container {
+    min-width: 869px;
+    max-height: 100%
+  } */
   /* To show the mobile version on Chrome. */
-  .hiddenInDesktop {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  thead,
-  /* To hide the desktop List.*/
-  .hiddenInMobile {
-    display: none;
-  }
-
-  .container {
-    min-width: 520px;
-  }
 }

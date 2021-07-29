@@ -85,26 +85,17 @@ app.post('/api/entries/', (req, res) => {
 });
 
 // To help delete entries
-app.delete('/api/entries/:entryId', (req, res) => {
-  const entryId = parseInt(req.params.entryId);
-  if (isNaN(entryId) || entryId <= 0) {
-    res.status(400).json({ error: 'entryId must be a positive integer' });
-  }
-  const params = [entryId];
+app.delete('/api/entries/', (req, res, next) => {
+  const { entryId } = req.body;
   const sql = `
   DELETE FROM "entries"
   where "entryId" = $1
   returning *
   `;
-
+  const params = [entryId];
   db.query(sql, params)
     .then(result => {
-      const deleted = result.rows[0];
-      if (!deleted) {
-        res.status(404).json({ error: `Cannot find corresponding ${entryId}` });
-      } else {
-        res.sendStatus(204);
-      }
+      res.sendStatus(204);
     })
     .catch(err => {
       console.error(err);

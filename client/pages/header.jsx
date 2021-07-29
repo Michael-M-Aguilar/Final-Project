@@ -5,7 +5,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="flex space-between hiddenInMobile">
+        <div className="flex space-between">
           <div>
             <a href="#">
               <img className="logoSize pt-3" src="/images/logo-dm.png" alt="LogoDM" />

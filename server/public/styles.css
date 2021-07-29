@@ -1,6 +1,5 @@
 #root {
   background-color: #1f2933;
-  height: 100vh;
 }
 
 a {
@@ -99,3 +98,7 @@ input:focus {
 .hiddenPrac {
   display: none;
 }
+
+/* #transaction:hover{
+
+} */
