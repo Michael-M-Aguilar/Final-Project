@@ -29,7 +29,7 @@ export default class Folders extends React.Component {
         <div className="my-3 mx-2">
           <h1 className="text-header dmTextColor">List of all Transactions</h1>
         </div>
-        <div className="flex overflow flex-column border border-5 border-dark rounded transactionHistory desktopSecondary mx-1 my-3">
+        <div className="max-height flex overflow flex-column border border-5 border-dark rounded transactionHistory desktopSecondary mx-1 my-3">
           <div className="flex justify-content-between">
             <p className="text-header dmTextColor mx-4">Current Categories:</p>
             <a href="#create-category">

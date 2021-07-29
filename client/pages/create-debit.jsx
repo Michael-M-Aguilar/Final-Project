@@ -62,7 +62,7 @@ export default class CreateDebit extends React.Component {
             </a>
           </div>
          <form className="" onSubmit={this.handleSubmit}>
-           <div className="flex">
+           <div className="flex justify-content-between">
             <div className="input-row-1 input-group mx-3 border border-4 border-dark rounded ">
               <span className="input-group-text"><i className="fas fa-money-bill-alt fa-2x logoIcon"></i></span>
               <span className="input-group-text">$</span>

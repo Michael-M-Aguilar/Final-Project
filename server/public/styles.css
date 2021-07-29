@@ -1,6 +1,5 @@
 #root {
   background-color: #1f2933;
-  height: 100vh;
 }
 
 a {
@@ -81,7 +80,7 @@ input:focus {
 
 .text-header {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem;
+  font-size: 1.7rem;
 }
 
 .raleway {
@@ -96,16 +95,6 @@ input:focus {
   text-align: end;
 }
 
-.modalOn {
-  display: block;
-  transition: transform 0.9s ease-out;
-  transform: translate(0, -400px);
-}
-
-.modalOff {
+.hiddenPrac {
   display: none;
-}
-
-.modal-content {
-  background-color: #486581;
 }

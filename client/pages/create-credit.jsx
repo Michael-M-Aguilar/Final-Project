@@ -88,13 +88,14 @@ export default class CreateCredit extends React.Component {
         <div>
           <h1 className="text-header dmTextColor">Creating New Credit Transaction: </h1>
         </div>
-        <div className="flex flex-column border border-5 border-dark rounded cdPosition desktopSecondary">
+        <div className="height flex flex-column border border-5 border-dark rounded cdPosition desktopSecondary">
           <div className="flex justify-content-start">
             <a href="#create-transaction">
               <i className="fas fa-times-circle fa-3x mx-3 my-4 logoIcon"></i>
             </a>
           </div>
-          <form className="input-group" onSubmit={this.handleSubmit}>
+          <form className="" onSubmit={this.handleSubmit}>
+            <div className="flex justify-content-between">
             <div className="form-group input-row-1 input-group mx-3 border border-4 border-dark rounded ">
               <span className="input-group-text"><i className="fas fa-money-bill-alt fa-2x logoIcon"></i></span>
               <span className="input-group-text fs-5 text-header">$</span>
@@ -104,6 +105,7 @@ export default class CreateCredit extends React.Component {
             <div>
               <label className="raleway dmTextColor mx-3" htmlFor="date">Entry Date:</label>
               <input type="date" id="date" className="raleway dmTextColor" name="entry-date" value={this.state.date} onChange={this.handleChange} min="2020-01-01"></input>
+            </div>
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="note" className="form-label raleway dmTextColor fs-3 mx-4">Notes:</label>
@@ -126,7 +128,7 @@ export default class CreateCredit extends React.Component {
               <label htmlFor="location" className="form-label raleway dmTextColor fs-3 mx-4">Location:</label>
               <input type="text" id="location" name="location" className="form-control mx-4 inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark" value={this.state.location} onChange={this.handleChange}></input>
             </div>
-            <div className="flex justify-content-center">
+            <div className="flex justify-content-center mx-2">
               <button type="submit" className="btn btn-dark">Save</button>
             </div>
           </form>

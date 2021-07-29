@@ -1,5 +1,7 @@
 require('dotenv/config');
 const express = require('express');
+// eslint-disable-next-line no-unused-vars
+const { restart } = require('nodemon');
 const pg = require('pg');
 const errorMiddleware = require('./error-middleware');
 const jsonMiddleware = express.json();
@@ -73,6 +75,27 @@ app.post('/api/entries/', (req, res) => {
     .then(result => {
       const [entry] = result.rows;
       res.status(201).json(entry);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occured'
+      });
+    });
+});
+
+// To help delete entries
+app.delete('/api/entries/', (req, res, next) => {
+  const { entryId } = req.body;
+  const sql = `
+  DELETE FROM "entries"
+  where "entryId" = $1
+  returning *
+  `;
+  const params = [entryId];
+  db.query(sql, params)
+    .then(result => {
+      res.sendStatus(204);
     })
     .catch(err => {
       console.error(err);

@@ -6,9 +6,11 @@ export default class Transactions extends React.Component {
     // array to hold our entries to present on the page.
     this.state = {
       info: [],
-      infos: ''
+      infos: '',
+      entryId: ''
     };
     this.getEntries = this.getEntries.bind(this);
+    this.deleteEntries = this.deleteEntries.bind(this);
   }
 
   // If component is mounted, this is to start getEntries method
@@ -25,6 +27,22 @@ export default class Transactions extends React.Component {
       });
   }
 
+  deleteEntries(event) {
+    const trial = event.target.id;
+    const entryId = parseInt(trial);
+    fetch('/api/entries/', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ entryId })
+    })
+      .then(() => {
+        this.getEntries();
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
   render() {
     const { infos } = this.state;
     return (
@@ -32,7 +50,7 @@ export default class Transactions extends React.Component {
         <div className="my-3 mx-2">
           <h1 className="text-header dmTextColor">List of all Transactions</h1>
         </div>
-        <div className="flex overflow flex-column border border-5 border-dark rounded transactionHistory desktopSecondary mx-1 my-3">
+        <div className="max-height flex overflow flex-column border border-5 border-dark rounded transactionHistory desktopSecondary mx-1 my-3">
           <div className="flex justify-content-between">
             <p className="text-header dmTextColor mx-4">Transaction</p>
             <p className="text-header fs-1 dmTextColor mx-4">July (Current Month)</p>
@@ -41,11 +59,24 @@ export default class Transactions extends React.Component {
           (!this.state.infos.length)
             ? '...'
             : infos.map(key => (
-            <div key={key.entryId} className="flex space-between border-top border-2 py-2 mx-3">
-              <p className="fs-5 dmTextColor mx-3 raleway">{key.note}</p>
-              <div className="flex flex-column mx-3">
-                <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end ' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>$ {key.amount}</p>
-                <p className="fs-5 dmTextColor raleway text-end">{moment(key.date).format('MMMM Do YYYY')}</p>
+            <div key={key.entryId} entryid={key.entryId} className="flex space-between border-top border-2 py-2 mx-3">
+              <div className="flex flex-column">
+                <p className="fs-5 dmTextColor mx-3 raleway">{key.note}</p>
+                <p className="fs-5 dmTextColor mx-3 raleway">{(!key.location) ? '' : 'Location: ' + key.location}</p>
+              </div>
+              <div className="flex flex-row mx-3">
+                <div className="mx-4">
+                  <button id={key.entryId} entryid={key.entryId} onClick={this.deleteEntries}>
+                    <p id={key.entryId}>Delete</p>
+                  </button>
+                  <div className="">
+                    <p>Update</p>
+                  </div>
+                </div>
+                <div className="mx-4">
+                  <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end ' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>$ {key.amount}</p>
+                  <p className="fs-5 dmTextColor raleway text-end">{moment(key.date).format('MMMM Do YYYY')}</p>
+                </div>
               </div>
             </div>
             ))

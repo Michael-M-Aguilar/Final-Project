@@ -1,3 +1,11 @@
+#root {
+  height: 1300px;
+}
+
+.height {
+  height: 950px;
+}
+
 .flex {
   display: flex;
 }
@@ -24,84 +32,78 @@
 
 /* Width of Body, Recent transactions */
 .recentTW {
-  width: 460px;
+  width: 35%;
+  height: 100%;
 }
 
 /* Width of Body, Spending Chart */
 .spendingC {
-  width: 560px;
+  width: 40%;
 }
 
 /* Set width of the header nav-bar */
 .header-width {
-  width: 480px;
+  width: 50%;
 }
 
 /* Size of Logo */
 .logoSize {
-  width: 100px;
+  width: 25%;
 }
-
-/* Size of container */
-.container {
-  max-width: 1800px;
-}
-
-/* Create a transaction Page */
 
 /* Create a transaction box */
 .transactionPosition {
   position: relative;
-  top: 90px;
-  left: 350px;
-  width: 780px;
-  height: 400px;
+  top: 8%;
+  left: 12%;
+  width: 75%;
+  height: 50%;
 }
 
 /* Credit/Debit Page CSS */
 
 /* Dimension of create debit/credit container */
+
 .ctcontainer {
   height: 1000px;
   width: 1470px;
 }
 
 /* Size of the box of credit/debit */
+
 .cdPosition {
   position: relative;
-  top: 90px;
-  left: 230px;
-  width: 1000px;
-  height: 500px;
+  top: 8%;
+  left: 12%;
+  width: 75%;
+  height: 50%;
+}
+
+.dbPosition {
+  position: relative;
+  top: 8%;
+  left: 12%;
+  width: 75%;
+  height: 50%;
+}
+
+@media screen and (max-width: 769px) {
+  /* To hide the desktop List.  */
+  .container {
+    width: 50px;
+    max-height: 100%;
+  }
 }
 
 /* Size of the Transactions container */
 .transactionHistory {
-  width: 1440px;
-  height: 900px;
+  width: 95%;
+  height: 80%;
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    /* width: 500px; */
-
-    /* max-width: 1600px */
-  }
-
-  /* To show the mobile version on Chrome. */
-  .hiddenInDesktop {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  thead,
-  /* To hide the desktop List.*/
-  .hiddenInMobile {
-    display: none;
-  }
-
-  .container {
-    min-width: 520px;
+    min-width: 869px;
+    max-height: 100%;
   }
 }
