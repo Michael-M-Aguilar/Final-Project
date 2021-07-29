@@ -41,11 +41,20 @@ export default class Transactions extends React.Component {
           (!this.state.infos.length)
             ? '...'
             : infos.map(key => (
-            <div key={key.entryId} className="flex space-between border-top border-2 py-2 mx-3">
-              <p className="fs-5 dmTextColor mx-3 raleway">{key.note}</p>
-              <div className="flex flex-column mx-3">
-                <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end ' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>$ {key.amount}</p>
-                <p className="fs-5 dmTextColor raleway text-end">{moment(key.date).format('MMMM Do YYYY')}</p>
+            <div key={key.entryId} id={key.entryId} className="flex space-between border-top border-2 py-2 mx-3">
+              <div className="flex flex-column">
+                <p className="fs-5 dmTextColor mx-3 raleway">{key.note}</p>
+                <p className="fs-5 dmTextColor mx-3 raleway">{(!key.location) ? '' : 'Location: ' + key.location}</p>
+              </div>
+              <div className="flex flex-row mx-3">
+                <div className="mx-4">
+                  <p>Delete</p>
+                  <p>Update</p>
+                </div>
+                <div className="mx-4">
+                  <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end ' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>$ {key.amount}</p>
+                  <p className="fs-5 dmTextColor raleway text-end">{moment(key.date).format('MMMM Do YYYY')}</p>
+                </div>
               </div>
             </div>
             ))

@@ -1,5 +1,7 @@
 require('dotenv/config');
 const express = require('express');
+// eslint-disable-next-line no-unused-vars
+const { restart } = require('nodemon');
 const pg = require('pg');
 const errorMiddleware = require('./error-middleware');
 const jsonMiddleware = express.json();
@@ -73,6 +75,36 @@ app.post('/api/entries/', (req, res) => {
     .then(result => {
       const [entry] = result.rows;
       res.status(201).json(entry);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occured'
+      });
+    });
+});
+
+// To help delete entries
+app.delete('/api/entries/:entryId', (req, res) => {
+  const entryId = parseInt(req.params.entryId);
+  if (isNaN(entryId) || entryId <= 0) {
+    res.status(400).json({ error: 'entryId must be a positive integer' });
+  }
+  const params = [entryId];
+  const sql = `
+  DELETE FROM "entries"
+  where "entryId" = $1
+  returning *
+  `;
+
+  db.query(sql, params)
+    .then(result => {
+      const deleted = result.rows[0];
+      if (!deleted) {
+        res.status(404).json({ error: `Cannot find corresponding ${entryId}` });
+      } else {
+        res.sendStatus(204);
+      }
     })
     .catch(err => {
       console.error(err);
