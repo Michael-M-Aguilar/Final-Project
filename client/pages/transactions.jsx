@@ -57,9 +57,9 @@ export default class Transactions extends React.Component {
           </div>
         {
           (!this.state.infos.length)
-            ? '...'
+            ? 'Loading...'
             : infos.map(key => (
-            <div key={key.entryId} entryid={key.entryId} className="flex space-between border-top border-2 py-2 mx-3">
+            <div key={key.entryId} entryid={key.entryId} className="flex space-between border-top border-2 py-2 mx-3 transactions">
               <div className="flex flex-column">
                 <p className="fs-5 dmTextColor mx-3 raleway">{key.note}</p>
                 <p className="fs-5 dmTextColor mx-3 raleway">{(!key.location) ? '' : 'Location: ' + key.location}</p>
@@ -67,11 +67,8 @@ export default class Transactions extends React.Component {
               <div className="flex flex-row mx-3">
                 <div className="mx-4">
                   <button id={key.entryId} entryid={key.entryId} onClick={this.deleteEntries}>
-                    <p id={key.entryId}>Delete</p>
+                    <p className="my-1"id={key.entryId}>Delete</p>
                   </button>
-                  <div className="">
-                    <p>Update</p>
-                  </div>
                 </div>
                 <div className="mx-4">
                   <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end ' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>$ {key.amount}</p>

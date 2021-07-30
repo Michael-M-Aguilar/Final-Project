@@ -89,7 +89,6 @@ export default class Body extends React.Component {
     const { info } = this.state;
     return (
       <div className="container hiddenInMobile desktopBody my-4">
-        <section>
         <div className="row1 flex space-between">
           <div>
             <p className="dmTextColor text-header">Accounts</p>
@@ -99,9 +98,7 @@ export default class Body extends React.Component {
             <p className="dmTextColor text-header">July (Current Month)</p>
           </div>
           </div>
-        </section>
         {/* Top row holding our Budget, Income and Transactions */}
-        <section>
         <div className="row2 flex space-evenly pt-4">
           <div className="align-self-c desktopSecondary border border-dark border-3 rounded">
             <button type="button" id="budgetBtn" className="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
@@ -115,8 +112,6 @@ export default class Body extends React.Component {
             <p className="fs-3 text-center text-header my-3 mx-1 dmTextColor">Transactions: <span className="dmNegativeColor numbers"></span></p>
           </div>
         </div>
-        </section>
-        <section>
         <div className="row3 flex space-evenly pt-5">
           {/* Holds our 4 most recent transactions */}
           <div className="desktopSecondary recentTW py-4 border border-dark border-4">
@@ -153,11 +148,10 @@ export default class Body extends React.Component {
               </div>
           </div>
         </div>
-        </section>
         {/* If pressing the + Button, sends user to create a transaction */}
         <div className="logoIcon flex justify-content-end ">
           <a href="#create-transaction">
-            <i className="fas fa-plus-circle fa-6x my-5"></i>
+            <i className="fas fa-plus-circle fa-6x my-5 logoIcon"></i>
           </a>
         </div>
         {/* Modal to pop up when inserting a budget. */}

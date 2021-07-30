@@ -43,8 +43,8 @@ export default class CreateCategory extends React.Component {
           <div className="flex justify-content-center">
             <p className="text-header dmTextColor mx-4">Category Name</p>
           </div>
-          <div>
-            <a href="#">
+          <div className="flex justify-content-start">
+            <a href="#folder">
               <i className="fas fa-times-circle fa-3x mx-3 my-4 logoIcon"></i>
             </a>
           </div>
