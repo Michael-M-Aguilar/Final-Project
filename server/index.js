@@ -215,7 +215,6 @@ app.get('/api/chart', (req, res) => {
   FROM "entries"
   JOIN "categories" using ("categoryId")
   `;
-  // no params so no 2nd argumnet needed.
   db.query(sql)
     .then(result => {
       const transaction = result.rows;

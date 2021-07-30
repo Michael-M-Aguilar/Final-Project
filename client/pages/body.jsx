@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-// import PieChart from './pie-chart';
+import PieChart from './pie-chart';
 // Component to create our body component.
 export default class Body extends React.Component {
   constructor(props) {
@@ -24,6 +24,7 @@ export default class Body extends React.Component {
       .then(res => res.json())
       .then(transaction => {
         this.setState({ transaction: transaction });
+        // this.totalAccumulator();
       });
   }
 
@@ -31,7 +32,6 @@ export default class Body extends React.Component {
   componentDidMount() {
     this.getEntries();
     this.getBudget();
-    // this.totalAccumulator();
   }
 
   // our get request to present information on the page
@@ -144,7 +144,7 @@ export default class Body extends React.Component {
           {/* Holds our Spending Chart */}
           <div className="desktopSecondary spendingC flex flex-column border border-dark border-4 py-1">
             <div className="piechart mx-2 my-2">
-              {/* <PieChart /> */}
+              <PieChart />
             </div>
               <div className="flex justify-content-end border-2 pt-4 mx-5">
                 <a href="#spending-chart">

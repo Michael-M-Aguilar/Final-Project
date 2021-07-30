@@ -1,6 +1,5 @@
 import React from 'react';
 
-// This is the navbar
 export default class Header extends React.Component {
   render() {
     return (

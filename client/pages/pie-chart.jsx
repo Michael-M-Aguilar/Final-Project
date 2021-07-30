@@ -9,18 +9,16 @@ export default class PieChart extends React.Component {
     this.state = {
       transaction: [],
       loading: true
-      // transactions: []
     };
-    this.getEntries = this.getEntries.bind(this);
+    this.getChart = this.getChart.bind(this);
     this.letsReduce = this.letsReduce.bind(this);
   }
 
   componentDidMount() {
-    this.getEntries();
-    // this.totalAccumulator();
+    this.getChart();
   }
 
-  getEntries() {
+  getChart() {
     fetch('/api/chart')
       .then(res => res.json())
       .then(transaction => {
@@ -42,39 +40,29 @@ export default class PieChart extends React.Component {
     }, {});
     this.setState({ transactions: totals });
     this.setState({ loading: false });
-    // console.log('Totals:', totals);
   }
 
   render() {
-    // console.log(this.state);
-    // const { transaction } = this.state;
-    // const { transactions } = this.state;
-    // console.log('Value of Transaction:', transaction);
-    // return (
+    const { transactions } = this.state;
     if (this.state.loading) {
-      return <p>This is loading</p>;
+      return <p>This is loading..</p>;
     } else {
-      // var list = []
-      // for(category in this.state.transactions){
-      //   list.push({category.catName: category.amount})
-      // }
+      const catList = [];
+      const amountList = [];
+      for (const key in transactions) {
+        catList.push(key);
+        amountList.push(transactions[key]);
+      }
       return (
       <div>
-        {/* {
-          (!transaction.length)
-            ? ''
-            : this.totalAccumulator()
-        } */}
-        {/* <p>{this.letsReduce()}</p> */}
         <h2 className="dmTextColor">Spending Chart:</h2>
         <div className="desktopSecondary flex flex-column">
         <Pie
           data={{
-            // labels: [{Bills: 156}, {Food: 300}, ],
-            labels: ['Red', 'Blue', 'Yellow', 'Green'],
+            labels: catList,
             datasets: [
               {
-                data: [12, 19, 12, 6, 2],
+                data: amountList,
                 backgroundColor: [
                   'rgba(255, 99, 132, 0.6)',
                   'rgba(54, 162, 235, 0.6)',
