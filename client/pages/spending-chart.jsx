@@ -11,7 +11,9 @@ export default class SpendingChart extends React.Component {
       //   <div className="height flex flex-column border border-5 border-dark rounded desktopSecondary">
       //   </div>
       // </div>
+      <div className="container">
       <PieChart />
+      </div>
     );
   }
 }

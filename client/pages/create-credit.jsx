@@ -104,7 +104,7 @@ export default class CreateCredit extends React.Component {
             </div>
             <div>
               <label className="raleway dmTextColor mx-3" htmlFor="date">Entry Date:</label>
-              <input type="date" id="date" className="raleway dmTextColor" name="entry-date" value={this.state.date} onChange={this.handleChange} min="2020-01-01"></input>
+              <input type="date" id="date" className="raleway dmTextColor" name="entry-date" value={this.state.date} onChange={this.handleChange} min="2020-01-01" required></input>
             </div>
             </div>
             <div className="form-group input-group my-4">

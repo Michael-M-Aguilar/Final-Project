@@ -1,26 +1,37 @@
 import React from 'react';
 import moment from 'moment';
-import PieChart from './pie-chart';
-
+// import PieChart from './pie-chart';
 // Component to create our body component.
 export default class Body extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       info: [],
+      transaction: '',
       budget: '',
       budgetInput: ''
     };
     this.getEntries = this.getEntries.bind(this);
     this.getBudget = this.getBudget.bind(this);
+    this.getTransactions = this.getTransactions.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.totalAccumulator = this.totalAccumulator.bind(this);
+  }
+
+  getTransactions() {
+    fetch('/api/chart')
+      .then(res => res.json())
+      .then(transaction => {
+        this.setState({ transaction: transaction });
+      });
   }
 
   // If component is mounted, this is to start these methods after my render
   componentDidMount() {
     this.getEntries();
     this.getBudget();
+    // this.totalAccumulator();
   }
 
   // our get request to present information on the page
@@ -31,6 +42,12 @@ export default class Body extends React.Component {
         this.setState({ info: info });
       });
   }
+
+  // totalAccumulator() {
+  //   const { transaction } = this.state;
+  //   const total = transaction.reduce((a, b) => ({ amount: Math.abs(a.amount) + Math.abs(b.amount) }));
+  //   return total;
+  // }
 
   // Fetch current budget set.
   getBudget() {
@@ -68,6 +85,7 @@ export default class Body extends React.Component {
   }
 
   render() {
+    // console.log(this.state);
     const { info } = this.state;
     return (
       <div className="container hiddenInMobile desktopBody my-4">
@@ -94,7 +112,7 @@ export default class Body extends React.Component {
             <p className="fs-3 text-center text-header my-3 mx-1 dmTextColor">Income: <span className="dmPositiveColor numbers">$358.14</span></p>
           </div>
           <div className="space-evenly desktopSecondary border border-dark border-3 rounded">
-            <p className="fs-3 text-center text-header my-3 mx-1 dmTextColor">Transactions: <span className="dmNegativeColor numbers">$400.66</span></p>
+            <p className="fs-3 text-center text-header my-3 mx-1 dmTextColor">Transactions: <span className="dmNegativeColor numbers"></span></p>
           </div>
         </div>
         </section>
@@ -102,14 +120,14 @@ export default class Body extends React.Component {
         <div className="row3 flex space-evenly pt-5">
           {/* Holds our 4 most recent transactions */}
           <div className="desktopSecondary recentTW py-4 border border-dark border-4">
-            <p className="fs-3 dmTextColor text-header mx-1">Recent Transactions: </p>
+            <p className="fs-3 dmTextColor text-header mx-2">Recent Transactions: </p>
             {/* The mapping of our recent transaction entry box */}
             {
                 (!this.state.info.length)
                   ? <p className="text-header mx-2 dmTextColor">Insert an entry using the plus sign on the bottom right!</p>
                   : info.slice(0, 4).map(key => (
                     <div key={key.entryId} className="flex space-between border-top border-2 py-1 mx-1">
-                      <p className="fs-5 dmTextColor mx-1 raleway">{(!key) ? '...' : key.note}</p>
+                      <p className="mx-2 fs-5 dmTextColor raleway">{(!key) ? '...' : key.note}</p>
                       <div className="flex flex-column mx-1">
                         <p className={(!key) ? '...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>{(!key) ? 'Loading ...' : '$ ' + key.amount}</p>
                         <p className="fs-5 dmTextColor raleway">{(!key) ? '...' : moment(key.date).format('MMMM Do YYYY')}</p>
@@ -117,23 +135,22 @@ export default class Body extends React.Component {
                     </div>
                   ))
             }
-            <a href="#transactions">
               <div className="border-top flex justify-content-end border-2 py-1 mx-1">
-                <p className="fs-3 dmTextColor text-header">View All </p>
+                <a href="#transactions">
+                  <p className="fs-3 dmTextColor text-header">View All </p>
+                </a>
               </div>
-            </a>
           </div>
           {/* Holds our Spending Chart */}
           <div className="desktopSecondary spendingC flex flex-column border border-dark border-4 py-1">
-            <p className="fs-3 dmTextColor text-header mx-1 my-3">Spending Chart: </p>
-            <div className="piechart">
-              <PieChart />
+            <div className="piechart mx-2 my-2">
+              {/* <PieChart /> */}
             </div>
-            <a href="#spending-chart">
               <div className="flex justify-content-end border-2 pt-4 mx-5">
-                <p className="fs-3 dmTextColor text-header">View More </p>
+                <a href="#spending-chart">
+                  <p className="fs-3 dmTextColor text-header">View More </p>
+                </a>
               </div>
-            </a>
           </div>
         </div>
         </section>
