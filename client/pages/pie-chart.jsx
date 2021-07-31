@@ -55,8 +55,7 @@ export default class PieChart extends React.Component {
       }
       return (
       <div>
-        <h2 className="dmTextColor">Spending Chart:</h2>
-        <div className="desktopSecondary flex flex-column">
+        <div className="desktopSecondary flex flex-column pt-3 pb-4">
         <Pie
           data={{
             labels: catList,
@@ -83,11 +82,8 @@ export default class PieChart extends React.Component {
               }
             ]
           }}
-        height={50}
-        width={50}
         options={{
           maintainAspectRatio: false,
-          // parsing: false,
           legend: {
             labels: {
               fontSize: 12,
@@ -99,6 +95,5 @@ export default class PieChart extends React.Component {
       </div>
       );
     }
-    // );
   }
 }

@@ -1,18 +1,31 @@
 #root {
   background-color: #1f2933;
 }
+table {
+  background-color: #486581 ;
+}
+
+tr:hover {
+  background-color: #3e4c59;
+  color: #deedf0;
+}
 
 a {
+  display: inline-block;
   color: inherit;
   text-decoration: none;
+  transition: ease 1.8s;
 }
 
 a:hover {
   transform: scale(1.25);
-  transition: ease 1.8s;
 }
 
-.categories {
+.catName {
+  width: 50%;
+}
+
+.categories : div {
   max-width: 445px;
 }
 
@@ -44,6 +57,9 @@ textarea {
   background-color: #486581;
   outline: none;
 }
+.creditButton {
+  background-color: #486581;
+}
 
 .btn:hover {
   background-color: #3e4c59;
@@ -56,7 +72,7 @@ textarea {
 }
 
 #budgetBtn:hover {
-  background-color: #1f2933;
+  background-color: #3e4c59;
 }
 
 input textarea .input-row-1 {

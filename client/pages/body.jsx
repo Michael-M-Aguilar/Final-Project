@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import PieChart from './pie-chart';
-// Component to create our body component.
+
 export default class Body extends React.Component {
   constructor(props) {
     super(props);
@@ -9,29 +9,25 @@ export default class Body extends React.Component {
       info: [],
       transaction: '',
       budget: '',
-      budgetInput: ''
+      budgetInput: '',
+      debit: ''
     };
     this.getEntries = this.getEntries.bind(this);
     this.getBudget = this.getBudget.bind(this);
     this.getTransactions = this.getTransactions.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.totalAccumulator = this.totalAccumulator.bind(this);
-  }
-
-  getTransactions() {
-    fetch('/api/chart')
-      .then(res => res.json())
-      .then(transaction => {
-        this.setState({ transaction: transaction });
-        // this.totalAccumulator();
-      });
+    this.totalExpense = this.totalExpense.bind(this);
+    this.totalCredit = this.totalCredit.bind(this);
+    this.getAccount = this.getAccount.bind(this);
   }
 
   // If component is mounted, this is to start these methods after my render
   componentDidMount() {
     this.getEntries();
     this.getBudget();
+    this.getTransactions();
+    this.getAccount();
   }
 
   // our get request to present information on the page
@@ -43,11 +39,17 @@ export default class Body extends React.Component {
       });
   }
 
-  // totalAccumulator() {
-  //   const { transaction } = this.state;
-  //   const total = transaction.reduce((a, b) => ({ amount: Math.abs(a.amount) + Math.abs(b.amount) }));
-  //   return total;
-  // }
+  totalExpense() {
+    const { transaction } = this.state;
+    const total = transaction.reduce((a, b) => ({ amount: Math.abs(a.amount) + Math.abs(b.amount) }));
+    return Math.round(total.amount * 100) / 100;
+  }
+
+  totalCredit() {
+    const { debit } = this.state;
+    const total = debit.reduce((a, b) => ({ amount: Math.abs(a.amount) + Math.abs(b.amount) }));
+    return Math.round(total.amount * 100) / 100;
+  }
 
   // Fetch current budget set.
   getBudget() {
@@ -55,6 +57,24 @@ export default class Body extends React.Component {
       .then(res => res.json())
       .then(budget => {
         this.setState({ budget: budget });
+      });
+  }
+
+  getTransactions() {
+    fetch('/api/chart')
+      .then(res => res.json())
+      .then(transaction => {
+        this.setState({ transaction: transaction });
+        this.totalExpense();
+      });
+  }
+
+  getAccount() {
+    fetch('/api/account')
+      .then(res => res.json())
+      .then(debit => {
+        this.setState({ debit: debit });
+        this.totalCredit();
       });
   }
 
@@ -87,11 +107,13 @@ export default class Body extends React.Component {
   render() {
     // console.log(this.state);
     const { info } = this.state;
+    const { transaction } = this.state;
+    const { debit } = this.state;
     return (
       <div className="container hiddenInMobile desktopBody my-4">
         <div className="row1 flex space-between">
           <div>
-            <p className="dmTextColor text-header">Accounts</p>
+            <p className="fs-1 dmTextColor text-header">Accounts</p>
           </div>
           {/* Should add something here to automatically have the current month be here. */}
           <div>
@@ -106,10 +128,10 @@ export default class Body extends React.Component {
             </button>
           </div>
           <div className="space-evenly desktopSecondary border border-dark border-3 rounded">
-            <p className="fs-3 text-center text-header my-3 mx-1 dmTextColor">Income: <span className="dmPositiveColor numbers">$358.14</span></p>
+            <p className="fs-3 text-center text-header my-3 mx-3 dmTextColor">Expense: <span className="dmNegativeColor numbers">{(!transaction.length) ? '...' : '$' + this.totalExpense()}</span></p>
           </div>
           <div className="space-evenly desktopSecondary border border-dark border-3 rounded">
-            <p className="fs-3 text-center text-header my-3 mx-1 dmTextColor">Transactions: <span className="dmNegativeColor numbers"></span></p>
+            <p className="fs-3 text-center text-header my-3 mx-3 dmTextColor">Income: <span className="dmPositiveColor numbers">{(!debit.length) ? '...' : '$' + this.totalCredit()}</span></p>
           </div>
         </div>
         <div className="row3 flex space-evenly pt-5">
@@ -121,18 +143,18 @@ export default class Body extends React.Component {
                 (!this.state.info.length)
                   ? <p className="text-header mx-2 dmTextColor">Insert an entry using the plus sign on the bottom right!</p>
                   : info.slice(0, 4).map(key => (
-                    <div key={key.entryId} className="flex space-between border-top border-2 py-1 mx-1">
-                      <p className="mx-2 fs-5 dmTextColor raleway">{(!key) ? '...' : key.note}</p>
+                    <div key={key.entryId} className="flex space-between border-top border-2 py-1 mx-1 my-1">
+                      <p className="mx-2 fs-5 dmTextColor raleway my-3">{(!key) ? '...' : key.note}</p>
                       <div className="flex flex-column mx-1">
-                        <p className={(!key) ? '...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>{(!key) ? 'Loading ...' : '$ ' + key.amount}</p>
-                        <p className="fs-5 dmTextColor raleway">{(!key) ? '...' : moment(key.date).format('MMMM Do YYYY')}</p>
+                        <p className={(!key) ? '...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end my-3' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end my-3'}>{(!key) ? 'Loading ...' : '$ ' + key.amount}</p>
+                        <p className="fs-5 dmTextColor raleway my-1">{(!key) ? '...' : moment(key.date).format('MMMM Do YYYY')}</p>
                       </div>
                     </div>
                   ))
             }
               <div className="border-top flex justify-content-end border-2 py-1 mx-1">
                 <a href="#transactions">
-                  <p className="fs-3 dmTextColor text-header">View All </p>
+                  <p className="fs-3 dmTextColor text-header my-4">View All </p>
                 </a>
               </div>
           </div>
@@ -143,7 +165,7 @@ export default class Body extends React.Component {
             </div>
               <div className="flex justify-content-end border-2 pt-4 mx-5">
                 <a href="#spending-chart">
-                  <p className="fs-3 dmTextColor text-header">View More </p>
+                  <p className="fs-3 mb-2 dmTextColor text-header mb-3">View More </p>
                 </a>
               </div>
           </div>

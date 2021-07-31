@@ -7,7 +7,7 @@ export default class Header extends React.Component {
         <div className="flex space-between">
           <div>
             <a href="#">
-              <img className="logoSize pt-3" src="/images/logo-dm.png" alt="LogoDM" />
+              <img className="logoSize pt-3" src="/images/logo.png" alt="LogoDM" />
             </a>
           </div>
           <div className="flex flex-column header-width py-4">

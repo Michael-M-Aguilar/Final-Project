@@ -116,7 +116,7 @@ export default class CreateCredit extends React.Component {
               <select className="form-select categories inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark" id="categories" onChange={this.handleChange}>
                 <option selected className="raleway fs-5 dmTextColor">Choose a category...</option>
                 {
-                (!this.state.categories.length)
+                (!categories.length)
                   ? '...'
                   : categories.map(cat => (
                   <option key={cat.categoryId} value={cat.categoryId}>{cat.catName}</option>

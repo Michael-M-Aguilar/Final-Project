@@ -222,6 +222,21 @@ app.get('/api/chart', (req, res) => {
     });
 });
 
+app.get('/api/account', (req, res) => {
+  const sql = `
+SELECT
+"amount"
+  FROM "entries"
+  JOIN "accounts" using("accountId")
+  where "accountId" = 3
+  `;
+  db.query(sql)
+    .then(result => {
+      const debit = result.rows;
+      res.json(debit);
+    });
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
