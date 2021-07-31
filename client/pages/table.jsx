@@ -5,16 +5,15 @@ export default class Table extends React.Component {
     super(props);
     this.state = {
       info: [],
-      loading: true
+      loading: true,
+      total: ''
     };
     this.getChart = this.getChart.bind(this);
     this.letsReduce = this.letsReduce.bind(this);
-    this.letsMap = this.letsMap.bind(this);
   }
 
   componentDidMount() {
     this.getChart();
-    this.letsMap();
   }
 
   getChart() {
@@ -23,7 +22,6 @@ export default class Table extends React.Component {
       .then(transaction => {
         this.setState({ transaction: transaction });
         this.letsReduce();
-        this.letsMap();
       });
   }
 
@@ -42,45 +40,45 @@ export default class Table extends React.Component {
     this.setState({ loading: false });
   }
 
-  letsMap() {
-    const { info } = this.state;
-    const dataArray = [];
-    for (const key in info) {
-      const newobj = {
-        [key]: info[key]
-      };
-      dataArray.push(newobj);
-    }
-
-    dataArray.map(item => {
-      const key = Object.keys(item)[0];
-      return (
-        <tr key={key[info]}>
-          <td>{key}</td>
-          <td>{item[key]}</td>
-        </tr>
-      );
-    });
-  }
-
   render() {
     if (this.state.loading) {
       return <p>This is loading..</p>;
     } else {
+      const { info } = this.state;
+      const dataArray = [];
+      for (const key in info) {
+        const newobj = {
+          [key]: info[key]
+        };
+        dataArray.push(newobj);
+      }
+      // console.log(dataArray);
       return (
       <div className="desktopSecondary flex flex-column pt-3 border-top border-1">
         <table className="table">
           <caption scope="row" className="dmTextColor raleway mx-3">List of Expenses</caption>
           <thead className="dmTextColor">
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Category</th>
               <th scope="col">Total</th>
               <th scope="col">%</th>
             </tr>
           </thead>
           <tbody className="dmTextColor raleway mx-3">
-          {this.letsMap()}
+          {
+            (!info.length)
+              ? dataArray.map(item => {
+                const data = Object.keys(item)[0];
+                return (
+                  <tr key={item[data]}>
+                    <td>{data}</td>
+                    <td>{item[data]}</td>
+                    <td>HELLO</td>
+                  </tr>
+                );
+              })
+              : ''
+          }
           </tbody>
         </table>
       </div>
