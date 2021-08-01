@@ -4,27 +4,43 @@ export default class Table extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // State to store for table rendering
       info: [],
       loading: true,
-      total: ''
+      // State to help reduce for categoryName: amount
+      total: '',
+      // State to help calculate expense total
+      expenseTotal: ''
     };
-    this.getChart = this.getChart.bind(this);
     this.letsReduce = this.letsReduce.bind(this);
+    this.getTransactions = this.getTransactions.bind(this);
+    // this.expenseTotal = this.expenseTotal.bind(this);
   }
 
   componentDidMount() {
-    this.getChart();
+    this.getTransactions();
   }
 
-  getChart() {
+  // Fetch chart data (amount, catName)
+  getTransactions() {
     fetch('/api/chart')
       .then(res => res.json())
       .then(transaction => {
         this.setState({ transaction: transaction });
+        this.setState({ expenseTotal: transaction });
         this.letsReduce();
+        // this.expenseTotal();
       });
   }
 
+  // Calculate the total expenditure
+  // expenseTotal() {
+  //   const { expenseTotal } = this.state;
+  //   const total = expenseTotal.reduce((a, b) => ({ amount: Math.abs(a.amount) + Math.abs(b.amount) }));
+  //   console.log(total);
+  // }
+
+  // Helps us have our data to be CategoryName: Total for Category
   letsReduce() {
     const { transaction } = this.state;
     const totals = transaction.reduce((totals, item) => {
@@ -36,7 +52,10 @@ export default class Table extends React.Component {
       totals[catName] += amount;
       return totals;
     }, {});
+    const { expenseTotal } = this.state;
+    const total = expenseTotal.reduce((a, b) => ({ amount: Math.abs(a.amount) + Math.abs(b.amount) }));
     this.setState({ info: totals });
+    this.setState({ expenseTotal: total });
     this.setState({ loading: false });
   }
 
@@ -45,6 +64,7 @@ export default class Table extends React.Component {
       return <p>This is loading..</p>;
     } else {
       const { info } = this.state;
+      const { expenseTotal } = this.state;
       const dataArray = [];
       for (const key in info) {
         const newobj = {
@@ -52,7 +72,6 @@ export default class Table extends React.Component {
         };
         dataArray.push(newobj);
       }
-      // console.log(dataArray);
       return (
       <div className="desktopSecondary flex flex-column pt-3 border-top border-1">
         <table className="table">
@@ -71,9 +90,9 @@ export default class Table extends React.Component {
                 const data = Object.keys(item)[0];
                 return (
                   <tr key={item[data]}>
-                    <td>{data}</td>
-                    <td>{item[data]}</td>
-                    <td>HELLO</td>
+                    <td className="raleway">{data}</td>
+                    <td className="numbers">$ {item[data]}</td>
+                    <td className="numbers">{(item[data] / expenseTotal.amount).toFixed(4) * 100}</td>
                   </tr>
                 );
               })

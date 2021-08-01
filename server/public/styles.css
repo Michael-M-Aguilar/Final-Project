@@ -18,7 +18,28 @@ a {
 }
 
 a:hover {
-  transform: scale(1.25);
+  transform: scale(1.18);
+}
+
+.btn {
+  height: 58px;
+  width: 100px;
+  font-size: 1.5rem;
+  background-color: #486581;
+  outline: none;
+  transition: ease 2.0s;
+}
+
+.btn:hover {
+  transform: scale(1.2)
+}
+
+.rt {
+  transition: ease 1.8s;
+}
+
+.rt:hover {
+  transform: scale(1.04)
 }
 
 .catName {
@@ -50,13 +71,7 @@ textarea {
   outline: none;
 }
 
-.btn {
-  height: 58px;
-  width: 100px;
-  font-size: 1.5rem;
-  background-color: #486581;
-  outline: none;
-}
+
 .creditButton {
   background-color: #486581;
 }

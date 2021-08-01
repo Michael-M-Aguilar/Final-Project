@@ -105,7 +105,6 @@ export default class Body extends React.Component {
   }
 
   render() {
-    // console.log(this.state);
     const { info } = this.state;
     const { transaction } = this.state;
     const { debit } = this.state;
@@ -143,7 +142,7 @@ export default class Body extends React.Component {
                 (!this.state.info.length)
                   ? <p className="text-header mx-2 dmTextColor">Insert an entry using the plus sign on the bottom right!</p>
                   : info.slice(0, 4).map(key => (
-                    <div key={key.entryId} className="flex space-between border-top border-2 py-1 mx-1 my-1">
+                    <div key={key.entryId} className="flex space-between border-top border-2 py-1 mx-1 my-1 rt">
                       <p className="mx-2 fs-5 dmTextColor raleway my-3">{(!key) ? '...' : key.note}</p>
                       <div className="flex flex-column mx-1">
                         <p className={(!key) ? '...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end my-3' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end my-3'}>{(!key) ? 'Loading ...' : '$ ' + key.amount}</p>
@@ -152,9 +151,9 @@ export default class Body extends React.Component {
                     </div>
                   ))
             }
-              <div className="border-top flex justify-content-end border-2 py-1 mx-1">
+              <div className="border-top flex justify-content-end border-2 py-1">
                 <a href="#transactions">
-                  <p className="fs-3 dmTextColor text-header my-4">View All </p>
+                  <p className="fs-3 dmTextColor text-header my-4 mx-4">View All </p>
                 </a>
               </div>
           </div>
@@ -165,7 +164,7 @@ export default class Body extends React.Component {
             </div>
               <div className="flex justify-content-end border-2 pt-4 mx-5">
                 <a href="#spending-chart">
-                  <p className="fs-3 mb-2 dmTextColor text-header mb-3">View More </p>
+                  <p className="fs-3 dmTextColor text-header mb-3">View More </p>
                 </a>
               </div>
           </div>

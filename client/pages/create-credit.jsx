@@ -113,7 +113,7 @@ export default class CreateCredit extends React.Component {
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="category" className="form-label raleway dmTextColor fs-3 mx-4">Categories:</label>
-              <select className="form-select categories inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark" id="categories" onChange={this.handleChange}>
+              <select className="form-select cat inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark" id="categories" onChange={this.handleChange}>
                 <option selected className="raleway fs-5 dmTextColor">Choose a category...</option>
                 {
                 (!categories.length)
