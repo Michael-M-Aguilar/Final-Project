@@ -116,7 +116,7 @@ export default class Body extends React.Component {
           </div>
           {/* Should add something here to automatically have the current month be here. */}
           <div>
-            <p className="dmTextColor text-header">July (Current Month)</p>
+            <p className="dmTextColor text-header"></p>
           </div>
           </div>
         {/* Top row holding our Budget, Income and Transactions */}
