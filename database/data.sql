@@ -44,4 +44,4 @@ insert into "entries"
     (2, 2, 5, -18.10, 'Toiletries', 'CVS', '2021-07-15'),
     (1, 1, 6, -42.10, 'Doge Toys', 'Petsmart', '2021-07-18'),
     (2, 2, 7, -56.10, 'Jeans', 'Levis', '2021-07-24'),
-    (1, 3, 8, -26.86, 'Uber Rides', 'Seattle', '2021-07-26');
+    (1, 3, 8, 30.00, 'Sold old junk', '', '2021-07-26');

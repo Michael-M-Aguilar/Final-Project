@@ -2,7 +2,8 @@
   background-color: #1f2933;
 }
 
-table {
+table,
+.modal-content {
   background-color: #486581;
 }
 
@@ -59,6 +60,8 @@ a:hover {
 
 .deleteBut:hover {
   opacity: unset;
+  background-color: #3e4c59;
+  color: #deedf0;
 }
 
 .transactions,

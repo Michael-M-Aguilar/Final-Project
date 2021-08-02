@@ -66,7 +66,7 @@ export default class Transactions extends React.Component {
               </div>
               <div className="flex flex-row mx-3">
                 <div className="mx-4">
-                  <button id={key.entryId} entryid={key.entryId} onClick={this.deleteEntries}>
+                  <button id={key.entryId} entryid={key.entryId} onClick={this.deleteEntries} className="deleteBut">
                     <p className="my-1 raleway"id={key.entryId}>Delete</p>
                   </button>
                 </div>
