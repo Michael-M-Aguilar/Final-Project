@@ -1,8 +1,9 @@
 #root {
   background-color: #1f2933;
 }
+
 table {
-  background-color: #486581 ;
+  background-color: #486581;
 }
 
 tr:hover {
@@ -21,21 +22,18 @@ a:hover {
   transform: scale(1.18);
 }
 
-.deleteBut {
-  opacity: 0;
-}
-
 .btn {
   height: 58px;
   width: 100px;
   font-size: 1.5rem;
   background-color: #486581;
   outline: none;
-  transition: ease 2.0s;
+  transition: ease 2s;
 }
 
 .btn:hover {
-  transform: scale(1.2)
+  transform: scale(1.05);
+  background-color: #3e4c59;
 }
 
 .rt {
@@ -43,18 +41,18 @@ a:hover {
 }
 
 .rt:hover {
-  transform: scale(1.1)
+  transform: scale(1.04);
 }
 
 .catName {
   width: 50%;
 }
 
-.categories : div {
+.categories {
   max-width: 445px;
 }
 
-.deleteBut{
+.deleteBut {
   opacity: 0;
   transition: ease 1;
 }
@@ -63,15 +61,17 @@ a:hover {
   opacity: unset;
 }
 
-.transactions:hover,
-.categories:hover {
-  transform: scale(1.04);
-  transition: ease 1s;
+.transactions,
+.categories {
+  transition: ease 1.4s;
 }
 
-img {
+.transactions:hover {
+  transform: scale(1.025);
+}
+
+.categories:hover {
   transform: scale(1.1);
-  transition: ease 1.3s;
 }
 
 .desktopBody {
@@ -84,13 +84,8 @@ textarea {
   outline: none;
 }
 
-
 .creditButton {
   background-color: #486581;
-}
-
-.btn:hover {
-  background-color: #3e4c59;
 }
 
 #budgetBtn {
@@ -103,14 +98,7 @@ textarea {
   background-color: #3e4c59;
 }
 
-input textarea .input-row-1 {
-  max-width: 450px;
-}
-
-input {
-  background-color: #486581;
-}
-
+input,
 input:focus {
   background-color: #486581;
 }

@@ -38,11 +38,10 @@ insert into "categories"
 insert into "entries"
 ("userId", "accountId", "categoryId", "amount", "note", "location", "date")
   values
-    (1, 1, 1, 100.00, 'Jim Deposit', 'N/A', '2021-07-26'),
-    (2, 2, 2, 200.00, 'Jane Deposit', 'N/A', '2021-07-26'),
-    (1, 1, 3, 100.00, 'Jim Deposit', 'N/A', '2021-07-26'),
-    (2, 2, 4, 200.00, 'Jane Deposit', 'N/A', '2021-07-26'),
-    (1, 1, 5, 100.00, 'Jim Deposit', 'N/A', '2021-07-26'),
-    (2, 2, 6, 200.00, 'Jane Deposit', 'N/A', '2021-07-26'),
-    (1, 3, 7, 100.00, 'Jim Deposit', 'N/A', '2021-07-26'),
-    (2, 3, 8, 200.00, 'Jane Deposit', 'N/A', '2021-07-26');
+    (1, 1, 3, -5.62, 'Chai Tea', 'Starbucks', '2021-07-05'),
+    (2, 2, 3, -6.38, 'Boba', 'Ding Tea', '2021-07-08'),
+    (1, 1, 4, -52.68, 'Bobs Gift', '', '2021-07-12'),
+    (2, 2, 5, -18.10, 'Toiletries', 'CVS', '2021-07-15'),
+    (1, 1, 6, -42.10, 'Doge Toys', 'Petsmart', '2021-07-18'),
+    (2, 2, 7, -56.10, 'Jeans', 'Levis', '2021-07-24'),
+    (1, 3, 8, -26.86, 'Uber Rides', 'Seattle', '2021-07-26');
