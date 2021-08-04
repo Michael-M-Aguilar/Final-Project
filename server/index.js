@@ -1,7 +1,5 @@
 require('dotenv/config');
 const express = require('express');
-// eslint-disable-next-line no-unused-vars
-const { restart } = require('nodemon');
 const pg = require('pg');
 const errorMiddleware = require('./error-middleware');
 const jsonMiddleware = express.json();
