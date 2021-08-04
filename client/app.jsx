@@ -9,6 +9,7 @@ import NotFound from './pages/not-found';
 import Transactions from './pages/transactions';
 import Folder from './pages/folder';
 import CreateCategory from './pages/create-category';
+import SpendingChart from './pages/spending-chart';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -53,6 +54,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'create-category') {
       return <CreateCategory />;
+    }
+    if (route.path === 'spending-chart') {
+      return <SpendingChart />;
     }
     // Else if there's an error, direct user to error page.
     return <NotFound />;

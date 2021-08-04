@@ -27,13 +27,12 @@ export default class Folders extends React.Component {
     return (
       <div className="container ctcontainer desktopBody my-3">
         <div className="my-3 mx-2">
-          <h1 className="text-header dmTextColor">List of all Transactions</h1>
+          <h1 className="text-header dmTextColor fs-1">List of Categories:</h1>
         </div>
         <div className="max-height flex overflow flex-column border border-5 border-dark rounded transactionHistory desktopSecondary mx-1 my-3">
-          <div className="flex justify-content-between">
-            <p className="text-header dmTextColor mx-4">Current Categories:</p>
+          <div className="flex justify-content-end mx-4">
             <a href="#create-category">
-              <i className="fas fa-plus-circle fa-5x mx-4 my-4 logoIcon"></i>
+              <i className="fas fa-plus-circle fa-5x my-4 logoIcon"></i>
             </a>
           </div>
           <div>
@@ -41,7 +40,7 @@ export default class Folders extends React.Component {
               (!this.state.categories.length)
                 ? '...'
                 : categories.map(key => (
-              <div key={key.categoryId} className="flex space-between border-top border-1 py-2 mx-3">
+              <div key={key.categoryId} className="flex space-between border-top border-1 py-1 mx-3 categories">
                 <p className="fs-2 dmTextColor mx-3 raleway">{key.catName}</p>
               </div>
                 ))

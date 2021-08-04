@@ -207,6 +207,36 @@ app.post('/api/budget', (req, res) => {
     });
 });
 
+app.get('/api/chart', (req, res) => {
+  const sql = `
+  SELECT
+  "amount",
+  "catName"
+  FROM "entries"
+  JOIN "categories" using ("categoryId")
+  `;
+  db.query(sql)
+    .then(result => {
+      const transaction = result.rows;
+      res.json(transaction);
+    });
+});
+
+app.get('/api/account', (req, res) => {
+  const sql = `
+SELECT
+"amount"
+  FROM "entries"
+  JOIN "accounts" using("accountId")
+  where "accountId" = 3
+  `;
+  db.query(sql)
+    .then(result => {
+      const debit = result.rows;
+      res.json(debit);
+    });
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {

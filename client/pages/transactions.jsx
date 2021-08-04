@@ -48,7 +48,7 @@ export default class Transactions extends React.Component {
     return (
       <div className="container ctcontainer desktopBody my-3">
         <div className="my-3 mx-2">
-          <h1 className="text-header dmTextColor">List of all Transactions</h1>
+          <p className="fs-1 text-header dmTextColor">List of all Transactions:</p>
         </div>
         <div className="max-height flex overflow flex-column border border-5 border-dark rounded transactionHistory desktopSecondary mx-1 my-3">
           <div className="flex justify-content-between">
@@ -57,24 +57,21 @@ export default class Transactions extends React.Component {
           </div>
         {
           (!this.state.infos.length)
-            ? '...'
+            ? 'Loading...'
             : infos.map(key => (
-            <div key={key.entryId} entryid={key.entryId} className="flex space-between border-top border-2 py-2 mx-3">
+            <div key={key.entryId} entryid={key.entryId} className="flex space-between border-top border-2 py-2 mx-3 transactions">
               <div className="flex flex-column">
                 <p className="fs-5 dmTextColor mx-3 raleway">{key.note}</p>
                 <p className="fs-5 dmTextColor mx-3 raleway">{(!key.location) ? '' : 'Location: ' + key.location}</p>
               </div>
               <div className="flex flex-row mx-3">
                 <div className="mx-4">
-                  <button id={key.entryId} entryid={key.entryId} onClick={this.deleteEntries}>
-                    <p id={key.entryId}>Delete</p>
+                  <button id={key.entryId} entryid={key.entryId} onClick={this.deleteEntries} className="deleteBut">
+                    <p className="my-1 raleway"id={key.entryId}>Delete</p>
                   </button>
-                  <div className="">
-                    <p>Update</p>
-                  </div>
                 </div>
                 <div className="mx-4">
-                  <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end ' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end'}>$ {key.amount}</p>
+                  <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor dmNegativeColor numbers text-end ' : 'fs-5 dmTextColor dmPositiveColor numbers text-end'}>$ {key.amount}</p>
                   <p className="fs-5 dmTextColor raleway text-end">{moment(key.date).format('MMMM Do YYYY')}</p>
                 </div>
               </div>

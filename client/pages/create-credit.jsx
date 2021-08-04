@@ -104,19 +104,19 @@ export default class CreateCredit extends React.Component {
             </div>
             <div>
               <label className="raleway dmTextColor mx-3" htmlFor="date">Entry Date:</label>
-              <input type="date" id="date" className="raleway dmTextColor" name="entry-date" value={this.state.date} onChange={this.handleChange} min="2020-01-01"></input>
+              <input type="date" id="date" className="raleway dmTextColor" name="entry-date" value={this.state.date} onChange={this.handleChange} min="2020-01-01" required></input>
             </div>
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="note" className="form-label raleway dmTextColor fs-3 mx-4">Notes:</label>
-              <textarea placeholder="Add a note... (optional)" className="form-control mx-4 inputBackground border border-4 rounded-pill border-dark dmTextColor fs-4 raleway" id="note" name="note" rows="1" onChange={this.handleChange}></textarea>
+              <textarea placeholder="Add a note..." className="form-control mx-4 inputBackground border border-4 rounded-pill border-dark dmTextColor fs-4 raleway" id="note" name="note" rows="1" onChange={this.handleChange} required></textarea>
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="category" className="form-label raleway dmTextColor fs-3 mx-4">Categories:</label>
-              <select className="form-select categories inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark" id="categories" onChange={this.handleChange}>
+              <select className="form-select cat inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark" id="categories" onChange={this.handleChange}>
                 <option selected className="raleway fs-5 dmTextColor">Choose a category...</option>
                 {
-                (!this.state.categories.length)
+                (!categories.length)
                   ? '...'
                   : categories.map(cat => (
                   <option key={cat.categoryId} value={cat.categoryId}>{cat.catName}</option>
@@ -126,7 +126,7 @@ export default class CreateCredit extends React.Component {
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="location" className="form-label raleway dmTextColor fs-3 mx-4">Location:</label>
-              <input type="text" id="location" name="location" className="form-control mx-4 inputBackground raleway fs-5 dmTextColor border border-4 rounded-pill border-dark" value={this.state.location} onChange={this.handleChange}></input>
+              <input type="text" placeholder="Add a location... (optional)" id="location" name="location" className="form-control mx-4 inputBackground raleway fs-4 dmTextColor border border-4 rounded-pill border-dark" value={this.state.location} onChange={this.handleChange}></input>
             </div>
             <div className="flex justify-content-center mx-2">
               <button type="submit" className="btn btn-dark">Save</button>

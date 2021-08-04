@@ -14,14 +14,14 @@ export default class CreateTransaction extends React.Component {
           </div>
           <div className="flex justify-content-evenly">
             <a href="#create-transaction/credit">
-              <div className="border border-4 border-dark rounded-pill">
-                <h5 className="raleway dmTextColor px-5 py-2">Credit</h5>
-              </div>
+              <button className="border border-4 creditButton border-dark rounded-pill">
+                <h5 className="raleway dmTextColor px-5 py-2">Expense</h5>
+              </button>
             </a>
             <a href="#create-transaction/debit">
-              <div className="border border-4 border-dark rounded-pill">
-                <h5 className="raleway dmTextColor px-5 py-2">Debit</h5>
-              </div>
+              <button className="border border-4 creditButton border-dark rounded-pill">
+                <h5 className="raleway dmTextColor px-5 py-2">Income</h5>
+              </button>
             </a>
           </div>
         </div>

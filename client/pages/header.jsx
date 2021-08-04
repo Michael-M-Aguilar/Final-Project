@@ -1,15 +1,12 @@
 import React from 'react';
 
-// This is the navbar
 export default class Header extends React.Component {
   render() {
     return (
       <div className="container">
         <div className="flex space-between">
           <div>
-            <a href="#">
-              <img className="logoSize pt-3" src="/images/logo-dm.png" alt="LogoDM" />
-            </a>
+            <img className="logoSize pt-3" src="/images/logo.png" alt="LogoDM" />
           </div>
           <div className="flex flex-column header-width py-4">
             <div className="flex justify-content-between align-items-center">
@@ -25,7 +22,7 @@ export default class Header extends React.Component {
                 <span className="logoIcon ps-1"><i className="fas fa-folder-open fa-3x"></i></span>
                 <div className="dmTextColor text-style-heading fs-4">Folder</div>
               </a>
-              <a>
+              <a href="#spending-chart">
                 <span className="logoIcon ps-1"><i className="fas fa-chart-pie fa-3x"></i></span>
                 <div className="dmTextColor text-style-heading fs-4">Chart</div>
               </a>
