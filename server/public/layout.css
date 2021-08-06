@@ -1,11 +1,3 @@
-#root {
-  height: 1295px;
-}
-
-.height {
-  height: 950px;
-}
-
 .flex {
   display: flex;
 }
@@ -32,7 +24,7 @@
 
 /* Width of Body, Recent transactions */
 .recentTW {
-  width: 35%;
+  width: 40%;
   height: 100%;
 }
 
@@ -42,13 +34,14 @@
 }
 
 /* Set width of the header nav-bar */
-.header-width {
-  width: 50%;
-}
+
+/* .header-width {
+  width: 45%;
+} */
 
 /* Size of Logo */
 .logoSize {
-  width: 25%;
+  width: 30%;
 }
 
 /* Create a transaction box */
@@ -64,13 +57,12 @@
 
 /* Dimension of create debit/credit container */
 
-.ctcontainer {
+/* .ctcontainer {
   height: 1000px;
   width: 1470px;
-}
+} */
 
 /* Size of the box of credit/debit */
-
 .cdPosition {
   position: relative;
   top: 8%;
@@ -87,11 +79,11 @@
   height: 50%;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (min-width: 768px) {
   /* To hide the desktop List.  */
-  .container {
-    width: 50px;
-    max-height: 100%;
+  canvas {
+    height: 500px;
+    width: 200px;
   }
 }
 
@@ -101,9 +93,9 @@
   height: 85%;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 767px) {
   .container {
-    min-width: 869px;
-    max-height: 100%;
+    min-width: 620px;
+    min-height: 97vh;
   }
 }
