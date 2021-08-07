@@ -103,14 +103,19 @@
     transform: scale(1.1);
   }
 
+  #budgetBtn:hover {
+    background-color: #3e4c59;
+  }
+
+  .deleteBut {
+    opacity: 0;
+    transition: ease 1;
+  }
+
   .deleteBut:hover {
     opacity: unset;
     background-color: #3e4c59;
     color: #deedf0;
-  }
-
-  #budgetBtn:hover {
-    background-color: #3e4c59;
   }
 }
 
@@ -123,5 +128,11 @@
 @media screen and (max-width: 767px) {
   .container {
     min-width: 620px;
+  }
+
+  .deleteBut {
+    opacity: 1;
+    background-color: #3e4c59;
+    color: #deedf0;
   }
 }

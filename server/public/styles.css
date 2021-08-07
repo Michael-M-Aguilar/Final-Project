@@ -36,11 +36,6 @@ a {
   max-width: 445px;
 }
 
-.deleteBut {
-  opacity: 0;
-  transition: ease 1;
-}
-
 .transactions,
 .categories {
   transition: ease 1.4s;
