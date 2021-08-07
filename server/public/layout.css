@@ -35,13 +35,13 @@
 
 /* Set width of the header nav-bar */
 
-/* .header-width {
-  width: 45%;
-} */
+.header-width {
+  width: 50%;
+}
 
 /* Size of Logo */
 .logoSize {
-  width: 30%;
+  width: 90px;
 }
 
 /* Create a transaction box */
@@ -52,15 +52,6 @@
   width: 75%;
   height: 50%;
 }
-
-/* Credit/Debit Page CSS */
-
-/* Dimension of create debit/credit container */
-
-/* .ctcontainer {
-  height: 1000px;
-  width: 1470px;
-} */
 
 /* Size of the box of credit/debit */
 .cdPosition {
@@ -85,6 +76,42 @@
     height: 500px;
     width: 200px;
   }
+
+  tr:hover {
+    background-color: #3e4c59;
+    color: #deedf0;
+  }
+
+  a:hover {
+    transform: scale(1.18);
+  }
+
+  .btn:hover {
+    transform: scale(1.05);
+    background-color: #3e4c59;
+  }
+
+  .rt:hover {
+    transform: scale(1.04);
+  }
+
+  .transactions:hover {
+    transform: scale(1.025);
+  }
+
+  .categories:hover {
+    transform: scale(1.1);
+  }
+
+  .deleteBut:hover {
+    opacity: unset;
+    background-color: #3e4c59;
+    color: #deedf0;
+  }
+
+  #budgetBtn:hover {
+    background-color: #3e4c59;
+  }
 }
 
 /* Size of the Transactions container */
@@ -96,6 +123,5 @@
 @media screen and (max-width: 767px) {
   .container {
     min-width: 620px;
-    min-height: 97vh;
   }
 }

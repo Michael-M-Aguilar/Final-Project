@@ -128,7 +128,7 @@ export default class Body extends React.Component {
             <p className="fs-4 text-center text-header my-3 mx-3 dmTextColor">Income: <span className="dmPositiveColor numbers">{(!debit.length) ? '...' : '$' + this.totalCredit()}</span></p>
           </div>
         </div>
-        <div className="row3 flex pt-5">
+        <div className="row3 flex pt-5 col-sm-12">
           <div className="desktopSecondary recentTW py-4 border border-dark border-4 col col-sm-6">
             <p className="fs-3 dmTextColor text-header mx-2">Recent Transactions: </p>
             {
@@ -159,13 +159,11 @@ export default class Body extends React.Component {
             </div>
           </div>
         </div>
-        {/* If pressing the + Button, sends user to create a transaction */}
         <div className="logoIcon flex justify-content-end ">
           <a href="#create-transaction">
             <i className="fas fa-plus-circle fa-6x my-5 logoIcon"></i>
           </a>
         </div>
-        {/* Modal to pop up when inserting a budget. */}
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">

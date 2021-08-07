@@ -3,9 +3,9 @@ import React from 'react';
 export default class Header extends React.Component {
   render() {
     return (
-      <div className="">
+      <div className="container">
         <div className="flex space-between">
-          <div className="col col-sm-4 col-md-4">
+          <div className="col col-sm-4 ">
             <img className="logoSize pt-3" src="/images/logo.png" alt="LogoDM" />
           </div>
           <div className="flex flex-column header-width py-4 col col-sm-8 col-md-8">
@@ -19,8 +19,8 @@ export default class Header extends React.Component {
                 <div className="dmTextColor text-style-heading fs-4">Transactions</div>
               </a>
               <a href="#folder">
-                <span className="logoIcon ps-1"><i className="fas fa-folder-open fa-3x"></i></span>
-                <div className="dmTextColor text-style-heading fs-4">Folder</div>
+                <span className="logoIcon ps-4"><i className="fas fa-folder-open fa-3x"></i></span>
+                <div className="dmTextColor text-style-heading fs-4">Categories</div>
               </a>
               <a href="#spending-chart">
                 <span className="logoIcon ps-1"><i className="fas fa-chart-pie fa-3x"></i></span>

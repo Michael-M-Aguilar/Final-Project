@@ -8,20 +8,11 @@ table,
   background-color: #486581;
 }
 
-tr:hover {
-  background-color: #3e4c59;
-  color: #deedf0;
-}
-
 a {
   display: inline-block;
   color: inherit;
   text-decoration: none;
   transition: ease 1.8s;
-}
-
-a:hover {
-  transform: scale(1.18);
 }
 
 .btn {
@@ -33,17 +24,8 @@ a:hover {
   transition: ease 2s;
 }
 
-.btn:hover {
-  transform: scale(1.05);
-  background-color: #3e4c59;
-}
-
 .rt {
   transition: ease 1.8s;
-}
-
-.rt:hover {
-  transform: scale(1.04);
 }
 
 .catName {
@@ -59,23 +41,9 @@ a:hover {
   transition: ease 1;
 }
 
-.deleteBut:hover {
-  opacity: unset;
-  background-color: #3e4c59;
-  color: #deedf0;
-}
-
 .transactions,
 .categories {
   transition: ease 1.4s;
-}
-
-.transactions:hover {
-  transform: scale(1.025);
-}
-
-.categories:hover {
-  transform: scale(1.1);
 }
 
 .desktopBody {
@@ -96,10 +64,6 @@ textarea {
   background-color: #486581;
   height: 100%;
   width: 100%;
-}
-
-#budgetBtn:hover {
-  background-color: #3e4c59;
 }
 
 input,
