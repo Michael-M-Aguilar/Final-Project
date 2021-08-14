@@ -55,7 +55,7 @@ export default class CreateDebit extends React.Component {
         <div>
           <h1 className="text-header dmTextColor">Creating New Debit Transaction: </h1>
         </div>
-        <div className="flex flex-column border border-5 border-dark rounded cdPosition desktopSecondary">
+        <div className="flex flex-column border border-5 border-dark rounded cd-position desktopSecondary">
           <div className="flex justify-content-start">
             <a href="#create-transaction">
               <i className="fas fa-times-circle fa-3x mx-3 my-4 logoIcon"></i>

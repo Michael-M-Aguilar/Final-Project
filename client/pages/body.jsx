@@ -129,7 +129,7 @@ export default class Body extends React.Component {
           </div>
         </div>
         <div className="row3 flex pt-5 col-sm-12">
-          <div className="desktopSecondary recentTW py-4 border border-dark border-4 col col-sm-6">
+          <div className="desktopSecondary recent-tw py-4 border border-dark border-4 col col-sm-6">
             <p className="fs-3 dmTextColor text-header mx-2">Recent Transactions: </p>
             {
                 (!this.state.info.length)

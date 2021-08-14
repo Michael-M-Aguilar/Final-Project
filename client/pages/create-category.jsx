@@ -39,7 +39,7 @@ export default class CreateCategory extends React.Component {
         <div className="my-3 mx-2">
           <p className="fs-1 text-header dmTextColor mt-1">Creating New Category:</p>
         </div>
-        <div className="flex overflow flex-column border border-5 border-dark rounded transactionHistory desktopSecondary mx-1">
+        <div className="flex overflow flex-column border border-5 border-dark rounded transaction-history desktopSecondary mx-1">
           <div className="flex justify-content-center">
             <p className="text-header dmTextColor mx-4">Category Name</p>
           </div>

@@ -23,7 +23,7 @@
 }
 
 /* Width of Body, Recent transactions */
-.recentTW {
+.recent-tw {
   width: 40%;
   height: 100%;
 }
@@ -40,12 +40,12 @@
 }
 
 /* Size of Logo */
-.logoSize {
+.logo-size {
   width: 90px;
 }
 
 /* Create a transaction box */
-.transactionPosition {
+.transaction-position {
   position: relative;
   top: 8%;
   left: 12%;
@@ -54,15 +54,7 @@
 }
 
 /* Size of the box of credit/debit */
-.cdPosition {
-  position: relative;
-  top: 8%;
-  left: 12%;
-  width: 75%;
-  height: 50%;
-}
-
-.dbPosition {
+.cd-position {
   position: relative;
   top: 8%;
   left: 12%;
@@ -120,7 +112,7 @@
 }
 
 /* Size of the Transactions container */
-.transactionHistory {
+.transaction-history {
   width: 98%;
   height: 85%;
 }
