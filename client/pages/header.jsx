@@ -11,24 +11,24 @@ export default class Header extends React.Component {
           <div className="flex flex-column header-width py-4 col col-sm-8 col-md-8">
             <div className="flex justify-content-between align-items-center">
               <a href="#" className="items-center">
-                  <span className="logoIcon ps-1" ><i className="fas fa-home fa-3x"></i></span>
-                  <div className="dmTextColor text-style-heading fs-4">Home</div>
+                  <span className="logo-icon ps-1" ><i className="fas fa-home fa-3x"></i></span>
+                  <div className="dm-text text-style-heading fs-4">Home</div>
               </a>
               <a href="#transactions">
-                <span className="logoIcon transaction-p"><i className="fas fa-list fa-3x"></i></span>
-                <div className="dmTextColor text-style-heading fs-4">Transactions</div>
+                <span className="logo-icon transaction-p"><i className="fas fa-list fa-3x"></i></span>
+                <div className="dm-text text-style-heading fs-4">Transactions</div>
               </a>
               <a href="#folder">
-                <span className="logoIcon ps-4"><i className="fas fa-folder-open fa-3x"></i></span>
-                <div className="dmTextColor text-style-heading fs-4">Categories</div>
+                <span className="logo-icon ps-4"><i className="fas fa-folder-open fa-3x"></i></span>
+                <div className="dm-text text-style-heading fs-4">Categories</div>
               </a>
               <a href="#spending-chart">
-                <span className="logoIcon ps-1"><i className="fas fa-chart-pie fa-3x"></i></span>
-                <div className="dmTextColor text-style-heading fs-4">Chart</div>
+                <span className="logo-icon ps-1"><i className="fas fa-chart-pie fa-3x"></i></span>
+                <div className="dm-text text-style-heading fs-4">Chart</div>
               </a>
               <a>
-                <span className="logoIcon ps-3"><i className="fas fa-cog fa-3x"></i></span>
-                <div className="dmTextColor text-style-heading fs-4">Settings</div>
+                <span className="logo-icon ps-3"><i className="fas fa-cog fa-3x"></i></span>
+                <div className="dm-text text-style-heading fs-4">Settings</div>
               </a>
             </div>
           </div>

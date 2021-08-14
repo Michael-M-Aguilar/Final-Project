@@ -41,7 +41,7 @@ a {
   transition: ease 1.4s;
 }
 
-.desktopBody {
+.desktop-body {
   background-color: #3e4c59;
 }
 
@@ -51,11 +51,11 @@ textarea {
   outline: none;
 }
 
-.creditButton {
+.credit-button {
   background-color: #486581;
 }
 
-#budgetBtn {
+#budget-btn {
   background-color: #486581;
   height: 100%;
   width: 100%;
@@ -66,24 +66,24 @@ input:focus {
   background-color: #486581;
 }
 
-.desktopSecondary,
-.inputBackground {
+.desktop-secondary,
+.input-background {
   background-color: #486581;
 }
 
-.logoIcon {
+.logo-icon {
   color: #03dac5;
 }
 
-.dmTextColor {
+.dm-text {
   color: #deedf0;
 }
 
-.dmPositiveColor {
+.dm-positive {
   color: #7afa87;
 }
 
-.dmNegativeColor {
+.dm-negative {
   color: #fb8686;
 }
 
@@ -102,8 +102,4 @@ input:focus {
 
 .text-end {
   text-align: end;
-}
-
-.hiddenPrac {
-  display: none;
 }

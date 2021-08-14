@@ -5,8 +5,8 @@ import Table from './table';
 export default class SpendingChart extends React.Component {
   render() {
     return (
-      <div className="container desktopBody">
-        <h2 className="dmTextColor">Spending Chart:</h2>
+      <div className="container desktop-body">
+        <h2 className="dm-text">Spending Chart:</h2>
         <div className="">
           <PieChart />
           <Table />

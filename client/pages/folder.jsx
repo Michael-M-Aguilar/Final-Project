@@ -25,14 +25,14 @@ export default class Folders extends React.Component {
   render() {
     const { categories } = this.state;
     return (
-      <div className="container ctcontainer desktopBody my-3">
+      <div className="container ctcontainer desktop-body my-3">
         <div className="my-3 mx-2">
-          <h1 className="text-header dmTextColor fs-1">List of Categories:</h1>
+          <h1 className="text-header dm-text fs-1">List of Categories:</h1>
         </div>
-        <div className="max-height flex overflow flex-column border border-5 border-dark rounded transaction-history desktopSecondary mx-1 my-3">
+        <div className="max-height flex overflow flex-column border border-5 border-dark rounded transaction-history desktop-secondary mx-1 my-3">
           <div className="flex justify-content-end mx-4">
             <a href="#create-category">
-              <i className="fas fa-plus-circle fa-5x my-4 logoIcon"></i>
+              <i className="fas fa-plus-circle fa-5x my-4 logo-icon"></i>
             </a>
           </div>
           <div>
@@ -41,7 +41,7 @@ export default class Folders extends React.Component {
                 ? '...'
                 : categories.map(key => (
               <div key={key.categoryId} className="flex space-between border-top border-1 py-1 mx-3 categories">
-                <p className="fs-2 dmTextColor mx-3 raleway">{key.catName}</p>
+                <p className="fs-2 dm-text mx-3 raleway">{key.catName}</p>
               </div>
                 ))
           }

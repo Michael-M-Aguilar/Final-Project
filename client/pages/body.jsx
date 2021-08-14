@@ -109,72 +109,72 @@ export default class Body extends React.Component {
     const { transaction } = this.state;
     const { debit } = this.state;
     return (
-      <div className="container hiddenInMobile desktopBody my-4">
+      <div className="container hiddenInMobile desktop-body my-4">
         <div className="flex space-between">
           <div>
-            <p className="fs-1 dmTextColor text-header">Accounts</p>
+            <p className="fs-1 dm-text text-header">Accounts</p>
           </div>
         </div>
         <div className="flex space-evenly pt-4">
-          <div className="align-self-c desktopSecondary border border-dark border-3 rounded col-sm-4 flex justify-content-center">
-            <button type="button" id="budgetBtn" className="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-              <p className="fs-4 text-center dmTextColor text-header my-2">{(!this.state.budget.length) ? 'Please Insert a Budget' : 'Budget: $' + this.state.budget[0].amount}</p>
+          <div className="align-self-c desktop-secondary border border-dark border-3 rounded col-sm-4 flex justify-content-center">
+            <button type="button" id="budget-btn" className="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+              <p className="fs-4 text-center dm-text text-header my-2">{(!this.state.budget.length) ? 'Please Insert a Budget' : 'Budget: $' + this.state.budget[0].amount}</p>
             </button>
           </div>
-          <div className="space-evenly desktopSecondary border border-dark border-3 rounded col">
-            <p className="fs-4 text-center text-header my-3 mx-3 dmTextColor">Expense: <span className="dmNegativeColor numbers">{(!transaction.length) ? '...' : '$' + this.totalExpense()}</span></p>
+          <div className="space-evenly desktop-secondary border border-dark border-3 rounded col">
+            <p className="fs-4 text-center text-header my-3 mx-3 dm-text">Expense: <span className="dm-negative numbers">{(!transaction.length) ? '...' : '$' + this.totalExpense()}</span></p>
           </div>
-          <div className="space-evenly desktopSecondary border border-dark border-3 rounded col">
-            <p className="fs-4 text-center text-header my-3 mx-3 dmTextColor">Income: <span className="dmPositiveColor numbers">{(!debit.length) ? '...' : '$' + this.totalCredit()}</span></p>
+          <div className="space-evenly desktop-secondary border border-dark border-3 rounded col">
+            <p className="fs-4 text-center text-header my-3 mx-3 dm-text">Income: <span className="dm-positive numbers">{(!debit.length) ? '...' : '$' + this.totalCredit()}</span></p>
           </div>
         </div>
         <div className="row3 flex pt-5 col-sm-12">
-          <div className="desktopSecondary recent-tw py-4 border border-dark border-4 col col-sm-6">
-            <p className="fs-3 dmTextColor text-header mx-2">Recent Transactions: </p>
+          <div className="desktop-secondary recent-tw py-4 border border-dark border-4 col col-sm-6">
+            <p className="fs-3 dm-text text-header mx-2">Recent Transactions: </p>
             {
                 (!this.state.info.length)
-                  ? <p className="text-header mx-2 dmTextColor">Insert an entry using the plus sign on the bottom right!</p>
+                  ? <p className="text-header mx-2 dm-text">Insert an entry using the plus sign on the bottom right!</p>
                   : info.slice(0, 4).map(key => (
                     <div key={key.entryId} className="flex space-between border-top border-2 py-1 mx-1 my-1 rt">
-                      <p className="mx-2 fs-5 dmTextColor raleway my-3">{(!key) ? '...' : key.note}</p>
+                      <p className="mx-2 fs-5 dm-text raleway my-3">{(!key) ? '...' : key.note}</p>
                       <div className="flex flex-column mx-1">
-                        <p className={(!key) ? '...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor numbers dmNegativeColor numbers text-end my-3' : 'fs-5 dmTextColor numbers dmPositiveColor numbers text-end my-3'}>{(!key) ? 'Loading ...' : '$ ' + key.amount}</p>
-                        <p className="fs-5 dmTextColor raleway my-1">{(!key) ? '...' : moment(key.date).format('MMMM Do YYYY')}</p>
+                        <p className={(!key) ? '...' : (key.amount[0] === '-') ? 'fs-5 dm-text numbers dm-negative numbers text-end my-3' : 'fs-5 dm-text numbers dm-positive numbers text-end my-3'}>{(!key) ? 'Loading ...' : '$ ' + key.amount}</p>
+                        <p className="fs-5 dm-text raleway my-1">{(!key) ? '...' : moment(key.date).format('MMMM Do YYYY')}</p>
                       </div>
                     </div>
                   ))
             }
               <div className="border-top flex justify-content-end border-2 py-1">
                 <a href="#transactions">
-                  <p className="fs-3 dmTextColor text-header my-4 mx-4">View All </p>
+                  <p className="fs-3 dm-text text-header my-4 mx-4">View All </p>
                 </a>
               </div>
           </div>
-          <div className="desktopSecondary spendingC flex flex-column border border-dark border-4 py-1 col">
+          <div className="desktop-secondary spendingC flex flex-column border border-dark border-4 py-1 col">
             <PieChart />
             <div className="flex justify-content-end border-2 pt-4 mx-5">
               <a href="#spending-chart">
-                <p className="fs-3 dmTextColor text-header mb-3">View More </p>
+                <p className="fs-3 dm-text text-header mb-3">View More </p>
               </a>
             </div>
           </div>
         </div>
-        <div className="logoIcon flex justify-content-end ">
+        <div className="logo-icon flex justify-content-end ">
           <a href="#create-transaction">
-            <i className="fas fa-plus-circle fa-6x my-5 logoIcon"></i>
+            <i className="fas fa-plus-circle fa-6x my-5 logo-icon"></i>
           </a>
         </div>
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title text-header dmTextColor" id="exampleModalLabel">Set a New Budget:</h5>
+                <h5 className="modal-title text-header dm-text" id="exampleModalLabel">Set a New Budget:</h5>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <form onSubmit={this.handleSubmit}>
                 <div className="flex justify-content-center">
-                  <label htmlFor="budget" className="form-label raleway dmTextColor"></label>
-                  <input type="number" min="0" step="0.01" id="budgetInput" name="budgetInput" className=" fs-5 form-control inputBackground numbers dmTextColor border-4 border-dark" onChange={this.handleChange}></input>
+                  <label htmlFor="budget" className="form-label raleway dm-text"></label>
+                  <input type="number" min="0" step="0.01" id="budgetInput" name="budgetInput" className=" fs-5 form-control input-background numbers dm-text border-4 border-dark" onChange={this.handleChange}></input>
                 </div>
                 <div className="modal-footer flex justify-content-between">
                   <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
