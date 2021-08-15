@@ -117,7 +117,7 @@ export default class Body extends React.Component {
         </div>
         <div className="flex space-evenly pt-4">
           <div className="align-self-c desktop-secondary border border-dark border-3 rounded col-sm-4 flex justify-content-center">
-            <button type="button" id="budget-btn" className="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+            <button type="button" id="budget-btn" className="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-tooltip="Press to create a budget">
               <p className="fs-4 text-center dm-text text-header my-2">{(!this.state.budget.length) ? 'Please Insert a Budget' : 'Budget: $' + this.state.budget[0].amount}</p>
             </button>
           </div>
@@ -145,26 +145,25 @@ export default class Body extends React.Component {
                   ))
             }
               <div className="border-top flex justify-content-end border-2 py-1">
-                <a href="#transactions">
+                <a href="#transactions" data-tooltip="Press to view all transactions">
                   <p className="fs-3 dm-text text-header my-4 mx-4">View All </p>
                 </a>
               </div>
           </div>
           <div className="desktop-secondary spending-chart flex flex-column border border-dark border-3 py-1 col">
+            <p className="fs-3 dm-text text-header">Spending Chart:</p>
             <PieChart />
-            <div className="flex justify-content-end border-2 pt-4 mx-5">
-              <a href="#spending-chart">
+            <div className="flex justify-content-end border-2 mx-5">
+              <a href="#spending-chart" data-tooltip="Press to view more spending info">
                 <p className="fs-3 dm-text text-header mb-3">View More </p>
               </a>
             </div>
           </div>
         </div>
         <div className="logo-icon flex justify-content-end">
-          <div data-tooltip="Press to create an entry">
-            <a href="#create-transaction">
+            <a href="#create-transaction" data-tooltip="Press to create an entry">
               <i className="fas fa-plus-circle fa-6x my-5 logo-icon"></i>
             </a>
-          </div>
         </div>
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">

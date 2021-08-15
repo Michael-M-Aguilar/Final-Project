@@ -52,7 +52,7 @@ export default class PieChart extends React.Component {
         amountList.push(transactions[key]);
       }
       return (
-      <div className="desktop-secondary flex flex-column pt-3 pb-4">
+      <div className="desktop-secondary flex flex-column pt-1 pb-4">
         <Pie
           data={{
             labels: catList,

@@ -93,7 +93,6 @@ input:focus {
 
 .text-header {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.7rem;
 }
 
 .raleway {
@@ -122,6 +121,6 @@ input:focus {
 [data-tooltip]:hover::before {
   opacity: 1;
   background: #3e4c59;
-  margin-top: -5px;
-  margin-left: -80px;
+  margin-top: -30px;
+  margin-left: -90px;
 }
