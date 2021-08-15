@@ -3,6 +3,10 @@
   min-width: 818px;
 }
 
+.form-control {
+  border: 1px solid black;
+}
+
 table,
 .modal-content {
   background-color: #486581;
@@ -102,4 +106,22 @@ input:focus {
 
 .text-end {
   text-align: end;
+}
+
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  opacity: 0;
+  transition: all 0.15s ease;
+  padding: 10px;
+  color: #deedf0;
+  border-radius: 10px;
+  box-shadow: 2px 2px 1px #282e35;
+}
+
+[data-tooltip]:hover::before {
+  opacity: 1;
+  background: #3e4c59;
+  margin-top: -5px;
+  margin-left: -80px;
 }

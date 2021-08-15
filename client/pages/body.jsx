@@ -159,10 +159,12 @@ export default class Body extends React.Component {
             </div>
           </div>
         </div>
-        <div className="logo-icon flex justify-content-end ">
-          <a href="#create-transaction">
-            <i className="fas fa-plus-circle fa-6x my-5 logo-icon"></i>
-          </a>
+        <div className="logo-icon flex justify-content-end">
+          <div data-tooltip="Press to create an entry">
+            <a href="#create-transaction">
+              <i className="fas fa-plus-circle fa-6x my-5 logo-icon"></i>
+            </a>
+          </div>
         </div>
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
@@ -174,7 +176,7 @@ export default class Body extends React.Component {
               <form onSubmit={this.handleSubmit}>
                 <div className="flex justify-content-center">
                   <label htmlFor="budget" className="form-label raleway dm-text"></label>
-                  <input type="number" min="0" step="0.01" id="budgetInput" name="budgetInput" className=" fs-5 form-control input-background numbers dm-text border-4 border-dark" onChange={this.handleChange}></input>
+                  <input type="number" min="0" step="0.01" id="budgetInput" name="budgetInput" className=" fs-5 form-control input-background numbers dm-text" onChange={this.handleChange}></input>
                 </div>
                 <div className="modal-footer flex justify-content-between">
                   <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
