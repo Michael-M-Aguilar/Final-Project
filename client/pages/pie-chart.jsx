@@ -52,8 +52,7 @@ export default class PieChart extends React.Component {
         amountList.push(transactions[key]);
       }
       return (
-      <div>
-        <div className="desktop-secondary flex flex-column pt-3 pb-4">
+      <div className="desktop-secondary flex flex-column pt-3 pb-4">
         <Pie
           data={{
             labels: catList,
@@ -96,6 +95,7 @@ export default class PieChart extends React.Component {
           }}
         options={{
           maintainAspectRatio: false,
+          responsive: true,
           legend: {
             labels: {
               fontSize: 12,
@@ -104,7 +104,6 @@ export default class PieChart extends React.Component {
           }
         }} />
         </div>
-      </div>
       );
     }
   }

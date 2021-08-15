@@ -109,7 +109,7 @@ export default class Body extends React.Component {
     const { transaction } = this.state;
     const { debit } = this.state;
     return (
-      <div className="container hiddenInMobile desktop-body my-4">
+      <div className="container desktop-body my-4">
         <div className="flex space-between">
           <div>
             <p className="fs-1 dm-text text-header">Accounts</p>
@@ -129,7 +129,7 @@ export default class Body extends React.Component {
           </div>
         </div>
         <div className="row3 flex pt-5 col-sm-12">
-          <div className="desktop-secondary recent-tw py-4 border border-dark border-4 col col-sm-6">
+          <div className="desktop-secondary recent-tw py-4 border border-dark border-3 col col-sm-6">
             <p className="fs-3 dm-text text-header mx-2">Recent Transactions: </p>
             {
                 (!this.state.info.length)
@@ -150,7 +150,7 @@ export default class Body extends React.Component {
                 </a>
               </div>
           </div>
-          <div className="desktop-secondary spendingC flex flex-column border border-dark border-4 py-1 col">
+          <div className="desktop-secondary spending-chart flex flex-column border border-dark border-3 py-1 col">
             <PieChart />
             <div className="flex justify-content-end border-2 pt-4 mx-5">
               <a href="#spending-chart">
