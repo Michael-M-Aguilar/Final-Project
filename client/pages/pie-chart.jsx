@@ -94,7 +94,7 @@ export default class PieChart extends React.Component {
             ]
           }}
         options={{
-          maintainAspectRatio: false,
+          maintainAspectRatio: true,
           responsive: true,
           legend: {
             labels: {

@@ -115,21 +115,21 @@ export default class Body extends React.Component {
             <p className="fs-1 dm-text text-header">Accounts</p>
           </div>
         </div>
-        <div className="flex space-evenly pt-4">
-          <div className="align-self-c desktop-secondary border border-dark border-3 rounded col-sm-4 flex justify-content-center">
+        <div className="row">
+          <div className="desktop-secondary border border-dark border-3 rounded col">
             <button type="button" id="budget-btn" className="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-tooltip="Press to create a budget">
               <p className="fs-4 text-center dm-text text-header my-2">{(!this.state.budget.length) ? 'Please Insert a Budget' : 'Budget: $' + this.state.budget[0].amount}</p>
             </button>
           </div>
-          <div className="space-evenly desktop-secondary border border-dark border-3 rounded col">
+          <div className="desktop-secondary border border-dark border-3 rounded col">
             <p className="fs-4 text-center text-header my-3 mx-3 dm-text">Expense: <span className="dm-negative numbers">{(!transaction.length) ? '...' : '$' + this.totalExpense()}</span></p>
           </div>
-          <div className="space-evenly desktop-secondary border border-dark border-3 rounded col">
+          <div className="desktop-secondary border border-dark border-3 rounded col">
             <p className="fs-4 text-center text-header my-3 mx-3 dm-text">Income: <span className="dm-positive numbers">{(!debit.length) ? '...' : '$' + this.totalCredit()}</span></p>
           </div>
         </div>
-        <div className="row3 flex pt-5 col-sm-12">
-          <div className="desktop-secondary recent-tw py-4 border border-dark border-3 col col-sm-6">
+        <div className="row pt-3">
+          <div className="desktop-secondary pt-4 border border-dark border-3 col-lg-6">
             <p className="fs-3 dm-text text-header mx-2">Recent Transactions: </p>
             {
                 (!this.state.info.length)
@@ -150,12 +150,12 @@ export default class Body extends React.Component {
                 </a>
               </div>
           </div>
-          <div className="desktop-secondary spending-chart flex flex-column border border-dark border-3 py-1 col">
+          <div className="desktop-secondary pt-4 border border-dark border-3 col-lg-6">
             <p className="fs-3 dm-text text-header">Spending Chart:</p>
             <PieChart />
-            <div className="flex justify-content-end border-2 mx-5">
-              <a href="#spending-chart" data-tooltip="Press to view more spending info">
-                <p className="fs-3 dm-text text-header mb-3">View More </p>
+            <div className="flex justify-content-end border-2 mx-5" data-tooltip="Press to view more spending info">
+              <a href="#spending-chart">
+                <p className="fs-3 dm-text text-header my-4">View More </p>
               </a>
             </div>
           </div>

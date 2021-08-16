@@ -23,15 +23,17 @@
 }
 
 /* Width of Body, Recent transactions */
-.recent-tw {
+
+/* .recent-tw {
   width: 40%;
   height: 100%;
-}
+} */
 
 /* Width of Body, Spending Chart */
-.spending-chart {
-  width: 40%;
-}
+
+/* .spending-chart {
+  width: 50%;
+} */
 
 /* Set width of the header nav-bar */
 
