@@ -52,8 +52,8 @@ export default class Transactions extends React.Component {
         </div>
         <div className="max-height flex overflow flex-column border border-5 border-dark rounded transaction-history desktop-secondary mx-1 my-3">
           <div className="flex justify-content-between">
-            <p className="text-header dm-text mx-4">Transaction</p>
-            <p className="text-header fs-1 dm-text mx-4">July (Current Month)</p>
+            <p className="text-header dm-text mx-4 fs-3">Transactions</p>
+            {/* <p className="text-header fs-1 dm-text mx-4">July (Current Month)</p> */}
           </div>
         {
           (!this.state.infos.length)

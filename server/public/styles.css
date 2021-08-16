@@ -1,6 +1,6 @@
 #root {
   background-color: #1f2933;
-  min-width: 818px;
+  min-width: 840px;
 }
 
 .form-control {
@@ -120,7 +120,7 @@ input:focus {
 
 [data-tooltip]:hover::before {
   opacity: 1;
-  background: #3e4c59;
+  background: #3f4850;
   margin-top: -30px;
   margin-left: -90px;
 }
