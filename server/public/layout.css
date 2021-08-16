@@ -22,19 +22,6 @@
   padding-left: 42px;
 }
 
-/* Width of Body, Recent transactions */
-
-/* .recent-tw {
-  width: 40%;
-  height: 100%;
-} */
-
-/* Width of Body, Spending Chart */
-
-/* .spending-chart {
-  width: 50%;
-} */
-
 /* Set width of the header nav-bar */
 
 .header-width {
@@ -111,6 +98,15 @@
     background-color: #3e4c59;
     color: #deedf0;
   }
+
+  .hidden-in-desktop {
+    display: none;
+  }
+
+  #root {
+    background-color: #1f2933;
+    height: 100vh;
+  }
 }
 
 /* Size of the Transactions container */
@@ -120,13 +116,32 @@
 }
 
 @media screen and (max-width: 767px) {
+  #root {
+    background-color: #1f2933;
+    min-width: 810px;
+  }
+
   .container {
     min-width: 620px;
+  }
+
+  .hidden-in-mobile {
+    display: none;
   }
 
   .delete-but {
     opacity: 1;
     background-color: #3e4c59;
     color: #deedf0;
+  }
+
+  .footer {
+    /* min-width: 620px; */
+    width: 840px;
+    height: 5%;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    background-color: #1f2933;
   }
 }

@@ -162,7 +162,7 @@ export default class Body extends React.Component {
         </div>
         <div className="logo-icon flex justify-content-end">
             <a href="#create-transaction" data-tooltip="Press to create an entry">
-              <i className="fas fa-plus-circle fa-6x my-5 logo-icon"></i>
+              <i className="fas fa-plus-circle fa-6x py-5 logo-icon"></i>
             </a>
         </div>
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

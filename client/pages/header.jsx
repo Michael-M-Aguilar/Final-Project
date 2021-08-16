@@ -8,7 +8,7 @@ export default class Header extends React.Component {
           <div className="col col-sm-4 col-md-4">
             <img className="logo-size pt-3" src="/images/logo.png" alt="LogoDM" />
           </div>
-          <div className="flex flex-column header-width py-4 col col-sm-8 col-md-8">
+          <div className="flex flex-column header-width py-4 col col-sm-8 col-md-8 hidden-in-mobile">
             <div className="flex justify-content-between align-items-center">
               <a href="#" className="items-center">
                   <span className="logo-icon ps-1" ><i className="fas fa-home fa-3x"></i></span>
