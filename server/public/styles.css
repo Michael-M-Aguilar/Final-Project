@@ -1,5 +1,7 @@
-.form-control {
+.form-setting {
   border: 1px solid black;
+  padding: 0.375rem 0.75rem;
+  width: 50%;
 }
 
 table,
@@ -32,17 +34,12 @@ a {
 }
 
 .categories {
-  max-width: 445px;
+  max-width: 22%;
 }
 
 .transactions,
 .categories {
   transition: ease 1.4s;
-}
-
-.desktop-body {
-  background-color: #3e4c59;
-  height: 65vh;
 }
 
 input,

@@ -39,7 +39,7 @@ export default class CreateCategory extends React.Component {
         <div className="my-3 mx-2">
           <p className="fs-1 text-header dm-text mt-1">Creating New Category:</p>
         </div>
-        <div className="flex overflow flex-column border border-5 border-dark rounded transaction-history desktop-secondary mx-1">
+        <div className="border border-5 border-dark rounded desktop-secondary mx-1">
           <div className="flex justify-content-center">
             <p className="text-header dm-text mx-4">Category Name</p>
           </div>
@@ -51,7 +51,7 @@ export default class CreateCategory extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <div className="flex justify-content-center">
               <label htmlFor="catName" className="form-label raleway dm-text"></label>
-              <input type="text" id="catName" name="catName" className="cat-name fs-5 form-control input-background numbers dm-text border-4 border-dark" onChange={this.handleChange}></input>
+              <input type="text" id="catName" name="catName" className="form-setting cat-name fs-5 input-background numbers dm-text border-4 border-dark" onChange={this.handleChange}></input>
             </div>
             <div className="form-group flex justify-content-center my-3">
               <button type="submit" className="btn btn-dark rounded mx-4">Save</button>

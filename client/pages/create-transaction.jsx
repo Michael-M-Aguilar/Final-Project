@@ -6,7 +6,7 @@ export default class CreateTransaction extends React.Component {
     return (
       <div className="container   desktop-body my-4">
         <div>
-          <p className="text-header dm-text">Creating New Transactions: </p>
+          <h1 className="text-header dm-text">Creating New Transactions: </h1>
         </div>
         <div className="flex flex-column border border-5 border-dark rounded transaction-position desktop-secondary py-5">
           <div className="flex justify-content-center my-5">

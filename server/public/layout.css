@@ -1,3 +1,20 @@
+html {
+  height: 100%;
+}
+
+/* body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+} */
+
+.desktop-body {
+  background-color: #3e4c59;
+}
+
+#root {
+  background-color: #1f2933;
+}
+
 .flex {
   display: flex;
 }
@@ -51,8 +68,13 @@
   height: 50%;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   /* To hide the desktop List.  */
+
+  /* #root {
+    height: 100vh;
+  } */
+
   canvas {
     height: 500px;
     width: 200px;
@@ -102,34 +124,15 @@
   .hidden-in-desktop {
     display: none;
   }
-
-  #root {
-    background-color: #1f2933;
-    height: 100vh;
-  }
 }
 
-/* Size of the Transactions container */
-
-/* .transaction-history {
-  width: 98%;
-  height: 85%;
-} */
-
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   #root {
-    background-color: #1f2933;
     min-width: 810px;
-    height: 1800px;
   }
 
   .container {
     min-width: 620px;
-  }
-
-  .desktop-body {
-    background-color: #3e4c59;
-    height: 90vh;
   }
 
   .hidden-in-mobile {

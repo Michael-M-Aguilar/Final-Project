@@ -48,7 +48,7 @@ export default class Transactions extends React.Component {
     return (
       <div className="container desktop-body my-3 col-lg-10">
         <div className="my-3 mx-2 ">
-          <p className="fs-1 text-header dm-text">List of all Transactions:</p>
+          <h1 className="text-header dm-text">List of all Transactions:</h1>
         </div>
         <div className="overflow border border-5 border-dark rounded transaction-history desktop-secondary">
           <div className="">
