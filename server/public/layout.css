@@ -110,19 +110,26 @@
 }
 
 /* Size of the Transactions container */
-.transaction-history {
+
+/* .transaction-history {
   width: 98%;
   height: 85%;
-}
+} */
 
 @media screen and (max-width: 767px) {
   #root {
     background-color: #1f2933;
     min-width: 810px;
+    height: 1800px;
   }
 
   .container {
     min-width: 620px;
+  }
+
+  .desktop-body {
+    background-color: #3e4c59;
+    height: 90vh;
   }
 
   .hidden-in-mobile {

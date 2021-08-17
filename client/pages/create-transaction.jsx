@@ -4,7 +4,7 @@ import React from 'react';
 export default class CreateTransaction extends React.Component {
   render() {
     return (
-      <div className="container ctcontainer desktop-body my-4">
+      <div className="container   desktop-body my-4">
         <div>
           <p className="text-header dm-text">Creating New Transactions: </p>
         </div>

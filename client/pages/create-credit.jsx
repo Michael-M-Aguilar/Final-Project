@@ -84,7 +84,7 @@ export default class CreateCredit extends React.Component {
   render() {
     const { categories } = this.state;
     return (
-      <div className="container ctcontainer desktop-body my-4">
+      <div className="container   desktop-body my-4">
         <div>
           <h1 className="text-header dm-text">Creating New Credit Transaction: </h1>
         </div>
