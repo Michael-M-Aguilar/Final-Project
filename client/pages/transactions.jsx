@@ -46,33 +46,33 @@ export default class Transactions extends React.Component {
   render() {
     const { infos } = this.state;
     return (
-      <div className="container ctcontainer desktopBody my-3">
-        <div className="my-3 mx-2">
-          <p className="fs-1 text-header dmTextColor">List of all Transactions:</p>
+      <div className="container desktop-body my-3 col-lg-10">
+        <div className="my-3 mx-2 ">
+          <h1 className="text-header dm-text">List of all Transactions:</h1>
         </div>
-        <div className="max-height flex overflow flex-column border border-5 border-dark rounded transactionHistory desktopSecondary mx-1 my-3">
-          <div className="flex justify-content-between">
-            <p className="text-header dmTextColor mx-4">Transaction</p>
-            <p className="text-header fs-1 dmTextColor mx-4">July (Current Month)</p>
+        <div className="overflow border border-5 border-dark rounded transaction-history desktop-secondary">
+          <div className="">
+            <p className="text-header dm-text mx-4 fs-3">Transactions</p>
+            {/* <p className="text-header fs-1 dm-text mx-4">July (Current Month)</p> */}
           </div>
         {
           (!this.state.infos.length)
             ? 'Loading...'
             : infos.map(key => (
-            <div key={key.entryId} entryid={key.entryId} className="flex space-between border-top border-2 py-2 mx-3 transactions">
+            <div key={key.entryId} entryid={key.entryId} className="flex space-between border-top border-2 py-2 mx-3">
               <div className="flex flex-column">
-                <p className="fs-5 dmTextColor mx-3 raleway">{key.note}</p>
-                <p className="fs-5 dmTextColor mx-3 raleway">{(!key.location) ? '' : 'Location: ' + key.location}</p>
+                <p className="fs-5 dm-text mx-3 raleway">{key.note}</p>
+                <p className="fs-5 dm-text mx-3 raleway">{(!key.location) ? '' : 'Location: ' + key.location}</p>
               </div>
               <div className="flex flex-row mx-3">
                 <div className="mx-4">
-                  <button id={key.entryId} entryid={key.entryId} onClick={this.deleteEntries} className="deleteBut">
+                  <button id={key.entryId} entryid={key.entryId} onClick={this.deleteEntries} className="delete-but">
                     <p className="my-1 raleway"id={key.entryId}>Delete</p>
                   </button>
                 </div>
                 <div className="mx-4">
-                  <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dmTextColor dmNegativeColor numbers text-end ' : 'fs-5 dmTextColor dmPositiveColor numbers text-end'}>$ {key.amount}</p>
-                  <p className="fs-5 dmTextColor raleway text-end">{moment(key.date).format('MMMM Do YYYY')}</p>
+                  <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dm-text dm-negative numbers text-end ' : 'fs-5 dm-text dm-positive numbers text-end'}>$ {key.amount}</p>
+                  <p className="fs-5 dm-text raleway text-end">{moment(key.date).format('MMMM Do YYYY')}</p>
                 </div>
               </div>
             </div>

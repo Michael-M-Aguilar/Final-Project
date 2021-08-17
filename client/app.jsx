@@ -10,6 +10,7 @@ import Transactions from './pages/transactions';
 import Folder from './pages/folder';
 import CreateCategory from './pages/create-category';
 import SpendingChart from './pages/spending-chart';
+import Footer from './pages/footer';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -67,6 +68,7 @@ export default class App extends React.Component {
       <>
         <Header />
         {this.renderPage()}
+        <Footer />
       </>
     );
   }

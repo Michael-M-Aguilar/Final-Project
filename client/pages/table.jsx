@@ -64,26 +64,26 @@ export default class Table extends React.Component {
         dataArray.push(newobj);
       }
       return (
-      <div className="desktopSecondary flex flex-column pt-3 border-top border-1">
+      <div className="desktop-secondary flex flex-column pt-3 border-top border-1">
         <table className="table">
-          <caption scope="row" className="dmTextColor raleway mx-3">List of Expenses</caption>
-          <thead className="dmTextColor">
+          <caption scope="row" className="dm-text raleway mx-3">Expenses per Category</caption>
+          <thead className="dm-text">
             <tr>
               <th scope="col">Category</th>
               <th scope="col">Total</th>
               <th scope="col">%</th>
             </tr>
           </thead>
-          <tbody className="dmTextColor raleway mx-3">
+          <tbody className="dm-text raleway mx-3">
           {
             (!info.length)
               ? dataArray.map(item => {
                 const data = Object.keys(item)[0];
                 return (
                   <tr key={item[data]}>
-                    <td className="raleway">{data}</td>
-                    <td className="numbers">$ {item[data]}</td>
-                    <td className="numbers">{Math.round((item[data]) / expenseTotal.amount * 100)}</td>
+                    <td className="raleway fs-5">{data}</td>
+                    <td className="numbers fs-5">$ {item[data]}</td>
+                    <td className="numbers fs-5">{Math.round((item[data]) / expenseTotal.amount * 100)}</td>
                   </tr>
                 );
               })
