@@ -25,8 +25,8 @@ export default class Folders extends React.Component {
   render() {
     const { categories } = this.state;
     return (
-      <div className="container desktop-body my-3">
-        <div className="my-3 mx-2">
+      <div className="container desktop-body">
+        <div className="mx-2">
           <h1 className="text-header dm-text fs-1">List of Categories:</h1>
         </div>
         <div className="overflow border border-5 border-dark rounded desktop-secondary">

@@ -1,14 +1,6 @@
-html {
-  height: 100%;
-}
-
-/* body {
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-} */
-
 .desktop-body {
   background-color: #3e4c59;
+  height: 80vh;
 }
 
 #root {
@@ -54,32 +46,16 @@ html {
 .transaction-position {
   position: relative;
   top: 8%;
-  left: 12%;
-  width: 75%;
-  height: 50%;
 }
 
 /* Size of the box of credit/debit */
 .cd-position {
   position: relative;
-  top: 8%;
-  left: 12%;
-  width: 75%;
-  height: 50%;
+  top: 5%;
 }
 
 @media screen and (min-width: 769px) {
   /* To hide the desktop List.  */
-
-  /* #root {
-    height: 100vh;
-  } */
-
-  canvas {
-    height: 500px;
-    width: 200px;
-  }
-
   tr:hover {
     background-color: #3e4c59;
     color: #deedf0;
@@ -124,15 +100,15 @@ html {
   .hidden-in-desktop {
     display: none;
   }
+
+  #root {
+    height: 100vh;
+  }
 }
 
 @media screen and (max-width: 768px) {
   #root {
-    min-width: 810px;
-  }
-
-  .container {
-    min-width: 620px;
+    height: 150vh;
   }
 
   .hidden-in-mobile {
@@ -146,9 +122,9 @@ html {
   }
 
   .footer {
-    /* min-width: 620px; */
+    max-width: 650px;
     width: 840px;
-    height: 5%;
+    height: 5.5%;
     position: fixed;
     z-index: 1;
     bottom: 0;

@@ -3,7 +3,7 @@ import React from 'react';
 export default class Header extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="container hidden-in-mobile">
         <div className="flex space-between">
           <div className="col col-sm-4 col-md-4">
             <img className="logo-size pt-3" src="/images/logo.png" alt="LogoDM" />

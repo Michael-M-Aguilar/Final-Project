@@ -65,7 +65,7 @@ export default class Table extends React.Component {
       }
       return (
       <div className="desktop-secondary flex flex-column pt-3 border-top border-1">
-        <table className="table">
+        <table className="table overflow">
           <caption scope="row" className="dm-text raleway mx-3">Expenses per Category</caption>
           <thead className="dm-text">
             <tr>

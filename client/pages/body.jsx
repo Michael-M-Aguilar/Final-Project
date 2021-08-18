@@ -109,7 +109,7 @@ export default class Body extends React.Component {
     const { transaction } = this.state;
     const { debit } = this.state;
     return (
-      <div className="container desktop-body my-3">
+      <div className="container desktop-body">
         <div className="flex space-between">
           <div>
             <p className="fs-1 dm-text text-header">Accounts</p>

@@ -46,14 +46,13 @@ export default class Transactions extends React.Component {
   render() {
     const { infos } = this.state;
     return (
-      <div className="container desktop-body my-3 col-lg-10">
-        <div className="my-3 mx-2 ">
+      <div className="container desktop-body col-lg-10">
+        <div className="mx-2 ">
           <h1 className="text-header dm-text">List of all Transactions:</h1>
         </div>
         <div className="overflow border border-5 border-dark rounded transaction-history desktop-secondary">
           <div className="">
             <p className="text-header dm-text mx-4 fs-3">Transactions</p>
-            {/* <p className="text-header fs-1 dm-text mx-4">July (Current Month)</p> */}
           </div>
         {
           (!this.state.infos.length)
