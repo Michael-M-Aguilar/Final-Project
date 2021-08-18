@@ -108,7 +108,11 @@
 
 @media screen and (max-width: 768px) {
   #root {
-    height: 150vh;
+    height: 100vh;
+  }
+
+  .desktop-body {
+    height: 93vh;
   }
 
   .hidden-in-mobile {
@@ -122,11 +126,10 @@
   }
 
   .footer {
-    max-width: 650px;
-    width: 840px;
-    height: 5.5%;
+    max-width: 500px;
+
+    /* width: 840px; */
     position: fixed;
-    z-index: 1;
     bottom: 0;
     background-color: #1f2933;
   }

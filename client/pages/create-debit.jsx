@@ -51,7 +51,7 @@ export default class CreateDebit extends React.Component {
 
   render() {
     return (
-      <div className="container   desktop-body my-4">
+      <div className="container desktop-body">
         <div>
           <h1 className="text-header dm-text">Creating New Debit Transaction: </h1>
         </div>
