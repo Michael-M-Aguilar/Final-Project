@@ -1,14 +1,18 @@
-.desktop-body {
-  background-color: #3e4c59;
-  height: 80vh;
-}
-
 #root {
   background-color: #1f2933;
+  height: 100vh;
 }
 
 .flex {
   display: flex;
+}
+
+.sm-padding-r {
+  padding-right: 1.2rem;
+}
+
+.sm-padding-t {
+  padding-top: 0.8rem;
 }
 
 .overflow {
@@ -32,7 +36,6 @@
 }
 
 /* Set width of the header nav-bar */
-
 .header-width {
   width: 50%;
 }
@@ -42,10 +45,12 @@
   width: 90px;
 }
 
+/* Later combine these two positions */
+
 /* Create a transaction box */
 .transaction-position {
   position: relative;
-  top: 8%;
+  top: 5%;
 }
 
 /* Size of the box of credit/debit */
@@ -101,18 +106,16 @@
     display: none;
   }
 
-  #root {
-    height: 100vh;
+  .desktop-body {
+    background-color: #3e4c59;
+    height: 80vh;
   }
 }
 
 @media screen and (max-width: 768px) {
-  #root {
-    height: 100vh;
-  }
-
   .desktop-body {
-    height: 93vh;
+    background-color: #3e4c59;
+    height: 92vh;
   }
 
   .hidden-in-mobile {
@@ -125,12 +128,15 @@
     color: #deedf0;
   }
 
-  .footer {
-    max-width: 500px;
-
-    /* width: 840px; */
+  /* .footer {
+    width: 340px;
     position: fixed;
     bottom: 0;
+    z-index: 1;
     background-color: #1f2933;
+  } */
+
+  .mobile-overflow {
+    overflow: auto;
   }
 }
