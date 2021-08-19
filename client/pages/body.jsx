@@ -114,12 +114,12 @@ export default class Body extends React.Component {
   }">
         <div className="flex space-between">
           <div>
-            <p className="fs-1 dm-text text-header">Accounts</p>
+            <p className="fs-1 dm-text text-header">Dashboard</p>
           </div>
         </div>
         <div className="row">
           <div className="desktop-secondary border border-dark border-3 rounded col">
-            <button type="button" id="budget-btn" className="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-tooltip="Press to create a budget">
+            <button type="button" id="budget-btn" className="btn" data-bs-toggle="modal" data-bs-target="#budgetModal" data-tooltip="Press to create a budget">
               <p className="fs-4 text-center dm-text text-header my-2">{(!this.state.budget.length) ? 'Please Insert a Budget' : 'Budget: $' + this.state.budget[0].amount}</p>
             </button>
           </div>
@@ -167,7 +167,7 @@ export default class Body extends React.Component {
               <i className="fas fa-plus-circle fa-6x py-5 logo-icon"></i>
             </a>
         </div>
-        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="budgetModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
