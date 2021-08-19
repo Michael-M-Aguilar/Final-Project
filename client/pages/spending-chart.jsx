@@ -1,6 +1,6 @@
 import React from 'react';
-import PieChart from './pie-chart';
-import Table from './table';
+import PieChart from '../components/pie-chart';
+import Table from '../components/table';
 
 export default class SpendingChart extends React.Component {
   render() {

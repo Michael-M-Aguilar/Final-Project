@@ -32,7 +32,7 @@
 }
 
 .transaction-p {
-  padding-left: 42px;
+  padding-left: 2.4rem;
 }
 
 /* Set width of the header nav-bar */
@@ -80,7 +80,7 @@
   }
 
   .transactions:hover {
-    transform: scale(1.025);
+    transform: scale(1.02);
   }
 
   .categories:hover {
@@ -99,7 +99,6 @@
   .delete-but:hover {
     opacity: unset;
     background-color: #3e4c59;
-    color: #deedf0;
   }
 
   .hidden-in-desktop {
@@ -108,7 +107,7 @@
 
   .desktop-body {
     background-color: #3e4c59;
-    height: 80vh;
+    height: 85vh;
   }
 }
 

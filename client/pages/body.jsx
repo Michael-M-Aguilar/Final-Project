@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import PieChart from './pie-chart';
+import PieChart from '../components/pie-chart';
 
 export default class Body extends React.Component {
   constructor(props) {
@@ -109,9 +109,7 @@ export default class Body extends React.Component {
     const { transaction } = this.state;
     const { debit } = this.state;
     return (
-      <div className="container desktop-body mobile-overflow {
-  overflow: auto;
-  }">
+      <div className="container desktop-body mobile-overflow">
         <div className="flex space-between">
           <div>
             <p className="fs-1 dm-text text-header">Dashboard</p>

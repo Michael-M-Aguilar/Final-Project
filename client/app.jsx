@@ -1,16 +1,16 @@
 import React from 'react';
 import Home from './pages/home';
-import Header from './pages/header';
+import Header from './components/header';
 import CreateTransaction from './pages/create-transaction';
 import CreateCredit from './pages/create-credit';
 import CreateDebit from './pages/create-debit';
 import ParseRoute from '../server/parse-route';
-import NotFound from './pages/not-found';
+import NotFound from './components/not-found';
 import Transactions from './pages/transactions';
 import Folder from './pages/folder';
 import CreateCategory from './pages/create-category';
 import SpendingChart from './pages/spending-chart';
-import Footer from './pages/footer';
+import Footer from './components/footer';
 
 export default class App extends React.Component {
   constructor(props) {

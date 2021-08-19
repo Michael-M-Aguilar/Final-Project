@@ -3,7 +3,7 @@ import React from 'react';
 export default class Footer extends React.Component {
   render() {
     return (
-        <div className="flex justify-content-between footer hidden-in-desktop">
+        <div className="flex justify-content-between footer hidden-in-desktop mobile-overflow">
           <a href="#transactions">
             <span className="logo-icon transaction-p"><i className="fas fa-list fa-2x sm-padding-t "></i></span>
           </a>
