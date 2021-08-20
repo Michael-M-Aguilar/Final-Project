@@ -36,7 +36,7 @@ export default class Folders extends React.Component {
           <h1 className="text-header dm-text fs-1">List of Categories:</h1>
         </div>
         <div className="overflow border border-5 border-dark rounded desktop-secondary">
-          <div className="flex justify-content-end mx-4">
+          <div className="flex justify-content-end mx-4" data-tooltip="Click to create a new category">
             <a href="#create-category">
               <i className="fas fa-plus-circle fa-5x my-4 logo-icon"></i>
             </a>

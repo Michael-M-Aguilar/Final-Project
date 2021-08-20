@@ -97,10 +97,9 @@ export default class CreateCredit extends React.Component {
           <form className="" onSubmit={this.handleSubmit}>
             <div className="flex justify-content-between">
             <div className="form-group input-row-1 input-group mx-3 border border-4 border-dark rounded ">
-              {/* <span className="input-group-text"><i className="fas fa-money-bill-alt fa-2x logo-icon"></i></span> */}
               <span className="input-group-text fs-5 text-header">$</span>
               <label htmlFor="amount" className="form-label raleway dm-text"></label>
-                <input type="raleway" placeholder="Add a negative entry..." max="-0.01" step="0.01" id="amount" name="amount" className=" fs-5 form-control input-background numbers dm-text" value={this.state.amount} onChange={this.handleChange} required></input>
+              <input type="raleway" placeholder="Add a negative entry..." max="-0.01" step="0.01" id="amount" name="amount" className=" fs-5 form-control input-background numbers dm-text" value={this.state.amount} onChange={this.handleChange} required></input>
             </div>
             <div>
               <label className="raleway dm-text mx-3" htmlFor="date">Entry Date:</label>

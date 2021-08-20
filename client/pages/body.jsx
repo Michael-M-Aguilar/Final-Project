@@ -123,7 +123,7 @@ export default class Body extends React.Component {
         </div>
         <div className="row">
           <div className="desktop-secondary border border-dark border-3 rounded col">
-            <button type="button" id="budget-btn" className="btn" data-bs-toggle="modal" data-bs-target="#budgetModal" data-tooltip="Press to create a budget">
+            <button type="button" id="budget-btn" className="btn" data-bs-toggle="modal" data-bs-target="#budgetModal" data-tooltip="Click to create a budget">
               <p className="fs-4 text-center dm-text text-header my-2">{(!this.state.budget.length) ? 'Please Insert a Budget' : 'Budget: $' + this.state.budget[0].amount}</p>
             </button>
           </div>
@@ -151,7 +151,7 @@ export default class Body extends React.Component {
                   ))
             }
               <div className="border-top flex justify-content-end border-2 py-1">
-                <a href="#transactions" data-tooltip="Press to view all transactions">
+                <a href="#transactions" data-tooltip="Click to view all transactions">
                   <p className="fs-3 dm-text text-header my-4 mx-4">View All </p>
                 </a>
               </div>
@@ -159,7 +159,7 @@ export default class Body extends React.Component {
           <div className="desktop-secondary pt-4 border border-dark border-3 col-md-6">
             <p className="fs-3 dm-text text-header">Spending Chart:</p>
             <PieChart />
-            <div className="flex justify-content-end border-2 mx-5" data-tooltip="Press to view more spending info">
+            <div className="flex justify-content-end border-2 mx-5" data-tooltip="Click to view more spending info">
               <a href="#spending-chart">
                 <p className="fs-3 dm-text text-header my-4">View More </p>
               </a>
@@ -167,7 +167,7 @@ export default class Body extends React.Component {
           </div>
         </div>
         <div className="logo-icon flex justify-content-end">
-            <a href="#create-transaction" data-tooltip="Press to create an entry">
+            <a href="#create-transaction" data-tooltip="Click to create an entry">
               <i className="fas fa-plus-circle fa-6x py-5 logo-icon"></i>
             </a>
         </div>
