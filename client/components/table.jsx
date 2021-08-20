@@ -5,12 +5,9 @@ export default class Table extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // State to store for table rendering
       info: [],
       loading: true,
-      // State to help reduce for categoryName: amount
       total: '',
-      // State to help calculate expense total
       expenseTotal: ''
     };
     this.letsReduce = this.letsReduce.bind(this);
