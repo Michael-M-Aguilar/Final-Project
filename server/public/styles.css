@@ -17,16 +17,12 @@ a {
 }
 
 .btn {
-  height: 58px;
-  width: 100px;
+  height: 48px;
+  width: 90px;
   font-size: 1.5rem;
   background-color: #486581;
   outline: none;
   transition: ease 2s;
-}
-
-.rt {
-  transition: ease 1.8s;
 }
 
 .catName {
@@ -38,8 +34,9 @@ a {
 }
 
 .transactions,
-.categories {
-  transition: ease 1.4s;
+.categories,
+.rt {
+  transition: ease 1.2s;
 }
 
 input,
@@ -59,10 +56,7 @@ textarea {
 }
 
 input,
-input:focus {
-  background-color: #486581;
-}
-
+input:focus,
 .desktop-secondary,
 .input-background {
   background-color: #486581;

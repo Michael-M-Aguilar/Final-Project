@@ -45,6 +45,13 @@
   width: 90px;
 }
 
+.wrapper {
+  height: 40vh;
+  display: grid;
+  place-items: center;
+  background-color: #0c1821;
+}
+
 /* Later combine these two positions */
 
 /* Create a transaction box */
@@ -75,16 +82,10 @@
     background-color: #3e4c59;
   }
 
-  .rt:hover {
-    transform: scale(1.04);
-  }
-
-  /* .transactions:hover {
-    transform: scale(1.02);
-  } */
-
+  .transactions:hover,
+  .rt:hover,
   .categories:hover {
-    transform: scale(1.1);
+    background-color: #3e4c59;
   }
 
   #budget-btn:hover {
@@ -107,7 +108,22 @@
 
   .desktop-body {
     background-color: #3e4c59;
-    height: 85vh;
+    height: 84vh;
+  }
+
+  .loader-circle {
+    width: 80px;
+    height: 80px;
+    border: 15px solid;
+    border-color: #03dac5 #486581;
+    border-radius: 50%;
+    animation: spin 1.5s infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
   }
 }
 
@@ -134,6 +150,21 @@
     z-index: 1;
     background-color: #1f2933;
   } */
+
+  .loader-circle {
+    width: 80px;
+    height: 80px;
+    border: 15px solid;
+    border-color: #03dac5 #486581;
+    border-radius: 50%;
+    animation: spin 1.5s infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
   .mobile-overflow {
     overflow: auto;

@@ -1,11 +1,13 @@
 import React from 'react';
+import Spinner from '../components/spinner';
 
 export default class Folders extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       category: '',
-      categories: ''
+      categories: '',
+      loading: true
     };
     this.getCategories = this.getCategories.bind(this);
   }
@@ -19,12 +21,16 @@ export default class Folders extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({ categories: data });
+        this.setState({ loading: false });
       });
   }
 
   render() {
     const { categories } = this.state;
-    return (
+    if (this.state.loading) {
+      return <Spinner />;
+    } else {
+      return (
       <div className="container desktop-body overflow">
         <div className="mx-2">
           <h1 className="text-header dm-text fs-1">List of Categories:</h1>
@@ -48,6 +54,7 @@ export default class Folders extends React.Component {
           </div>
         </div>
       </div>
-    );
+      );
+    }
   }
 }

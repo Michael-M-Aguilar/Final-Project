@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-3';
+import Spinner from './spinner';
 
 export default class PieChart extends React.Component {
   constructor(props) {
@@ -43,7 +44,7 @@ export default class PieChart extends React.Component {
   render() {
     const { transactions } = this.state;
     if (this.state.loading) {
-      return <p>This is loading..</p>;
+      return <Spinner />;
     } else {
       const catList = [];
       const amountList = [];

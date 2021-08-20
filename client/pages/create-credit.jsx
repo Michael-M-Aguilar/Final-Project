@@ -109,7 +109,7 @@ export default class CreateCredit extends React.Component {
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="note" className="form-label raleway dm-text fs-3 mx-4">Notes:</label>
-              <textarea placeholder="Add a note..." className="form-control mx-4 input-background border border-4 rounded-pill border-dark dm-text fs-4 raleway" id="note" name="note" rows="1" onChange={this.handleChange} required></textarea>
+              <input placeholder="Add a note..." className="form-control mx-4 input-background border border-4 rounded-pill border-dark dm-text fs-4 raleway" id="note" name="note" onChange={this.handleChange} required></input>
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="category" className="form-label raleway dm-text fs-3 mx-4">Categories:</label>

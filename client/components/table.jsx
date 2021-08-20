@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from './spinner';
 
 export default class Table extends React.Component {
   constructor(props) {
@@ -52,7 +53,7 @@ export default class Table extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <p>This is loading..</p>;
+      return <Spinner />;
     } else {
       const { info } = this.state;
       const { expenseTotal } = this.state;

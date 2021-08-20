@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import Spinner from '../components/spinner';
 export default class Transactions extends React.Component {
   constructor(props) {
     super(props);
@@ -7,7 +8,8 @@ export default class Transactions extends React.Component {
     this.state = {
       info: [],
       infos: '',
-      entryId: ''
+      entryId: '',
+      loading: true
     };
     this.getEntries = this.getEntries.bind(this);
     this.deleteEntries = this.deleteEntries.bind(this);
@@ -24,6 +26,7 @@ export default class Transactions extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({ infos: data });
+        this.setState({ loading: false });
       });
   }
 
@@ -45,7 +48,10 @@ export default class Transactions extends React.Component {
 
   render() {
     const { infos } = this.state;
-    return (
+    if (this.state.loading) {
+      return <Spinner />;
+    } else {
+      return (
       <div className="container desktop-body overflow">
         <div className="mx-2 ">
           <h1 className="text-header dm-text">List of all Transactions:</h1>
@@ -93,6 +99,7 @@ export default class Transactions extends React.Component {
         }
         </div>
       </div>
-    );
+      );
+    }
   }
 }

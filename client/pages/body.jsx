@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import PieChart from '../components/pie-chart';
+import Spinner from '../components/spinner';
 
 export default class Body extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ export default class Body extends React.Component {
       transaction: '',
       budget: '',
       budgetInput: '',
-      debit: ''
+      debit: '',
+      loading: true
     };
     this.getEntries = this.getEntries.bind(this);
     this.getBudget = this.getBudget.bind(this);
@@ -19,7 +21,7 @@ export default class Body extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.totalExpense = this.totalExpense.bind(this);
     this.totalCredit = this.totalCredit.bind(this);
-    this.getAccount = this.getAccount.bind(this);
+    this.getDebit = this.getDebit.bind(this);
   }
 
   // If component is mounted, this is to start these methods after my render
@@ -27,7 +29,7 @@ export default class Body extends React.Component {
     this.getEntries();
     this.getBudget();
     this.getTransactions();
-    this.getAccount();
+    this.getDebit();
   }
 
   // our get request to present information on the page
@@ -69,12 +71,13 @@ export default class Body extends React.Component {
       });
   }
 
-  getAccount() {
+  getDebit() {
     fetch('/api/account')
       .then(res => res.json())
       .then(debit => {
         this.setState({ debit: debit });
         this.totalCredit();
+        this.setState({ loading: false });
       });
   }
 
@@ -108,7 +111,10 @@ export default class Body extends React.Component {
     const { info } = this.state;
     const { transaction } = this.state;
     const { debit } = this.state;
-    return (
+    if (this.state.loading) {
+      return <Spinner />;
+    } else {
+      return (
       <div className="container desktop-body mobile-overflow">
         <div className="flex space-between">
           <div>
@@ -186,6 +192,7 @@ export default class Body extends React.Component {
           </div>
         </div>
       </div>
-    );
+      );
+    }
   }
 }
