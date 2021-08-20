@@ -1,15 +1,13 @@
 import React from 'react';
+import Spinner from './spinner';
 
 export default class Table extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // State to store for table rendering
       info: [],
       loading: true,
-      // State to help reduce for categoryName: amount
       total: '',
-      // State to help calculate expense total
       expenseTotal: ''
     };
     this.letsReduce = this.letsReduce.bind(this);
@@ -52,7 +50,7 @@ export default class Table extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <p>This is loading..</p>;
+      return <Spinner />;
     } else {
       const { info } = this.state;
       const { expenseTotal } = this.state;
@@ -65,7 +63,7 @@ export default class Table extends React.Component {
       }
       return (
       <div className="desktop-secondary flex flex-column pt-3 border-top border-1">
-        <table className="table">
+        <table className="table overflow">
           <caption scope="row" className="dm-text raleway mx-3">Expenses per Category</caption>
           <thead className="dm-text">
             <tr>

@@ -84,7 +84,7 @@ export default class CreateCredit extends React.Component {
   render() {
     const { categories } = this.state;
     return (
-      <div className="container   desktop-body my-4">
+      <div className="container desktop-body">
         <div>
           <h1 className="text-header dm-text">Creating New Credit Transaction: </h1>
         </div>
@@ -97,10 +97,9 @@ export default class CreateCredit extends React.Component {
           <form className="" onSubmit={this.handleSubmit}>
             <div className="flex justify-content-between">
             <div className="form-group input-row-1 input-group mx-3 border border-4 border-dark rounded ">
-              <span className="input-group-text"><i className="fas fa-money-bill-alt fa-2x logo-icon"></i></span>
               <span className="input-group-text fs-5 text-header">$</span>
               <label htmlFor="amount" className="form-label raleway dm-text"></label>
-                <input type="raleway" placeholder="Add a negative entry..." max="-0.01" step="0.01" id="amount" name="amount" className=" fs-5 form-control input-background numbers dm-text" value={this.state.amount} onChange={this.handleChange} required></input>
+              <input type="raleway" placeholder="Add a negative entry..." max="-0.01" step="0.01" id="amount" name="amount" className=" fs-5 form-control input-background numbers dm-text" value={this.state.amount} onChange={this.handleChange} required></input>
             </div>
             <div>
               <label className="raleway dm-text mx-3" htmlFor="date">Entry Date:</label>
@@ -109,7 +108,7 @@ export default class CreateCredit extends React.Component {
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="note" className="form-label raleway dm-text fs-3 mx-4">Notes:</label>
-              <textarea placeholder="Add a note..." className="form-control mx-4 input-background border border-4 rounded-pill border-dark dm-text fs-4 raleway" id="note" name="note" rows="1" onChange={this.handleChange} required></textarea>
+              <input placeholder="Add a note..." className="form-control mx-4 input-background border border-4 rounded-pill border-dark dm-text fs-4 raleway" id="note" name="note" onChange={this.handleChange} required></input>
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="category" className="form-label raleway dm-text fs-3 mx-4">Categories:</label>

@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import PieChart from './pie-chart';
+import PieChart from '../components/pie-chart';
+import Spinner from '../components/spinner';
 
 export default class Body extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ export default class Body extends React.Component {
       transaction: '',
       budget: '',
       budgetInput: '',
-      debit: ''
+      debit: '',
+      loading: true
     };
     this.getEntries = this.getEntries.bind(this);
     this.getBudget = this.getBudget.bind(this);
@@ -19,7 +21,7 @@ export default class Body extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.totalExpense = this.totalExpense.bind(this);
     this.totalCredit = this.totalCredit.bind(this);
-    this.getAccount = this.getAccount.bind(this);
+    this.getDebit = this.getDebit.bind(this);
   }
 
   // If component is mounted, this is to start these methods after my render
@@ -27,7 +29,7 @@ export default class Body extends React.Component {
     this.getEntries();
     this.getBudget();
     this.getTransactions();
-    this.getAccount();
+    this.getDebit();
   }
 
   // our get request to present information on the page
@@ -69,12 +71,13 @@ export default class Body extends React.Component {
       });
   }
 
-  getAccount() {
+  getDebit() {
     fetch('/api/account')
       .then(res => res.json())
       .then(debit => {
         this.setState({ debit: debit });
         this.totalCredit();
+        this.setState({ loading: false });
       });
   }
 
@@ -108,16 +111,19 @@ export default class Body extends React.Component {
     const { info } = this.state;
     const { transaction } = this.state;
     const { debit } = this.state;
-    return (
-      <div className="container desktop-body my-3">
+    if (this.state.loading) {
+      return <Spinner />;
+    } else {
+      return (
+      <div className="container desktop-body mobile-overflow">
         <div className="flex space-between">
           <div>
-            <p className="fs-1 dm-text text-header">Accounts</p>
+            <p className="fs-1 dm-text text-header">Dashboard</p>
           </div>
         </div>
         <div className="row">
           <div className="desktop-secondary border border-dark border-3 rounded col">
-            <button type="button" id="budget-btn" className="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-tooltip="Press to create a budget">
+            <button type="button" id="budget-btn" className="btn" data-bs-toggle="modal" data-bs-target="#budgetModal" data-tooltip="Click to create a budget">
               <p className="fs-4 text-center dm-text text-header my-2">{(!this.state.budget.length) ? 'Please Insert a Budget' : 'Budget: $' + this.state.budget[0].amount}</p>
             </button>
           </div>
@@ -129,7 +135,7 @@ export default class Body extends React.Component {
           </div>
         </div>
         <div className="row pt-3">
-          <div className="desktop-secondary pt-4 border border-dark border-3 col-lg-6">
+          <div className="desktop-secondary pt-4 border border-dark border-3 col-md-6">
             <p className="fs-3 dm-text text-header mx-2">Recent Transactions: </p>
             {
                 (!this.state.info.length)
@@ -145,15 +151,15 @@ export default class Body extends React.Component {
                   ))
             }
               <div className="border-top flex justify-content-end border-2 py-1">
-                <a href="#transactions" data-tooltip="Press to view all transactions">
+                <a href="#transactions" data-tooltip="Click to view all transactions">
                   <p className="fs-3 dm-text text-header my-4 mx-4">View All </p>
                 </a>
               </div>
           </div>
-          <div className="desktop-secondary pt-4 border border-dark border-3 col-lg-6">
+          <div className="desktop-secondary pt-4 border border-dark border-3 col-md-6">
             <p className="fs-3 dm-text text-header">Spending Chart:</p>
             <PieChart />
-            <div className="flex justify-content-end border-2 mx-5" data-tooltip="Press to view more spending info">
+            <div className="flex justify-content-end border-2 mx-5" data-tooltip="Click to view more spending info">
               <a href="#spending-chart">
                 <p className="fs-3 dm-text text-header my-4">View More </p>
               </a>
@@ -161,11 +167,11 @@ export default class Body extends React.Component {
           </div>
         </div>
         <div className="logo-icon flex justify-content-end">
-            <a href="#create-transaction" data-tooltip="Press to create an entry">
+            <a href="#create-transaction" data-tooltip="Click to create an entry">
               <i className="fas fa-plus-circle fa-6x py-5 logo-icon"></i>
             </a>
         </div>
-        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="budgetModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
@@ -186,6 +192,7 @@ export default class Body extends React.Component {
           </div>
         </div>
       </div>
-    );
+      );
+    }
   }
 }

@@ -1,22 +1,18 @@
-html {
-  height: 100%;
-}
-
-/* body {
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-} */
-
-.desktop-body {
-  background-color: #3e4c59;
-}
-
 #root {
   background-color: #1f2933;
+  height: 100vh;
 }
 
 .flex {
   display: flex;
+}
+
+.sm-padding-r {
+  padding-right: 1.2rem;
+}
+
+.sm-padding-t {
+  padding-top: 0.8rem;
 }
 
 .overflow {
@@ -36,11 +32,10 @@ html {
 }
 
 .transaction-p {
-  padding-left: 42px;
+  padding-left: 2.4rem;
 }
 
 /* Set width of the header nav-bar */
-
 .header-width {
   width: 50%;
 }
@@ -50,36 +45,29 @@ html {
   width: 90px;
 }
 
+.wrapper {
+  height: 40vh;
+  display: grid;
+  place-items: center;
+  background-color: #0c1821;
+}
+
+/* Later combine these two positions */
+
 /* Create a transaction box */
 .transaction-position {
   position: relative;
-  top: 8%;
-  left: 12%;
-  width: 75%;
-  height: 50%;
+  top: 5%;
 }
 
 /* Size of the box of credit/debit */
 .cd-position {
   position: relative;
-  top: 8%;
-  left: 12%;
-  width: 75%;
-  height: 50%;
+  top: 5%;
 }
 
 @media screen and (min-width: 769px) {
   /* To hide the desktop List.  */
-
-  /* #root {
-    height: 100vh;
-  } */
-
-  canvas {
-    height: 500px;
-    width: 200px;
-  }
-
   tr:hover {
     background-color: #3e4c59;
     color: #deedf0;
@@ -94,16 +82,10 @@ html {
     background-color: #3e4c59;
   }
 
-  .rt:hover {
-    transform: scale(1.04);
-  }
-
-  .transactions:hover {
-    transform: scale(1.025);
-  }
-
+  .transactions:hover,
+  .rt:hover,
   .categories:hover {
-    transform: scale(1.1);
+    background-color: #3e4c59;
   }
 
   #budget-btn:hover {
@@ -118,21 +100,38 @@ html {
   .delete-but:hover {
     opacity: unset;
     background-color: #3e4c59;
-    color: #deedf0;
   }
 
   .hidden-in-desktop {
     display: none;
   }
+
+  .desktop-body {
+    background-color: #3e4c59;
+
+    /* height: 84vh; */
+  }
+
+  .loader-circle {
+    width: 80px;
+    height: 80px;
+    border: 15px solid;
+    border-color: #03dac5 #486581;
+    border-radius: 50%;
+    animation: spin 1.5s infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
-  #root {
-    min-width: 810px;
-  }
-
-  .container {
-    min-width: 620px;
+  .desktop-body {
+    background-color: #3e4c59;
+    height: 92vh;
   }
 
   .hidden-in-mobile {
@@ -145,13 +144,30 @@ html {
     color: #deedf0;
   }
 
-  .footer {
-    /* min-width: 620px; */
-    width: 840px;
-    height: 5%;
+  /* .footer {
+    width: 340px;
     position: fixed;
-    z-index: 1;
     bottom: 0;
+    z-index: 1;
     background-color: #1f2933;
+  } */
+
+  .loader-circle {
+    width: 80px;
+    height: 80px;
+    border: 15px solid;
+    border-color: #03dac5 #486581;
+    border-radius: 50%;
+    animation: spin 1.5s infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .mobile-overflow {
+    overflow: auto;
   }
 }

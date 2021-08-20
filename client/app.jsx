@@ -1,24 +1,25 @@
 import React from 'react';
 import Home from './pages/home';
-import Header from './pages/header';
+import Header from './components/header';
 import CreateTransaction from './pages/create-transaction';
 import CreateCredit from './pages/create-credit';
 import CreateDebit from './pages/create-debit';
 import ParseRoute from '../server/parse-route';
-import NotFound from './pages/not-found';
+import NotFound from './components/not-found';
 import Transactions from './pages/transactions';
 import Folder from './pages/folder';
 import CreateCategory from './pages/create-category';
 import SpendingChart from './pages/spending-chart';
-import Footer from './pages/footer';
+import Footer from './components/footer';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       route: ParseRoute(window.location.hash),
-      entries: []
+      error: false
     };
+    this.errorMessage = this.errorMessage.bind(this);
   }
 
   // Hash Routing
@@ -26,6 +27,22 @@ export default class App extends React.Component {
     window.addEventListener('hashchange', () => {
       this.setState({ route: ParseRoute(window.location.hash) });
     });
+    fetch('/api/chart')
+      .then(res => res.json())
+      .catch(error => {
+        if (error.message === 'Failed to fetch') {
+          this.setState({ error: true });
+        }
+      });
+  }
+
+  errorMessage() {
+    return (
+      <div className="wrapper">
+        <p className="dm-text text-header fs-1"> Sorry there was an error with the network</p>
+        <p className="dm-text text-header fs-1"> Please check your internet connection, and try again.</p>
+      </div>
+    );
   }
 
   renderPage() {
@@ -64,6 +81,12 @@ export default class App extends React.Component {
   }
 
   render() {
+    const { error } = this.state;
+    if (error) {
+      return (
+        this.errorMessage()
+      );
+    }
     return (
       <>
         <Header />
