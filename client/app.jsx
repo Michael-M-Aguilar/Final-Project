@@ -17,8 +17,9 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       route: ParseRoute(window.location.hash),
-      entries: []
+      error: false
     };
+    this.errorMessage = this.errorMessage.bind(this);
   }
 
   // Hash Routing
@@ -26,6 +27,22 @@ export default class App extends React.Component {
     window.addEventListener('hashchange', () => {
       this.setState({ route: ParseRoute(window.location.hash) });
     });
+    fetch('/api/chart')
+      .then(res => res.json())
+      .catch(error => {
+        if (error.message === 'Failed to fetch') {
+          this.setState({ error: true });
+        }
+      });
+  }
+
+  errorMessage() {
+    return (
+      <div className="wrapper">
+        <p className="dm-text text-header fs-1"> Sorry there was an error with the network</p>
+        <p className="dm-text text-header fs-1"> Please check your internet connection, and try again.</p>
+      </div>
+    );
   }
 
   renderPage() {
@@ -64,6 +81,12 @@ export default class App extends React.Component {
   }
 
   render() {
+    const { error } = this.state;
+    if (error) {
+      return (
+        this.errorMessage()
+      );
+    }
     return (
       <>
         <Header />
