@@ -103,6 +103,26 @@ app.delete('/api/entries/', (req, res, next) => {
     });
 });
 
+app.delete('/api/categories/', (req, res, next) => {
+  const { categoryId } = req.body;
+  const sql = `
+  DELETE FROM "categories"
+  where "categoryId" = $1
+  returning *
+  `;
+  const params = [categoryId];
+  db.query(sql, params)
+    .then(result => {
+      res.sendStatus(204);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occured'
+      });
+    });
+});
+
 // Serves to only post debit entries.
 app.post('/api/debit/', (req, res) => {
   const { amount, note, date } = req.body;

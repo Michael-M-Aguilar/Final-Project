@@ -25,6 +25,16 @@ export default class Folders extends React.Component {
       });
   }
 
+  deleteCategories() {
+    const trial = event.target.id;
+    const categoryId = parseInt(trial);
+    fetch('/api/categories/', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ categoryId })
+    });
+  }
+
   render() {
     const { categories } = this.state;
     if (this.state.loading) {
