@@ -8,11 +8,11 @@ export default class Transactions extends React.Component {
     this.state = {
       info: [],
       infos: '',
-      entryId: '',
       loading: true
     };
     this.getEntries = this.getEntries.bind(this);
     this.deleteEntries = this.deleteEntries.bind(this);
+    this.saveId = this.saveId.bind(this);
   }
 
   // If component is mounted, this is to start getEntries method
@@ -30,9 +30,12 @@ export default class Transactions extends React.Component {
       });
   }
 
+  saveId() {
+    this.setState({ entryId: event.target.id });
+  }
+
   deleteEntries(event) {
-    const trial = event.target.id;
-    const entryId = parseInt(trial);
+    const { entryId } = this.state;
     fetch('/api/entries/', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -71,7 +74,7 @@ export default class Transactions extends React.Component {
               </div>
               <div className="flex flex-row">
                 <div>
-                  <button type="button" className="delete-but text-center dm-text raleway" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                  <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway" data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={this.saveId}>
                    Delete
                   </button>
                 </div>

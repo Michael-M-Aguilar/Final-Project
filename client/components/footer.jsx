@@ -8,13 +8,13 @@ export default class Footer extends React.Component {
             <span className="logo-icon transaction-p"><i className="fas fa-list fa-2x sm-padding-t "></i></span>
           </a>
           <a href="#folder">
-          <span className="logo-icon"><i className="fas fa-folder-open fa-2x sm-padding-t "></i></span>
+            <span className="logo-icon"><i className="fas fa-folder-open fa-2x sm-padding-t "></i></span>
           </a>
           <a href="#">
-          <span className="logo-icon" ><i className="fas fa-home fa-2x sm-padding-t "></i></span>
+            <span className="logo-icon" ><i className="fas fa-home fa-2x sm-padding-t "></i></span>
           </a>
           <a href="#spending-chart">
-          <span className="logo-icon"><i className="fas fa-chart-pie fa-2x sm-padding-t sm-padding-r"></i></span>
+            <span className="logo-icon"><i className="fas fa-chart-pie fa-2x sm-padding-t sm-padding-r"></i></span>
           </a>
         </div>
     );

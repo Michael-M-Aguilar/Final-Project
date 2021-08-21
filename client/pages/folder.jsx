@@ -11,6 +11,7 @@ export default class Folders extends React.Component {
     };
     this.getCategories = this.getCategories.bind(this);
     this.deleteCategories = this.deleteCategories.bind(this);
+    this.saveId = this.saveId.bind(this);
   }
 
   componentDidMount() {
@@ -26,9 +27,12 @@ export default class Folders extends React.Component {
       });
   }
 
+  saveId() {
+    this.setState({ categoryId: event.target.id });
+  }
+
   deleteCategories() {
-    const trial = event.target.id;
-    const categoryId = parseInt(trial);
+    const { categoryId } = this.state;
     fetch('/api/categories/', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -60,12 +64,12 @@ export default class Folders extends React.Component {
           </div>
           <div>
           {
-              (!this.state.categories.length)
+              (!categories.length)
                 ? '...'
                 : categories.map(key => (
               <div key={key.categoryId} className="border-top border-1 py-1 mx-3 categories flex">
                 <p className="fs-2 dm-text mx-3 raleway">{key.catName}</p>
-                <button type="button" className="delete-but text-center dm-text raleway" data-bs-toggle="modal" data-bs-target="#deleteCat">Delete</button>
+                  <button type="button" id={key.categoryId} className="delete-but text-center dm-text raleway" data-bs-toggle="modal" data-bs-target="#deleteCat" onClick={this.saveId}>Delete</button>
                   <div className="modal fade" id="deleteCat" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
                       <div className="modal-content">

@@ -68,7 +68,7 @@ app.post('/api/entries/', (req, res) => {
   RETURNING *
   `;
 
-  const params = [1, 1, category, amount, note, location, date];
+  const params = [1, 1, category, -amount, note, location, date];
   db.query(sql, params)
     .then(result => {
       const [entry] = result.rows;
