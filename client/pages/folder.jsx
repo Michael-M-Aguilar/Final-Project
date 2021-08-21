@@ -10,6 +10,7 @@ export default class Folders extends React.Component {
       loading: true
     };
     this.getCategories = this.getCategories.bind(this);
+    this.deleteCategories = this.deleteCategories.bind(this);
   }
 
   componentDidMount() {
@@ -32,7 +33,13 @@ export default class Folders extends React.Component {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ categoryId })
-    });
+    })
+      .then(() => {
+        this.getCategories();
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   render() {
@@ -56,8 +63,23 @@ export default class Folders extends React.Component {
               (!this.state.categories.length)
                 ? '...'
                 : categories.map(key => (
-              <div key={key.categoryId} className="border-top border-1 py-1 mx-3 categories">
+              <div key={key.categoryId} className="border-top border-1 py-1 mx-3 categories flex">
                 <p className="fs-2 dm-text mx-3 raleway">{key.catName}</p>
+                <button type="button" className="delete-but text-center dm-text raleway" data-bs-toggle="modal" data-bs-target="#deleteCat">Delete</button>
+                  <div className="modal fade" id="deleteCat" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title text-header dm-text" id="exampleModalLabel">Are you sure you want to delete this transaction?</h5>
+                          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-footer flex justify-content-between">
+                          <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                          <button type="button" id={key.categoryId} className="btn btn-dark rounded mx-4" data-bs-dismiss="modal" onClick={this.deleteCategories}>Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               </div>
                 ))
           }

@@ -1,6 +1,6 @@
 #root {
   background-color: #1f2933;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .flex {
@@ -131,7 +131,7 @@
 @media screen and (max-width: 768px) {
   .desktop-body {
     background-color: #3e4c59;
-    height: 92vh;
+    min-height: 92vh;
   }
 
   .hidden-in-mobile {
@@ -167,7 +167,7 @@
     }
   }
 
-  .mobile-overflow {
+  /* .mobile-overflow {
     overflow: auto;
-  }
+  } */
 }
