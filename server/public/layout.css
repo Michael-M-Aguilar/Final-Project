@@ -144,13 +144,13 @@
     color: #deedf0;
   }
 
-  /* .footer {
-    width: 340px;
+  .footer {
+    width: 100vw;
     position: fixed;
     bottom: 0;
     z-index: 1;
     background-color: #1f2933;
-  } */
+  }
 
   .loader-circle {
     width: 80px;
@@ -166,8 +166,4 @@
       transform: rotate(360deg);
     }
   }
-
-  /* .mobile-overflow {
-    overflow: auto;
-  } */
 }

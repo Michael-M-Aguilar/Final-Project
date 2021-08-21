@@ -115,7 +115,7 @@ export default class Body extends React.Component {
       return <Spinner />;
     } else {
       return (
-      <div className="container desktop-body mobile-overflow">
+      <div className="container desktop-body">
         <div className="flex space-between">
           <div>
             <p className="fs-1 dm-text text-header">Dashboard</p>
@@ -156,12 +156,14 @@ export default class Body extends React.Component {
                 </a>
               </div>
           </div>
-          <div className="desktop-secondary pt-4 border border-dark border-3 col-md-6">
-            <p className="fs-3 dm-text text-header">Spending Chart:</p>
-            <PieChart />
-            <div className="flex justify-content-end border-2 mx-5" data-tooltip="Click to view more spending info">
+          <div className="flex justify-content-between flex-column desktop-secondary border border-dark border-3 col-md-6">
+            <div className="pt-4">
+              <p className="fs-3 dm-text text-header">Spending Chart:</p>
+              <PieChart />
+            </div>
+            <div className="flex justify-content-end border-2 mx-4" data-tooltip="Click to view more spending info">
               <a href="#spending-chart">
-                <p className="fs-3 dm-text text-header my-4">View More </p>
+                <p className="fs-3 dm-text text-header">View More </p>
               </a>
             </div>
           </div>

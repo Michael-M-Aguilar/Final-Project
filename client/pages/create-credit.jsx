@@ -96,15 +96,15 @@ export default class CreateCredit extends React.Component {
           </div>
           <form className="" onSubmit={this.handleSubmit}>
             <div className="flex justify-content-between">
-            <div className="form-group input-row-1 input-group mx-3 border border-4 border-dark rounded ">
-              <span className="input-group-text fs-5 text-header">$</span>
-              <label htmlFor="amount" className="form-label raleway dm-text"></label>
-              <input type="number" placeholder="Add the expense..." min="0.01" step="0.01" id="amount" name="amount" className=" fs-5 form-control input-background numbers dm-text" value={this.state.amount} onChange={this.handleChange} required></input>
-            </div>
-            <div>
-              <label className="raleway dm-text mx-3" htmlFor="date">Entry Date:</label>
-              <input type="date" id="date" className="raleway dm-text" name="entry-date" value={this.state.date} onChange={this.handleChange} min="2020-01-01" required></input>
-            </div>
+              <div className="input-group mx-3 border border-4 border-dark rounded ">
+                <span className="input-group-text fs-5 text-header">$</span>
+                <label htmlFor="amount" className="form-label raleway dm-text"></label>
+                <input type="number" placeholder="Add the expense..." min="0.01" step="0.01" id="amount" name="amount" className=" fs-5 form-control input-background numbers dm-text" value={this.state.amount} onChange={this.handleChange} required></input>
+              </div>
+              <div>
+                <label className="raleway dm-text mx-3" htmlFor="date">Entry Date:</label>
+                <input type="date" id="date" className="raleway dm-text" name="entry-date" value={this.state.date} onChange={this.handleChange} min="2020-01-01" required></input>
+              </div>
             </div>
             <div className="form-group input-group my-4">
               <label htmlFor="note" className="form-label raleway dm-text fs-3 mx-4">Notes:</label>
