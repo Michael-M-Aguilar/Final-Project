@@ -22,7 +22,7 @@ export default class Transactions extends React.Component {
 
   // our get request to present information on the page
   getEntries() {
-    fetch('/api/transactions')
+    fetch('/api/entries')
       .then(res => res.json())
       .then(data => {
         this.setState({ infos: data });
@@ -70,7 +70,8 @@ export default class Transactions extends React.Component {
             <div key={key.entryId} entryid={key.entryId} className="transactions flex space-between border-top border-2 py-2">
               <div className="flex flex-column">
                 <p className="fs-5 dm-text mx-2 raleway">{key.note}</p>
-                <p className="fs-5 dm-text mx-2 raleway">{(!key.location) ? '' : 'Location: ' + key.location}</p>
+                <p className="fs-5 dm-text mx-2 raleway">Category: {key.catName}</p>
+                <p className="fs-5 dm-text mx-2 raleway">{(!key.location) ? null : 'Location: ' + key.location}</p>
               </div>
               <div className="flex flex-row">
                 <div>

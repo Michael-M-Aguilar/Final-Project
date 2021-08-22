@@ -25,31 +25,11 @@ app.get('/api/entries', (req, res) => {
   "amount",
   "note",
   "date",
-  "location"
+  "location",
+  "catName"
   FROM "entries"
-  JOIN "users" using ("userId")
+  JOIN "categories" using ("categoryId")
   order by "entryId" desc
-  `;
-  // no params so no 2nd argumnet needed.
-  db.query(sql)
-    .then(result => {
-      const userInfo = result.rows;
-      res.json(userInfo);
-    });
-});
-
-// Get request to GET from entries BUT date descend.
-app.get('/api/transactions', (req, res) => {
-  const sql = `
-  SELECT
-  "entryId",
-  "amount",
-  "note",
-  "date",
-  "location"
-  FROM "entries"
-  JOIN "users" using ("userId")
-  order by "date" desc
   `;
   // no params so no 2nd argumnet needed.
   db.query(sql)
