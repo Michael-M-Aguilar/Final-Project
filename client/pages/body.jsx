@@ -115,23 +115,23 @@ export default class Body extends React.Component {
       return <Spinner />;
     } else {
       return (
-      <div className="container desktop-body mobile-overflow">
+      <div className="container desktop-body">
         <div className="flex space-between">
           <div>
             <p className="fs-1 dm-text text-header">Dashboard</p>
           </div>
         </div>
         <div className="row">
-          <div className="desktop-secondary border border-dark border-3 rounded col">
+            <div className="desktop-secondary border border-dark border-3 rounded col-md-4 col-sm-6">
             <button type="button" id="budget-btn" className="btn" data-bs-toggle="modal" data-bs-target="#budgetModal" data-tooltip="Click to create a budget">
-              <p className="fs-4 text-center dm-text text-header my-2">{(!this.state.budget.length) ? 'Please Insert a Budget' : 'Budget: $' + this.state.budget[0].amount}</p>
+                <p className="fs-4 text-center text-header my-3 dm-text">{(!this.state.budget.length) ? 'Please Insert a Budget' : 'Budget: $' + this.state.budget[0].amount}</p>
             </button>
           </div>
-          <div className="desktop-secondary border border-dark border-3 rounded col">
-            <p className="fs-4 text-center text-header my-3 mx-3 dm-text">Expense: <span className="dm-negative numbers">{(!transaction.length) ? '...' : '$' + this.totalExpense()}</span></p>
+            <div className="desktop-secondary border border-dark border-3 rounded col-md-4 col-sm-6">
+            <p className="fs-4 text-center text-header my-3 dm-text">Expense: <span className="dm-negative numbers">{(!transaction.length) ? '...' : '$' + this.totalExpense()}</span></p>
           </div>
-          <div className="desktop-secondary border border-dark border-3 rounded col">
-            <p className="fs-4 text-center text-header my-3 mx-3 dm-text">Income: <span className="dm-positive numbers">{(!debit.length) ? '...' : '$' + this.totalCredit()}</span></p>
+            <div className="desktop-secondary border border-dark border-3 rounded col-md-4 col-sm-6">
+            <p className="fs-4 text-center text-header my-3 dm-text">Income: <span className="dm-positive numbers">{(!debit.length) ? '...' : '$' + this.totalCredit()}</span></p>
           </div>
         </div>
         <div className="row pt-3">
@@ -141,11 +141,14 @@ export default class Body extends React.Component {
                 (!this.state.info.length)
                   ? <p className="text-header mx-2 dm-text">Insert an entry using the plus sign on the bottom right!</p>
                   : info.slice(0, 4).map(key => (
-                    <div key={key.entryId} className="flex space-between border-top border-2 py-1 mx-1 my-1 rt">
-                      <p className="mx-2 fs-5 dm-text raleway my-3">{(!key) ? '...' : key.note}</p>
-                      <div className="flex flex-column mx-1">
-                        <p className={(!key) ? '...' : (key.amount[0] === '-') ? 'fs-5 dm-text numbers dm-negative numbers text-end my-3' : 'fs-5 dm-text numbers dm-positive numbers text-end my-3'}>{(!key) ? 'Loading ...' : '$ ' + key.amount}</p>
-                        <p className="fs-5 dm-text raleway my-1">{(!key) ? '...' : moment(key.date).format('MMMM Do YYYY')}</p>
+                    <div key={key.entryId} className="flex space-between border-top border-2 py-1 rt">
+                      <div className="flex flex-column mx-2">
+                        <p className="fs-5 dm-text raleway">{(!key) ? '...' : key.note}</p>
+                        <p className="fs-5 dm-text raleway">Category: {key.catName}</p>
+                      </div>
+                      <div className="flex flex-column">
+                        <p className={(!key) ? '...' : (key.amount[0] === '-') ? 'fs-5 dm-text numbers dm-negative numbers text-end' : 'fs-5 dm-text numbers dm-positive numbers text-end'}>{(!key) ? 'Loading ...' : '$ ' + key.amount}</p>
+                        <p className="fs-5 dm-text raleway text-end">{(!key) ? '...' : moment(key.date).format('MMMM Do YYYY')}</p>
                       </div>
                     </div>
                   ))
@@ -156,12 +159,14 @@ export default class Body extends React.Component {
                 </a>
               </div>
           </div>
-          <div className="desktop-secondary pt-4 border border-dark border-3 col-md-6">
-            <p className="fs-3 dm-text text-header">Spending Chart:</p>
-            <PieChart />
-            <div className="flex justify-content-end border-2 mx-5" data-tooltip="Click to view more spending info">
+          <div className="flex justify-content-between flex-column desktop-secondary border border-dark border-3 col-md-6">
+            <div className="pt-4">
+              <p className="fs-3 dm-text text-header">Spending Chart:</p>
+              <PieChart />
+            </div>
+            <div className="flex justify-content-end border-2 mx-4" data-tooltip="Click to view more spending info">
               <a href="#spending-chart">
-                <p className="fs-3 dm-text text-header my-4">View More </p>
+                <p className="fs-3 dm-text text-header">View More </p>
               </a>
             </div>
           </div>

@@ -1,6 +1,6 @@
 #root {
   background-color: #1f2933;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .flex {
@@ -93,6 +93,7 @@
   }
 
   .delete-but {
+    height: 30px;
     opacity: 0;
     transition: ease 1;
   }
@@ -131,7 +132,7 @@
 @media screen and (max-width: 768px) {
   .desktop-body {
     background-color: #3e4c59;
-    height: 92vh;
+    min-height: 92vh;
   }
 
   .hidden-in-mobile {
@@ -139,18 +140,19 @@
   }
 
   .delete-but {
+    height: 30px;
     opacity: 1;
     background-color: #3e4c59;
     color: #deedf0;
   }
 
-  /* .footer {
-    width: 340px;
+  .footer {
+    width: 100vw;
     position: fixed;
     bottom: 0;
     z-index: 1;
     background-color: #1f2933;
-  } */
+  }
 
   .loader-circle {
     width: 80px;
@@ -165,9 +167,5 @@
     to {
       transform: rotate(360deg);
     }
-  }
-
-  .mobile-overflow {
-    overflow: auto;
   }
 }

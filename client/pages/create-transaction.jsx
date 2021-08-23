@@ -4,7 +4,7 @@ import React from 'react';
 export default class CreateTransaction extends React.Component {
   render() {
     return (
-      <div className="container desktop-body overflow">
+      <div className="container desktop-body">
         <div>
           <h1 className="text-header dm-text">Creating New Transactions: </h1>
         </div>

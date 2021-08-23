@@ -25,31 +25,11 @@ app.get('/api/entries', (req, res) => {
   "amount",
   "note",
   "date",
-  "location"
+  "location",
+  "catName"
   FROM "entries"
-  JOIN "users" using ("userId")
+  JOIN "categories" using ("categoryId")
   order by "entryId" desc
-  `;
-  // no params so no 2nd argumnet needed.
-  db.query(sql)
-    .then(result => {
-      const userInfo = result.rows;
-      res.json(userInfo);
-    });
-});
-
-// Get request to GET from entries BUT date descend.
-app.get('/api/transactions', (req, res) => {
-  const sql = `
-  SELECT
-  "entryId",
-  "amount",
-  "note",
-  "date",
-  "location"
-  FROM "entries"
-  JOIN "users" using ("userId")
-  order by "date" desc
   `;
   // no params so no 2nd argumnet needed.
   db.query(sql)
@@ -68,7 +48,7 @@ app.post('/api/entries/', (req, res) => {
   RETURNING *
   `;
 
-  const params = [1, 1, category, amount, note, location, date];
+  const params = [1, 1, category, -amount, note, location, date];
   db.query(sql, params)
     .then(result => {
       const [entry] = result.rows;
@@ -91,6 +71,26 @@ app.delete('/api/entries/', (req, res, next) => {
   returning *
   `;
   const params = [entryId];
+  db.query(sql, params)
+    .then(result => {
+      res.sendStatus(204);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occured'
+      });
+    });
+});
+
+app.delete('/api/categories/', (req, res, next) => {
+  const { categoryId } = req.body;
+  const sql = `
+  DELETE FROM "categories"
+  where "categoryId" = $1
+  returning *
+  `;
+  const params = [categoryId];
   db.query(sql, params)
     .then(result => {
       res.sendStatus(204);

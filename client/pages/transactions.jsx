@@ -8,11 +8,11 @@ export default class Transactions extends React.Component {
     this.state = {
       info: [],
       infos: '',
-      entryId: '',
       loading: true
     };
     this.getEntries = this.getEntries.bind(this);
     this.deleteEntries = this.deleteEntries.bind(this);
+    this.saveId = this.saveId.bind(this);
   }
 
   // If component is mounted, this is to start getEntries method
@@ -22,7 +22,7 @@ export default class Transactions extends React.Component {
 
   // our get request to present information on the page
   getEntries() {
-    fetch('/api/transactions')
+    fetch('/api/entries')
       .then(res => res.json())
       .then(data => {
         this.setState({ infos: data });
@@ -30,9 +30,12 @@ export default class Transactions extends React.Component {
       });
   }
 
+  saveId() {
+    this.setState({ entryId: event.target.id });
+  }
+
   deleteEntries(event) {
-    const trial = event.target.id;
-    const entryId = parseInt(trial);
+    const { entryId } = this.state;
     fetch('/api/entries/', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -64,14 +67,15 @@ export default class Transactions extends React.Component {
           (!this.state.infos.length)
             ? ''
             : infos.map(key => (
-            <div key={key.entryId} entryid={key.entryId} className="transactions flex space-between border-top border-2 py-2">
+            <div key={key.entryId} entryid={key.entryId} className="transactions flex space-between border-top border-2">
               <div className="flex flex-column">
                 <p className="fs-5 dm-text mx-2 raleway">{key.note}</p>
-                <p className="fs-5 dm-text mx-2 raleway">{(!key.location) ? '' : 'Location: ' + key.location}</p>
+                <p className="fs-5 dm-text mx-2 raleway">Category: {key.catName}</p>
+                <p className="fs-5 dm-text mx-2 raleway">{(!key.location) ? null : 'Location: ' + key.location}</p>
               </div>
               <div className="flex flex-row">
                 <div>
-                  <button type="button" className="delete-but text-center dm-text raleway" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                  <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway" data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={this.saveId}>
                    Delete
                   </button>
                 </div>
