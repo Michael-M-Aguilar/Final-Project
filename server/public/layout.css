@@ -93,6 +93,7 @@
   }
 
   .delete-but {
+    height: 30px;
     opacity: 0;
     transition: ease 1;
   }
@@ -139,6 +140,7 @@
   }
 
   .delete-but {
+    height: 30px;
     opacity: 1;
     background-color: #3e4c59;
     color: #deedf0;

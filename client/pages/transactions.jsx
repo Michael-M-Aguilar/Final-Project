@@ -67,7 +67,7 @@ export default class Transactions extends React.Component {
           (!this.state.infos.length)
             ? ''
             : infos.map(key => (
-            <div key={key.entryId} entryid={key.entryId} className="transactions flex space-between border-top border-2 py-2">
+            <div key={key.entryId} entryid={key.entryId} className="transactions flex space-between border-top border-2">
               <div className="flex flex-column">
                 <p className="fs-5 dm-text mx-2 raleway">{key.note}</p>
                 <p className="fs-5 dm-text mx-2 raleway">Category: {key.catName}</p>

@@ -30,7 +30,7 @@ a {
 }
 
 .categories {
-  max-width: 30%;
+  max-width: 58%;
 }
 
 .transactions,
@@ -92,6 +92,10 @@ input:focus,
 
 .text-end {
   text-align: end;
+}
+
+.text-align-center {
+  text-align: center;
 }
 
 [data-tooltip]::before {
