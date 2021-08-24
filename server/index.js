@@ -25,6 +25,25 @@ app.get('/api/entries', (req, res) => {
   "amount",
   "note",
   "date",
+  "location"
+  FROM "entries"
+  order by "entryId" desc
+  `;
+  // no params so no 2nd argumnet needed.
+  db.query(sql)
+    .then(result => {
+      const userInfo = result.rows;
+      res.json(userInfo);
+    });
+});
+
+app.get('/api/transaction', (req, res) => {
+  const sql = `
+  SELECT
+  "entryId",
+  "amount",
+  "note",
+  "date",
   "location",
   "catName"
   FROM "entries"
