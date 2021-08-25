@@ -1,15 +1,24 @@
-import React from 'react';
+// import React from 'react';
+// import PlacesAutocomplete from 'react-places-autocomplete';
 
-// import PlacesAutocomplete, {
-//   geocodeByAddress,
-//   getLatLng
-// } from 'react-places-autocomplete';
+// function GooglePlaces({ isLoaded, isSuccess }) {
+//   const [address, setAddress] = React.useState('');
 
-export default class GooglePlaces extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true
-    };
-  }
-}
+//   const handleChange = value => {
+//     setAddress(value);
+//   };
+
+//   const handleSelect = value => {
+//     setAddress(value);
+//   };
+
+//   if (isLoaded && isSuccess) {
+//     return (
+//       <div>
+//         <PlacesAutocomplete value={address}
+//         onChange={handleChange}
+//         onSelect={handleSelect} >
+//       </div>
+//     )
+//   }
+// }
