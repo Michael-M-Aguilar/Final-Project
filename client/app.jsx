@@ -11,6 +11,7 @@ import Folder from './pages/folder';
 import CreateCategory from './pages/create-category';
 import SpendingChart from './pages/spending-chart';
 import Footer from './components/footer';
+// import GooglePlaces from './components/google-places';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -76,6 +77,9 @@ export default class App extends React.Component {
     if (route.path === 'spending-chart') {
       return <SpendingChart />;
     }
+    // if (route.path === 'google-places') {
+    //   return <GooglePlaces />;
+    // }
     // Else if there's an error, direct user to error page.
     return <NotFound />;
   }

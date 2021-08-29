@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import PieChart from '../components/pie-chart';
 import Spinner from '../components/spinner';
+import GooglePlaces from '../components/google-places';
 
 export default class Body extends React.Component {
   constructor(props) {
@@ -162,6 +163,7 @@ export default class Body extends React.Component {
             <div className="pt-4">
               <p className="fs-3 dm-text text-header">Spending Chart:</p>
               <PieChart />
+              <GooglePlaces />
             </div>
             <div className="flex justify-content-end border-2 mx-4" data-tooltip="Click to view more spending info">
               <a href="#spending-chart">
