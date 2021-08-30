@@ -1,7 +1,8 @@
 import React from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
+import scriptLoader from 'react-async-script-loader';
 
-export default function GooglePlaces({ isScriptLoaded, isScriptLoadSuccess }) {
+function GooglePlaces({ isScriptLoaded, isScriptLoadSuccess }) {
   const [address, setAddress] = React.useState('');
 
   const handleChange = value => {
@@ -12,11 +13,12 @@ export default function GooglePlaces({ isScriptLoaded, isScriptLoadSuccess }) {
     setAddress(value);
   };
   if (isScriptLoaded && isScriptLoadSuccess) {
-    // console.log('it loaded');
+    console.log('it loaded');
     return <div>
       <PlacesAutocomplete value={address} onChange={handleChange} onSelect={handleSelect}>
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
+            <label>L</label>
             <input {...getInputProps({
               placeholder: 'Enter Address ...'
             })} />
@@ -39,6 +41,9 @@ export default function GooglePlaces({ isScriptLoaded, isScriptLoadSuccess }) {
       </PlacesAutocomplete>
     </div>;
   } else {
+    console.log('nope');
     return <div></div>;
   }
 }
+
+export default scriptLoader(['https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3jT_ic6aZgNdSGSUHBinGX7SqMj0fN4&libraries=places']);
