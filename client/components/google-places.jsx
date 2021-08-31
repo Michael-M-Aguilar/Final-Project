@@ -46,4 +46,4 @@ function GooglePlaces({ isScriptLoaded, isScriptLoadSuccess }) {
   }
 }
 
-export default scriptLoader(['https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3jT_ic6aZgNdSGSUHBinGX7SqMj0fN4&libraries=places']);
+export default scriptLoader([`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_API}&libraries=places`]);
