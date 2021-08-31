@@ -4,7 +4,7 @@ import Spinner from '../components/spinner';
 export default class Transactions extends React.Component {
   constructor(props) {
     super(props);
-    // array to hold our entries to present on the page.
+
     this.state = {
       info: [],
       infos: '',
@@ -15,12 +15,10 @@ export default class Transactions extends React.Component {
     this.saveId = this.saveId.bind(this);
   }
 
-  // If component is mounted, this is to start getEntries method
   componentDidMount() {
     this.getEntries();
   }
 
-  // our get request to present information on the page
   getEntries() {
     fetch('/api/transaction')
       .then(res => res.json())

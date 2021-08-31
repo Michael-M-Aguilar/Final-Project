@@ -163,7 +163,6 @@ export default class Body extends React.Component {
             <div className="pt-4">
               <p className="fs-3 dm-text text-header">Spending Chart:</p>
               <PieChart />
-              {/* <GooglePlaces /> */}
             </div>
             <div className="flex justify-content-end border-2 mx-4" data-tooltip="Click to view more spending info">
               <a href="#spending-chart">

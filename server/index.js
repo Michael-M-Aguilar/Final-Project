@@ -17,7 +17,6 @@ const app = express();
 app.use(staticMiddleware);
 app.use(jsonMiddleware);
 
-// Get information necessary for entries to present in body.
 app.get('/api/entries', (req, res) => {
   const sql = `
   SELECT
@@ -29,7 +28,6 @@ app.get('/api/entries', (req, res) => {
   FROM "entries"
   order by "entryId" desc
   `;
-  // no params so no 2nd argumnet needed.
   db.query(sql)
     .then(result => {
       const userInfo = result.rows;
@@ -58,7 +56,6 @@ app.get('/api/transaction', (req, res) => {
     });
 });
 
-// To help post credit entries
 app.post('/api/entries', (req, res) => {
   const { category, amount, note, address, date } = req.body;
   const sql = `
@@ -145,7 +142,6 @@ app.post('/api/debit', (req, res) => {
     });
 });
 
-// To get my categories from it's respective table
 app.get('/api/categories', (req, res) => {
   const sql = `
   SELECT DISTINCT
@@ -162,7 +158,6 @@ app.get('/api/categories', (req, res) => {
     });
 });
 
-// Allows user to add their own categories.
 app.post('/api/categories', (req, res) => {
   const { catName } = req.body;
   const sql = `
@@ -185,7 +180,6 @@ app.post('/api/categories', (req, res) => {
     });
 });
 
-// To get the current budgets from the DB.
 app.get('/api/budget', (req, res) => {
   const sql = `
   SELECT "userId",
@@ -201,7 +195,7 @@ app.get('/api/budget', (req, res) => {
       res.json(budget);
     });
 });
-// To post a new budget onto the page.
+
 app.post('/api/budget', (req, res) => {
   const { budget } = req.body;
   const sql = `

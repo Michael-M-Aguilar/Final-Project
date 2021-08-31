@@ -35,7 +35,6 @@
   padding-left: 2.4rem;
 }
 
-/* Set width of the header nav-bar */
 .header-width {
   width: 50%;
 }
@@ -52,22 +51,12 @@
   background-color: #0c1821;
 }
 
-/* Later combine these two positions */
-
-/* Create a transaction box */
-.transaction-position {
-  position: relative;
-  top: 5%;
-}
-
-/* Size of the box of credit/debit */
-.cd-position {
+.cd-transition-position {
   position: relative;
   top: 5%;
 }
 
 @media screen and (min-width: 769px) {
-  /* To hide the desktop List.  */
   tr:hover {
     background-color: #3e4c59;
     color: #deedf0;

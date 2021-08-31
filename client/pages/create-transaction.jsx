@@ -8,7 +8,7 @@ export default class CreateTransaction extends React.Component {
         <div>
           <h1 className="text-header dm-text">Creating New Transactions: </h1>
         </div>
-        <div className="border border-5 border-dark rounded transaction-position desktop-secondary py-4">
+        <div className="border border-5 border-dark rounded cd-transition-position desktop-secondary py-4">
           <div className="flex justify-content-center my-5">
             <h3 className="text-header dm-text px-5">Which would you like to add?</h3>
           </div>
