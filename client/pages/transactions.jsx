@@ -55,7 +55,7 @@ export default class Transactions extends React.Component {
       return <Spinner />;
     } else {
       return (
-      <div className="container desktop-body overflow">
+      <div className="container create-body overflow">
         <div className="mx-2 ">
           <h1 className="text-header dm-text">List of all Transactions:</h1>
         </div>

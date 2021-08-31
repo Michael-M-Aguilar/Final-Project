@@ -35,7 +35,7 @@ export default class CreateCategory extends React.Component {
 
   render() {
     return (
-      <div className="container desktop-body my-3">
+      <div className="container create-body my-3">
         <div className="my-3 mx-2">
           <p className="fs-1 text-header dm-text mt-1">Creating New Category:</p>
         </div>

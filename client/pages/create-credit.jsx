@@ -10,7 +10,6 @@ export default class CreateCredit extends React.Component {
       note: '',
       category: '',
       categories: '',
-      location: '',
       date: '',
       address: ''
     };
@@ -30,6 +29,11 @@ export default class CreateCredit extends React.Component {
 
   handleAddressChange(address) {
     this.setState({ address });
+    if (event.target.id === 'address') {
+      this.setState({
+        address: event.target.value
+      });
+    }
   }
 
   handleSelect(address) {
@@ -54,8 +58,8 @@ export default class CreateCredit extends React.Component {
     return (
       <>
         <label className="google-label dm-text raleway fs-3 mx-4">Location:</label>
-        <input {...getInputProps({ placeholder: '   (This is optional)...' })} className="form-control mx-1 input-background raleway fs-4 dm-text border border-4 rounded-pill border-dark" />
-        <div>
+        <input {...getInputProps({ placeholder: '   (This is optional)...' })} id="address" className="form-control mx-1 input-background raleway fs-4 dm-text border border-4 rounded-pill border-dark"/>
+        <div className="flex flex-column">
           {loading
             ? <div> ... loading </div>
             : null}
@@ -64,7 +68,7 @@ export default class CreateCredit extends React.Component {
               <div {...getSuggestionItemProps(suggestion)}
                 key={suggestion.index}
                 className="suggestion-item dm-text raleway mx-3">
-                <span>{suggestion.description}</span>
+                <div>{suggestion.description}</div>
               </div>
             );
           })}
@@ -104,11 +108,6 @@ export default class CreateCredit extends React.Component {
         category: event.target.value
       });
     }
-    if (event.target.id === 'location') {
-      this.setState({
-        location: event.target.value
-      });
-    }
     if (event.target.id === 'date') {
       this.setState({
         date: event.target.value
@@ -137,7 +136,7 @@ export default class CreateCredit extends React.Component {
     // console.log('this is being loaded' + renderPlaces);
     const { categories } = this.state;
     return (
-      <div className="container desktop-body">
+      <div className="container create-body">
         <div>
           <h1 className="text-header dm-text">Creating New Credit Transaction: </h1>
         </div>

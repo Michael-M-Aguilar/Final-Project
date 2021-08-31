@@ -52,7 +52,7 @@ export default class Folders extends React.Component {
       return <Spinner />;
     } else {
       return (
-      <div className="container desktop-body overflow">
+      <div className="container create-body overflow">
         <div className="mx-2">
           <h1 className="text-header dm-text fs-1">List of Categories:</h1>
         </div>

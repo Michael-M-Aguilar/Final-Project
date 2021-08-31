@@ -59,15 +59,15 @@ app.get('/api/transaction', (req, res) => {
 });
 
 // To help post credit entries
-app.post('/api/entries/', (req, res) => {
-  const { category, amount, note, location, date } = req.body;
+app.post('/api/entries', (req, res) => {
+  const { category, amount, note, address, date } = req.body;
   const sql = `
   INSERT INTO "entries" ("userId", "accountId", "categoryId", "amount", "note", "location", "date")
   VALUES ($1, $2, $3, $4, $5, $6, $7)
   RETURNING *
   `;
 
-  const params = [1, 1, category, -amount, note, location, date];
+  const params = [1, 1, category, -amount, note, address, date];
   db.query(sql, params)
     .then(result => {
       const [entry] = result.rows;
@@ -82,7 +82,7 @@ app.post('/api/entries/', (req, res) => {
 });
 
 // To help delete entries
-app.delete('/api/entries/', (req, res, next) => {
+app.delete('/api/entries', (req, res, next) => {
   const { entryId } = req.body;
   const sql = `
   DELETE FROM "entries"
@@ -102,7 +102,7 @@ app.delete('/api/entries/', (req, res, next) => {
     });
 });
 
-app.delete('/api/categories/', (req, res, next) => {
+app.delete('/api/categories', (req, res, next) => {
   const { categoryId } = req.body;
   const sql = `
   DELETE FROM "categories"
@@ -123,7 +123,7 @@ app.delete('/api/categories/', (req, res, next) => {
 });
 
 // Serves to only post debit entries.
-app.post('/api/debit/', (req, res) => {
+app.post('/api/debit', (req, res) => {
   const { amount, note, date } = req.body;
   const sql = `
   INSERT INTO "entries" ("userId", "accountId", "categoryId", "amount", "note", "location", "date")
