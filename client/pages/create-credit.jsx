@@ -33,10 +33,10 @@ export default class CreateCredit extends React.Component {
   }
 
   handleSelect(address) {
-    this.setState({ address });
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng));
+      .then(latLng => console.log('Success', latLng))
+      .catch(error => console.error('Error', error));
   }
 
   renderPlaces() {
@@ -48,6 +48,28 @@ export default class CreateCredit extends React.Component {
           )}
         </PlacesAutocomplete>
       </label>
+    );
+  }
+
+  renderInput({ getInputProps, suggestions, getSuggestionItemProps, loading }) {
+    return (
+      <>
+        <input {...getInputProps({ placeholder: 'Enter a location... (optional)' })} />
+        <div>
+          {loading
+            ? <div> ... loading </div>
+            : null}
+          {suggestions.map(suggestion => {
+            return (
+              <div {...getSuggestionItemProps(suggestion)}
+                key={suggestion.index}
+                className="suggestion-item">
+                {suggestion.description}
+              </div>
+            );
+          })}
+        </div>
+      </>
     );
   }
 
@@ -111,7 +133,8 @@ export default class CreateCredit extends React.Component {
   }
 
   render() {
-    const { renderPlaces } = this.renderPlaces;
+    const renderPlaces = this.renderPlaces();
+    // console.log('this is being loaded' + renderPlaces);
     const { categories } = this.state;
     return (
       <div className="container desktop-body">
@@ -154,8 +177,8 @@ export default class CreateCredit extends React.Component {
               </select>
             </div>
             <div className="form-group input-group my-4">
-              <label htmlFor="location" className="form-label raleway dm-text fs-3 mx-4">Location:</label>
-              <input type="text" placeholder="Add a location... (optional)" id="location" name="location" className="form-control mx-4 input-background raleway fs-4 dm-text border border-4 rounded-pill border-dark" value={this.state.location} onChange={this.handleChange}></input>
+              {/* <label htmlFor="location" className="form-label raleway dm-text fs-3 mx-4">Location:</label>
+              <input type="text" placeholder="Add a location... (optional)" id="location" name="location" className="form-control mx-4 input-background raleway fs-4 dm-text border border-4 rounded-pill border-dark" value={this.state.location} onChange={this.handleChange}></input> */}
               {renderPlaces}
             </div>
             <div className="flex justify-content-center mx-2">
