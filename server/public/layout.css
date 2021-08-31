@@ -109,8 +109,7 @@
 
   .desktop-body {
     background-color: #3e4c59;
-
-    /* height: 84vh; */
+    height: 84vh;
   }
 
   .loader-circle {

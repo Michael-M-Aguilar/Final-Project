@@ -33,6 +33,7 @@ export default class CreateCredit extends React.Component {
   }
 
   handleSelect(address) {
+    this.setState({ address });
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => console.log('Success', latLng))
@@ -41,20 +42,19 @@ export default class CreateCredit extends React.Component {
 
   renderPlaces() {
     return (
-      <label className="google-label">
         <PlacesAutocomplete value={this.state.address} onChange={this.handleAddressChange} onSelect={this.handleSelect}>
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             this.renderInput({ getInputProps, suggestions, getSuggestionItemProps, loading })
           )}
         </PlacesAutocomplete>
-      </label>
     );
   }
 
   renderInput({ getInputProps, suggestions, getSuggestionItemProps, loading }) {
     return (
       <>
-        <input {...getInputProps({ placeholder: 'Enter a location... (optional)' })} />
+        <label className="google-label dm-text raleway fs-3 mx-4">Location:</label>
+        <input {...getInputProps({ placeholder: '   (This is optional)...' })} className="form-control mx-1 input-background raleway fs-4 dm-text border border-4 rounded-pill border-dark" />
         <div>
           {loading
             ? <div> ... loading </div>
@@ -63,8 +63,8 @@ export default class CreateCredit extends React.Component {
             return (
               <div {...getSuggestionItemProps(suggestion)}
                 key={suggestion.index}
-                className="suggestion-item">
-                {suggestion.description}
+                className="suggestion-item dm-text raleway mx-3">
+                <span>{suggestion.description}</span>
               </div>
             );
           })}
@@ -154,8 +154,8 @@ export default class CreateCredit extends React.Component {
                 <label htmlFor="amount" className="form-label raleway dm-text"></label>
                 <input type="number" placeholder="Add the expense..." min="0.01" step="0.01" id="amount" name="amount" className=" fs-5 form-control input-background numbers dm-text" value={this.state.amount} onChange={this.handleChange} required></input>
               </div>
-              <div>
-                <label className="raleway dm-text mx-3" htmlFor="date">Entry Date:</label>
+              <div className="mx-1">
+                <label className="raleway dm-text fs-4" htmlFor="date">Entry Date:</label>
                 <input type="date" id="date" className="raleway dm-text" name="entry-date" value={this.state.date} onChange={this.handleChange} min="2020-01-01" required></input>
               </div>
             </div>
