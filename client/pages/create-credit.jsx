@@ -59,16 +59,24 @@ export default class CreateCredit extends React.Component {
       <>
         <label className="google-label dm-text raleway fs-3 mx-4">Location:</label>
         <input {...getInputProps({ placeholder: '   (This is optional)...' })} id="address" className="form-control mx-1 input-background raleway fs-4 dm-text border border-4 rounded-pill border-dark"/>
-        <div className="flex flex-column">
+        <div className="flex flex-column location-dropdown">
           {loading
             ? <div> ... loading </div>
             : null}
           {suggestions.map(suggestion => {
+            const className = suggestion.active
+              ? 'suggestion-item-active'
+              : 'suggestion';
+            const style = suggestion.active
+              ? { backgroundColor: '#616E7C', cursor: 'pointer' }
+              : { backgroundColor: '#3E4C59', cursor: 'pointer' };
             return (
-              <div {...getSuggestionItemProps(suggestion)}
+              <div {...getSuggestionItemProps(suggestion, {
+                className, style
+              })}
                 key={suggestion.index}
-                className="suggestion-item dm-text raleway mx-3">
-                <div>{suggestion.description}</div>
+                className="dm-text raleway mx-3">
+                <span>{suggestion.description}</span>
               </div>
             );
           })}
@@ -150,7 +158,7 @@ export default class CreateCredit extends React.Component {
               <div className="input-group mx-3 border border-4 border-dark rounded ">
                 <span className="input-group-text fs-5 text-header">$</span>
                 <label htmlFor="amount" className="form-label raleway dm-text"></label>
-                <input type="number" placeholder="Add the expense..." min="0.01" step="0.01" id="amount" name="amount" className=" fs-5 form-control input-background numbers dm-text" value={this.state.amount} onChange={this.handleChange} required></input>
+                <input type="number" placeholder="Add an expense..." min="0.01" step="0.01" id="amount" name="amount" className=" fs-5 form-control input-background numbers dm-text" value={this.state.amount} onChange={this.handleChange} required></input>
               </div>
               <div className="mx-1">
                 <label className="raleway dm-text fs-4" htmlFor="date">Entry Date:</label>
@@ -169,7 +177,7 @@ export default class CreateCredit extends React.Component {
                 (!categories.length)
                   ? '...'
                   : categories.map(cat => (
-                  <option key={cat.categoryId} value={cat.categoryId}>{cat.catName}</option>
+                  <option key={cat.categoryId} value={cat.categoryId} id="category-name">{cat.catName}</option>
                   ))
                 }
               </select>
@@ -177,7 +185,7 @@ export default class CreateCredit extends React.Component {
             <div className="form-group input-group my-4">
               {renderPlaces}
             </div>
-            <div className="flex justify-content-center mx-2">
+            <div className="flex justify-content-center my-4">
               <button type="submit" className="btn btn-dark">Save</button>
             </div>
           </form>

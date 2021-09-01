@@ -55,11 +55,23 @@ textarea {
   width: 100%;
 }
 
+.location-dropdown {
+  max-height: 56px;
+}
+
 input,
-input:focus,
 .desktop-secondary,
 .input-background {
   background-color: #486581;
+}
+
+select > option,
+input:focus {
+  background-color: #3e4c59;
+}
+
+select:focus > option:checked {
+  background-color: #616e7c;
 }
 
 .logo-icon {
