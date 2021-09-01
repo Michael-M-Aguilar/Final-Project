@@ -69,6 +69,7 @@ export default class Body extends React.Component {
       .then(transaction => {
         this.setState({ transaction: transaction });
         this.totalExpense();
+        this.totalCredit();
       });
   }
 
@@ -77,7 +78,6 @@ export default class Body extends React.Component {
       .then(res => res.json())
       .then(debit => {
         this.setState({ debit: debit });
-        this.totalCredit();
         this.setState({ loading: false });
       });
   }
@@ -132,7 +132,7 @@ export default class Body extends React.Component {
             <p className="fs-4 text-center text-header my-3 dm-text">Expense: <span className="dm-negative numbers">{(!transaction.length) ? '...' : '$' + this.totalExpense()}</span></p>
           </div>
             <div className="desktop-secondary border border-dark border-3 rounded col-md-4 col-sm-6">
-            <p className="fs-4 text-center text-header my-3 dm-text">Income: <span className="dm-positive numbers">{(!debit.length) ? '...' : '$' + this.totalCredit()}</span></p>
+            <p className="fs-4 text-center text-header my-3 dm-text">Income: <span className="dm-positive numbers">{(!debit.length) ? 'Time to deposit some money!' : '$' + this.totalCredit()}</span></p>
           </div>
         </div>
         <div className="row pt-3">
