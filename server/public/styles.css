@@ -57,6 +57,7 @@ textarea {
 
 .location-dropdown {
   max-height: 56px;
+  max-width: 516px;
 }
 
 input,
