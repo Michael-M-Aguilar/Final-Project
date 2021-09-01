@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Component to create a transaction
 export default class CreateTransaction extends React.Component {
   render() {
     return (

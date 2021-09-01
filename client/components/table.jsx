@@ -18,7 +18,6 @@ export default class Table extends React.Component {
     this.getTransactions();
   }
 
-  // Fetch chart data (amount, catName)
   getTransactions() {
     fetch('/api/chart')
       .then(res => res.json())
@@ -29,7 +28,6 @@ export default class Table extends React.Component {
       });
   }
 
-  // Helps us have our data to be CategoryName: Total for Category
   letsReduce() {
     const { transaction } = this.state;
     const totals = transaction.reduce((totals, item) => {

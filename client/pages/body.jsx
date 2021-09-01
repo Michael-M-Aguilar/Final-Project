@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment';
 import PieChart from '../components/pie-chart';
 import Spinner from '../components/spinner';
-// import GooglePlaces from '../components/google-places';
 
 export default class Body extends React.Component {
   constructor(props) {
@@ -25,7 +24,6 @@ export default class Body extends React.Component {
     this.getDebit = this.getDebit.bind(this);
   }
 
-  // If component is mounted, this is to start these methods after my render
   componentDidMount() {
     this.getEntries();
     this.getBudget();
@@ -33,7 +31,6 @@ export default class Body extends React.Component {
     this.getDebit();
   }
 
-  // our get request to present information on the page
   getEntries() {
     fetch('/api/entries')
       .then(res => res.json())
@@ -54,7 +51,6 @@ export default class Body extends React.Component {
     return Math.round(total.amount * 100) / 100;
   }
 
-  // Fetch current budget set.
   getBudget() {
     fetch('/api/budget')
       .then(res => res.json())
@@ -82,7 +78,6 @@ export default class Body extends React.Component {
       });
   }
 
-  // Keeping tracks of the update of the budget.
   handleChange(event) {
     if (event.target.id === 'budgetInput') {
       this.setState({
@@ -91,7 +86,6 @@ export default class Body extends React.Component {
     }
   }
 
-  // The submission of our budget.
   handleSubmit(event) {
     fetch('/api/budget', {
       method: 'POST',

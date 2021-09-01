@@ -48,7 +48,6 @@ app.get('/api/transaction', (req, res) => {
   JOIN "categories" using ("categoryId")
   order by "entryId" desc
   `;
-  // no params so no 2nd argumnet needed.
   db.query(sql)
     .then(result => {
       const userInfo = result.rows;
@@ -78,7 +77,6 @@ app.post('/api/entries', (req, res) => {
     });
 });
 
-// To help delete entries
 app.delete('/api/entries', (req, res, next) => {
   const { entryId } = req.body;
   const sql = `
@@ -119,7 +117,6 @@ app.delete('/api/categories', (req, res, next) => {
     });
 });
 
-// Serves to only post debit entries.
 app.post('/api/debit', (req, res) => {
   const { amount, note, date } = req.body;
   const sql = `

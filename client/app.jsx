@@ -11,7 +11,6 @@ import Folder from './pages/folder';
 import CreateCategory from './pages/create-category';
 import SpendingChart from './pages/spending-chart';
 import Footer from './components/footer';
-// import GooglePlaces from './components/google-places';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -23,7 +22,6 @@ export default class App extends React.Component {
     this.errorMessage = this.errorMessage.bind(this);
   }
 
-  // Hash Routing
   componentDidMount() {
     window.addEventListener('hashchange', () => {
       this.setState({ route: ParseRoute(window.location.hash) });
@@ -48,23 +46,18 @@ export default class App extends React.Component {
 
   renderPage() {
     const { route } = this.state;
-    // If route.path is empty, send home
     if (route.path === '') {
       return <Home />;
     }
-    // If route.path is equal to creating a transaction
     if (route.path === 'create-transaction') {
       return <CreateTransaction />;
     }
-    // If route.path is equal to the credit page
     if (route.path === 'create-transaction/credit') {
       return <CreateCredit />;
     }
-    // If route.path is equal to the debit page
     if (route.path === 'create-transaction/debit') {
       return <CreateDebit />;
     }
-    // If route.path is equal to Transactions
     if (route.path === 'transactions') {
       return <Transactions />;
     }
@@ -77,10 +70,6 @@ export default class App extends React.Component {
     if (route.path === 'spending-chart') {
       return <SpendingChart />;
     }
-    // if (route.path === 'google-places') {
-    //   return <GooglePlaces />;
-    // }
-    // Else if there's an error, direct user to error page.
     return <NotFound />;
   }
 

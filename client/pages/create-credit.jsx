@@ -1,7 +1,6 @@
 import React from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
-// Component to create credit transaction
 export default class CreateCredit extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +39,6 @@ export default class CreateCredit extends React.Component {
     this.setState({ address });
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      // .then(latLng => console.log('Success', latLng))
       .catch(error => console.error('Error', error));
   }
 
