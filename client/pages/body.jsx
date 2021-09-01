@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import PieChart from '../components/pie-chart';
 import Spinner from '../components/spinner';
+// import GooglePlaces from '../components/google-places';
 
 export default class Body extends React.Component {
   constructor(props) {
@@ -68,6 +69,7 @@ export default class Body extends React.Component {
       .then(transaction => {
         this.setState({ transaction: transaction });
         this.totalExpense();
+        this.totalCredit();
       });
   }
 
@@ -76,7 +78,6 @@ export default class Body extends React.Component {
       .then(res => res.json())
       .then(debit => {
         this.setState({ debit: debit });
-        this.totalCredit();
         this.setState({ loading: false });
       });
   }
@@ -131,7 +132,7 @@ export default class Body extends React.Component {
             <p className="fs-4 text-center text-header my-3 dm-text">Expense: <span className="dm-negative numbers">{(!transaction.length) ? '...' : '$' + this.totalExpense()}</span></p>
           </div>
             <div className="desktop-secondary border border-dark border-3 rounded col-md-4 col-sm-6">
-            <p className="fs-4 text-center text-header my-3 dm-text">Income: <span className="dm-positive numbers">{(!debit.length) ? '...' : '$' + this.totalCredit()}</span></p>
+            <p className="fs-4 text-center text-header my-3 dm-text">Income: <span className="dm-positive numbers">{(!debit.length) ? 'Time to deposit some money!' : '$' + this.totalCredit()}</span></p>
           </div>
         </div>
         <div className="row pt-3">
@@ -144,7 +145,6 @@ export default class Body extends React.Component {
                     <div key={key.entryId} className="flex space-between border-top border-2 py-1 rt">
                       <div className="flex flex-column mx-2">
                         <p className="fs-5 dm-text raleway">{(!key) ? '...' : key.note}</p>
-                        <p className="fs-5 dm-text raleway">Category: {key.catName}</p>
                       </div>
                       <div className="flex flex-column">
                         <p className={(!key) ? '...' : (key.amount[0] === '-') ? 'fs-5 dm-text numbers dm-negative numbers text-end' : 'fs-5 dm-text numbers dm-positive numbers text-end'}>{(!key) ? 'Loading ...' : '$ ' + key.amount}</p>

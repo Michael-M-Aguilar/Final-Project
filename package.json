@@ -36,8 +36,10 @@
     "moment": "^2.29.1",
     "pg": "^8.6.0",
     "react": "^17.0.2",
+    "react-async-script-loader": "^0.3.0",
     "react-chartjs-3": "^2.7.7",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-places-autocomplete": "^7.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",

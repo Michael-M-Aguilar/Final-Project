@@ -17,8 +17,25 @@ const app = express();
 app.use(staticMiddleware);
 app.use(jsonMiddleware);
 
-// Get information necessary for entries to present in body.
 app.get('/api/entries', (req, res) => {
+  const sql = `
+  SELECT
+  "entryId",
+  "amount",
+  "note",
+  "date",
+  "location"
+  FROM "entries"
+  order by "entryId" desc
+  `;
+  db.query(sql)
+    .then(result => {
+      const userInfo = result.rows;
+      res.json(userInfo);
+    });
+});
+
+app.get('/api/transaction', (req, res) => {
   const sql = `
   SELECT
   "entryId",
@@ -39,16 +56,15 @@ app.get('/api/entries', (req, res) => {
     });
 });
 
-// To help post credit entries
-app.post('/api/entries/', (req, res) => {
-  const { category, amount, note, location, date } = req.body;
+app.post('/api/entries', (req, res) => {
+  const { category, amount, note, address, date } = req.body;
   const sql = `
   INSERT INTO "entries" ("userId", "accountId", "categoryId", "amount", "note", "location", "date")
   VALUES ($1, $2, $3, $4, $5, $6, $7)
   RETURNING *
   `;
 
-  const params = [1, 1, category, -amount, note, location, date];
+  const params = [1, 1, category, -amount, note, address, date];
   db.query(sql, params)
     .then(result => {
       const [entry] = result.rows;
@@ -63,7 +79,7 @@ app.post('/api/entries/', (req, res) => {
 });
 
 // To help delete entries
-app.delete('/api/entries/', (req, res, next) => {
+app.delete('/api/entries', (req, res, next) => {
   const { entryId } = req.body;
   const sql = `
   DELETE FROM "entries"
@@ -83,7 +99,7 @@ app.delete('/api/entries/', (req, res, next) => {
     });
 });
 
-app.delete('/api/categories/', (req, res, next) => {
+app.delete('/api/categories', (req, res, next) => {
   const { categoryId } = req.body;
   const sql = `
   DELETE FROM "categories"
@@ -104,7 +120,7 @@ app.delete('/api/categories/', (req, res, next) => {
 });
 
 // Serves to only post debit entries.
-app.post('/api/debit/', (req, res) => {
+app.post('/api/debit', (req, res) => {
   const { amount, note, date } = req.body;
   const sql = `
   INSERT INTO "entries" ("userId", "accountId", "categoryId", "amount", "note", "location", "date")
@@ -126,7 +142,6 @@ app.post('/api/debit/', (req, res) => {
     });
 });
 
-// To get my categories from it's respective table
 app.get('/api/categories', (req, res) => {
   const sql = `
   SELECT DISTINCT
@@ -143,7 +158,6 @@ app.get('/api/categories', (req, res) => {
     });
 });
 
-// Allows user to add their own categories.
 app.post('/api/categories', (req, res) => {
   const { catName } = req.body;
   const sql = `
@@ -166,7 +180,6 @@ app.post('/api/categories', (req, res) => {
     });
 });
 
-// To get the current budgets from the DB.
 app.get('/api/budget', (req, res) => {
   const sql = `
   SELECT "userId",
@@ -182,7 +195,7 @@ app.get('/api/budget', (req, res) => {
       res.json(budget);
     });
 });
-// To post a new budget onto the page.
+
 app.post('/api/budget', (req, res) => {
   const { budget } = req.body;
   const sql = `

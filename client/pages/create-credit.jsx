@@ -1,4 +1,5 @@
 import React from 'react';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 // Component to create credit transaction
 export default class CreateCredit extends React.Component {
@@ -9,17 +10,79 @@ export default class CreateCredit extends React.Component {
       note: '',
       category: '',
       categories: '',
-      location: '',
-      date: ''
+      date: '',
+      address: ''
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.todaysDate = this.todaysDate.bind(this);
     this.getCategories = this.getCategories.bind(this);
+    this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.renderPlaces = this.renderPlaces.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   componentDidMount() {
     this.getCategories();
+  }
+
+  handleAddressChange(address) {
+    this.setState({ address });
+    if (event.target.id === 'address') {
+      this.setState({
+        address: event.target.value
+      });
+    }
+  }
+
+  handleSelect(address) {
+    this.setState({ address });
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      // .then(latLng => console.log('Success', latLng))
+      .catch(error => console.error('Error', error));
+  }
+
+  renderPlaces() {
+    return (
+        <PlacesAutocomplete value={this.state.address} onChange={this.handleAddressChange} onSelect={this.handleSelect}>
+          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+            this.renderInput({ getInputProps, suggestions, getSuggestionItemProps, loading })
+          )}
+        </PlacesAutocomplete>
+    );
+  }
+
+  renderInput({ getInputProps, suggestions, getSuggestionItemProps, loading }) {
+    return (
+      <>
+        <label className="google-label dm-text raleway fs-3 mx-4">Location:</label>
+        <input {...getInputProps({ placeholder: '   (This is optional)...' })} id="address" className="form-control mx-1 input-background raleway fs-4 dm-text border border-4 rounded-pill border-dark"/>
+        <div className="flex flex-column location-dropdown">
+          {loading
+            ? <div> ... loading </div>
+            : null}
+          {suggestions.map(suggestion => {
+            const className = suggestion.active
+              ? 'suggestion-item-active'
+              : 'suggestion';
+            const style = suggestion.active
+              ? { backgroundColor: '#616E7C', cursor: 'pointer' }
+              : { backgroundColor: '#3E4C59', cursor: 'pointer' };
+            return (
+              <div {...getSuggestionItemProps(suggestion, {
+                className, style
+              })}
+                key={suggestion.index}
+                className="dm-text raleway mx-3">
+                <span>{suggestion.description}</span>
+              </div>
+            );
+          })}
+        </div>
+      </>
+    );
   }
 
   getCategories() {
@@ -53,11 +116,6 @@ export default class CreateCredit extends React.Component {
         category: event.target.value
       });
     }
-    if (event.target.id === 'location') {
-      this.setState({
-        location: event.target.value
-      });
-    }
     if (event.target.id === 'date') {
       this.setState({
         date: event.target.value
@@ -82,9 +140,10 @@ export default class CreateCredit extends React.Component {
   }
 
   render() {
+    const renderPlaces = this.renderPlaces();
     const { categories } = this.state;
     return (
-      <div className="container desktop-body">
+      <div className="container create-body">
         <div>
           <h1 className="text-header dm-text">Creating New Credit Transaction: </h1>
         </div>
@@ -99,10 +158,10 @@ export default class CreateCredit extends React.Component {
               <div className="input-group mx-3 border border-4 border-dark rounded ">
                 <span className="input-group-text fs-5 text-header">$</span>
                 <label htmlFor="amount" className="form-label raleway dm-text"></label>
-                <input type="number" placeholder="Add the expense..." min="0.01" step="0.01" id="amount" name="amount" className=" fs-5 form-control input-background numbers dm-text" value={this.state.amount} onChange={this.handleChange} required></input>
+                <input type="number" placeholder="Add an expense..." min="0.01" step="0.01" id="amount" name="amount" className=" fs-5 form-control input-background numbers dm-text" value={this.state.amount} onChange={this.handleChange} required></input>
               </div>
-              <div>
-                <label className="raleway dm-text mx-3" htmlFor="date">Entry Date:</label>
+              <div className="mx-1">
+                <label className="raleway dm-text fs-4" htmlFor="date">Entry Date:</label>
                 <input type="date" id="date" className="raleway dm-text" name="entry-date" value={this.state.date} onChange={this.handleChange} min="2020-01-01" required></input>
               </div>
             </div>
@@ -118,16 +177,15 @@ export default class CreateCredit extends React.Component {
                 (!categories.length)
                   ? '...'
                   : categories.map(cat => (
-                  <option key={cat.categoryId} value={cat.categoryId}>{cat.catName}</option>
+                  <option key={cat.categoryId} value={cat.categoryId} id="category-name">{cat.catName}</option>
                   ))
                 }
               </select>
             </div>
             <div className="form-group input-group my-4">
-              <label htmlFor="location" className="form-label raleway dm-text fs-3 mx-4">Location:</label>
-              <input type="text" placeholder="Add a location... (optional)" id="location" name="location" className="form-control mx-4 input-background raleway fs-4 dm-text border border-4 rounded-pill border-dark" value={this.state.location} onChange={this.handleChange}></input>
+              {renderPlaces}
             </div>
-            <div className="flex justify-content-center mx-2">
+            <div className="flex justify-content-center my-4">
               <button type="submit" className="btn btn-dark">Save</button>
             </div>
           </form>
