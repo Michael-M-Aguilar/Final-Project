@@ -97,6 +97,35 @@ app.delete('/api/entries', (req, res, next) => {
     });
 });
 
+app.put('/api/entries/:entryId', (req, res, next) => {
+  const { categoryId, amount, note, location, date } = req.body;
+  // console.log(parseInt(req.params.entryId));
+  const entryId = parseInt(req.params.entryId);
+  const sql = `
+  UPDATE "entries"
+  SET "userId"= $2,
+  "accountId"= $3,
+  "categoryId" = $4,
+  "amount" = $5,
+  "note" = $6,
+  "location" = $7,
+  "date" = $8
+  WHERE "entryId" = $1
+  returning *
+  `;
+  const params = [entryId, 1, 1, categoryId, -amount, note, location, date];
+  db.query(sql, params)
+    .then(result => {
+      res.status(200).json(req.body);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occured'
+      });
+    });
+});
+
 app.delete('/api/categories', (req, res, next) => {
   const { categoryId } = req.body;
   const sql = `
