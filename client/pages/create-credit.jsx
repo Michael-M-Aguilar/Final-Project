@@ -1,5 +1,6 @@
 import React from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import Spinner from '../components/spinner';
 
 export default class CreateCredit extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ export default class CreateCredit extends React.Component {
       category: '',
       categories: '',
       date: '',
-      address: ''
+      address: '',
+      loading: true
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,6 +22,7 @@ export default class CreateCredit extends React.Component {
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.renderPlaces = this.renderPlaces.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+    // this.findIncome = this.findIncome.bind(this);
   }
 
   componentDidMount() {
@@ -88,6 +91,7 @@ export default class CreateCredit extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({ categories: data });
+        this.setState({ loading: false });
       });
   }
 
@@ -137,10 +141,24 @@ export default class CreateCredit extends React.Component {
     event.preventDefault();
   }
 
+  // findIncome() {
+  //   const test = document.getElementById('Auto');
+  //   for (let i = 0; i < this.state.categories.length; i++) {
+  //     if (categories[i].getAttribute('id') === test) {
+  //       console.log('true');
+  //     } else {
+  //       console.log('false');
+  //     }
+  //   }
+  // }
+
   render() {
     const renderPlaces = this.renderPlaces();
     const { categories } = this.state;
-    return (
+    if (this.state.loading) {
+      return <Spinner />;
+    } else {
+      return (
       <div className="container create-body">
         <div>
           <h1 className="text-header dm-text">Creating New Credit Transaction: </h1>
@@ -174,8 +192,8 @@ export default class CreateCredit extends React.Component {
                 {
                 (!categories.length)
                   ? '...'
-                  : categories.map(cat => (
-                  <option key={cat.categoryId} value={cat.categoryId} id="category-name">{cat.catName}</option>
+                  : categories.filter(cat => (cat.categoryId !== 9)).map(cat => (
+                  <option key={cat.categoryId} value={cat.categoryId} id={cat.catName} className="category-name">{cat.catName}</option>
                   ))
                 }
               </select>
@@ -189,6 +207,7 @@ export default class CreateCredit extends React.Component {
           </form>
         </div>
       </div>
-    );
+      );
+    }
   }
 }

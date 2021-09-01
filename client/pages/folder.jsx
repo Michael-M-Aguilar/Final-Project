@@ -66,7 +66,7 @@ export default class Folders extends React.Component {
           {
               (!categories.length)
                 ? '...'
-                : categories.map(key => (
+                : categories.filter(cat => (cat.categoryId !== 9)).map(key => (
               <div key={key.categoryId} className="border-top border-1 py-1 mx-3 categories flex justify-content-between">
                 <p className="fs-2 dm-text mx-3 raleway">{key.catName}</p>
                   <button type="button" id={key.categoryId} className="delete-but text-center dm-text raleway" data-bs-toggle="modal" data-bs-target="#deleteCat" onClick={this.saveId}>Delete</button>
@@ -76,9 +76,9 @@ export default class Folders extends React.Component {
                         <div className="modal-header flex flex-column">
                           <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           <h3 className="modal-title text-header dm-text" id="exampleModalLabel">Are you sure you want to delete this category?</h3>
-                          <caption className="dm-text raleway">Please make sure no entries with this category exists.
+                          <details className="dm-text raleway">Please make sure no entries with this category exists.
                           <br />
-                          If so, please delete that entry before deleting this category.</caption>
+                          If so, please delete that entry before deleting this category.</details>
                         </div>
                         <div className="modal-footer flex justify-content-between">
                           <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>

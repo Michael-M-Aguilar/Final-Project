@@ -33,7 +33,8 @@ insert into "categories"
   (5, 'Health'),
   (6, 'Pet'),
   (7, 'Shopping'),
-  (8, 'Travel');
+  (8, 'Travel'),
+  (9, 'Income');
 
 insert into "entries"
 ("userId", "accountId", "categoryId", "amount", "note", "location", "date")
@@ -44,4 +45,4 @@ insert into "entries"
     (2, 2, 5, -18.10, 'Toiletries', 'CVS', '2021-07-15'),
     (1, 1, 6, -42.10, 'Dog Toys', 'Petsmart', '2021-07-18'),
     (2, 2, 7, -56.10, 'Jeans', 'Levis', '2021-07-24'),
-    (1, 3, 8, 30.00, 'Sold old junk', '', '2021-07-26');
+    (1, 3, 9, 30.00, 'Sold old junk', '', '2021-07-26');

@@ -125,7 +125,7 @@ app.post('/api/debit', (req, res) => {
   RETURNING *
   `;
 
-  const params = [1, 3, null, amount, note, null, date];
+  const params = [1, 3, 9, amount, note, null, date];
   db.query(sql, params)
     .then(result => {
       const [entry] = result.rows;
