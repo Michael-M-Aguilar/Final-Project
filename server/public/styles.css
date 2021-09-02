@@ -55,9 +55,17 @@ textarea {
   width: 100%;
 }
 
+#address {
+  width: 75%;
+}
+
 .location-dropdown {
   max-height: 56px;
-  max-width: 516px;
+
+  /* display: flex;
+  justify-content: flex-end;
+  flex-direction: column; */
+  width: 85%;
 }
 
 input,
