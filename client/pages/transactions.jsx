@@ -72,10 +72,13 @@ export default class Transactions extends React.Component {
                 <p className="fs-5 dm-text mx-2 raleway">{(!key.location) ? null : 'Location: ' + key.location}</p>
               </div>
               <div className="flex flex-row">
-                <div>
-                  <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway" data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={this.saveId}>
-                   Delete
-                  </button>
+                  <div className="flex flex-column">
+                    <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway my-3" onClick={this.saveId}>
+                      Update
+                    </button>
+                    <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway my-3" data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={this.saveId}>
+                      Delete
+                    </button>
                 </div>
                 <div className="mx-2">
                   <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dm-text dm-negative numbers text-end ' : 'fs-5 dm-text dm-positive numbers text-end'}>$ {key.amount}</p>

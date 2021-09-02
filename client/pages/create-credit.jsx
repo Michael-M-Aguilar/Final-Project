@@ -59,7 +59,7 @@ export default class CreateCredit extends React.Component {
     return (
       <>
         <label className="google-label dm-text raleway fs-3 mx-4">Location:</label>
-        <input {...getInputProps({ placeholder: '   (This is optional)...' })} id="address" className="form-control mx-1 input-background raleway fs-4 dm-text border border-4 rounded-pill border-dark"/>
+        <input {...getInputProps({ placeholder: '(This is optional)...' })} id="address" className="form-control mx-1 input-background raleway fs-4 dm-text border border-4 rounded-pill border-dark"/>
         <div className="location-dropdown">
           {loading
             ? <div> ... loading </div>

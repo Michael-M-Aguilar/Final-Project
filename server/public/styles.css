@@ -61,10 +61,6 @@ textarea {
 
 .location-dropdown {
   max-height: 56px;
-
-  /* display: flex;
-  justify-content: flex-end;
-  flex-direction: column; */
   width: 85%;
 }
 
