@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 import Spinner from '../components/spinner';
 export default class Transactions extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       info: [],
       infos: '',
@@ -13,6 +12,7 @@ export default class Transactions extends React.Component {
     this.getEntries = this.getEntries.bind(this);
     this.deleteEntries = this.deleteEntries.bind(this);
     this.saveId = this.saveId.bind(this);
+    this.onHoverOver = this.onHoverOver.bind(this);
   }
 
   componentDidMount() {
@@ -47,7 +47,12 @@ export default class Transactions extends React.Component {
       });
   }
 
+  function onHoverOver(event) {
+    event.target.style.background = '#red';
+  }
+
   render() {
+    // const [isShown, setIsShown] = useState(false)
     const { infos } = this.state;
     if (this.state.loading) {
       return <Spinner />;
@@ -65,7 +70,7 @@ export default class Transactions extends React.Component {
           (!this.state.infos.length)
             ? ''
             : infos.map(key => (
-            <div key={key.entryId} entryid={key.entryId} className="transactions flex space-between border-top border-2">
+            <div key={key.entryId} entryid={key.entryId} className="transactions flex space-between border-top border-2" onMouseEnter={this.onHoverOver()}>
               <div className="flex flex-column">
                 <p className="fs-5 dm-text mx-2 raleway">{key.note}</p>
                 <p className="fs-5 dm-text mx-2 raleway">Category: {key.catName}</p>
