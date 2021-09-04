@@ -52,12 +52,7 @@ export default class Transactions extends React.Component {
       });
   }
 
-  // function onHoverOver(event) {
-  //   event.target.style.background = '#red';
-  // }
-
   render() {
-    // const [isShown, setIsShown] = useState(false)
     const { infos } = this.state;
     if (this.state.loading) {
       return <Spinner />;
