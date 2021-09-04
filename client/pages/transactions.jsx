@@ -9,10 +9,15 @@ export default class Transactions extends React.Component {
       infos: '',
       loading: true
     };
+
     this.getEntries = this.getEntries.bind(this);
     this.deleteEntries = this.deleteEntries.bind(this);
     this.saveId = this.saveId.bind(this);
-    this.onHoverOver = this.onHoverOver.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+  }
+
+  handleMouseEnter() {
+    console.log('Hit');
   }
 
   componentDidMount() {
@@ -47,9 +52,9 @@ export default class Transactions extends React.Component {
       });
   }
 
-  function onHoverOver(event) {
-    event.target.style.background = '#red';
-  }
+  // function onHoverOver(event) {
+  //   event.target.style.background = '#red';
+  // }
 
   render() {
     // const [isShown, setIsShown] = useState(false)
@@ -64,13 +69,13 @@ export default class Transactions extends React.Component {
         </div>
         <div className="border border-5 border-dark rounded transaction-history desktop-secondary">
           <div className="">
-            <p className="text-header dm-text mx-4 fs-3">Transactions</p>
+            <p className="text-header dm-text mx-2 fs-3">Transactions</p>
           </div>
         {
           (!this.state.infos.length)
             ? ''
             : infos.map(key => (
-            <div key={key.entryId} entryid={key.entryId} className="transactions flex space-between border-top border-2" onMouseEnter={this.onHoverOver()}>
+            <div key={key.entryId} entryid={key.entryId} onMouseEnter={this.handleMouseEnter} className="transactions flex space-between border-top border-2">
               <div className="flex flex-column">
                 <p className="fs-5 dm-text mx-2 raleway">{key.note}</p>
                 <p className="fs-5 dm-text mx-2 raleway">Category: {key.catName}</p>
