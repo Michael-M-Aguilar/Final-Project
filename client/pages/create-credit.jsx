@@ -22,7 +22,6 @@ export default class CreateCredit extends React.Component {
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.renderPlaces = this.renderPlaces.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
-    // this.findIncome = this.findIncome.bind(this);
   }
 
   componentDidMount() {

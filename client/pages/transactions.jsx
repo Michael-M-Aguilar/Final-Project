@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import Spinner from '../components/spinner';
+import UpdateEntry from '../components/update';
 export default class Transactions extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +37,6 @@ export default class Transactions extends React.Component {
 
   saveId() {
     this.setState({ entryId: event.target.id });
-    console.log('what is the currentId', this.state.entryId);
   }
 
   deleteEntries(event) {
@@ -61,6 +61,7 @@ export default class Transactions extends React.Component {
 
   render() {
     const { infos } = this.state;
+    const asdf = 'hello';
     if (this.state.loading) {
       return <Spinner />;
     } else {
@@ -68,6 +69,7 @@ export default class Transactions extends React.Component {
       <div className="container create-body overflow">
         <div className="mx-2 ">
           <h1 className="text-header dm-text">List of all Transactions:</h1>
+          {/* <UpdateEntry test={asdf} /> */}
         </div>
         <div className="border border-5 border-dark rounded transaction-history desktop-secondary">
           <div className="">

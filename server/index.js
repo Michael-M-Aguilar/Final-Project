@@ -99,7 +99,6 @@ app.delete('/api/entries', (req, res, next) => {
 
 app.put('/api/entries/:entryId', (req, res, next) => {
   const { categoryId, amount, note, location, date } = req.body;
-  // console.log(parseInt(req.params.entryId));
   const entryId = parseInt(req.params.entryId);
   const sql = `
   UPDATE "entries"
