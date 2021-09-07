@@ -22,7 +22,6 @@ export default class CreateCredit extends React.Component {
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.renderPlaces = this.renderPlaces.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
-    // this.findIncome = this.findIncome.bind(this);
   }
 
   componentDidMount() {
@@ -59,8 +58,8 @@ export default class CreateCredit extends React.Component {
     return (
       <>
         <label className="google-label dm-text raleway fs-3 mx-4">Location:</label>
-        <input {...getInputProps({ placeholder: '   (This is optional)...' })} id="address" className="form-control mx-1 input-background raleway fs-4 dm-text border border-4 rounded-pill border-dark"/>
-        <div className="flex flex-column location-dropdown">
+        <input {...getInputProps({ placeholder: '(This is optional)...' })} id="address" className="form-control mx-1 input-background raleway fs-4 dm-text border border-4 rounded-pill border-dark"/>
+        <div className="location-dropdown">
           {loading
             ? <div> ... loading </div>
             : null}
@@ -140,17 +139,6 @@ export default class CreateCredit extends React.Component {
       });
     event.preventDefault();
   }
-
-  // findIncome() {
-  //   const test = document.getElementById('Auto');
-  //   for (let i = 0; i < this.state.categories.length; i++) {
-  //     if (categories[i].getAttribute('id') === test) {
-  //       console.log('true');
-  //     } else {
-  //       console.log('false');
-  //     }
-  //   }
-  // }
 
   render() {
     const renderPlaces = this.renderPlaces();
