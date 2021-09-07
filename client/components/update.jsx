@@ -1,9 +1,9 @@
 import React from 'react';
 
-const UpdateEntry = props => {
-  <div>
-    <h1>{props.test}</h1>
-  </div>;
-};
+class UpdateEntry extends React.Component {
+  render() {
+    return <div><h1>{this.props.test}</h1></div>;
+  }
+}
 
 export default UpdateEntry;

@@ -69,7 +69,7 @@ export default class Transactions extends React.Component {
       <div className="container create-body overflow">
         <div className="mx-2 ">
           <h1 className="text-header dm-text">List of all Transactions:</h1>
-          {/* <UpdateEntry test={asdf} /> */}
+          <UpdateEntry test={asdf} />
         </div>
         <div className="border border-5 border-dark rounded transaction-history desktop-secondary">
           <div className="">
