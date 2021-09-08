@@ -2,7 +2,11 @@ import React from 'react';
 
 class UpdateEntry extends React.Component {
   render() {
-    return <div><h1>{this.props.test}</h1></div>;
+    return (
+    <div className="container create-body overflow">
+      <p className="fs-5 dm-text raleway">{this.props.test}This is a trial</p>
+    </div>
+    );
   }
 }
 

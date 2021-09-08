@@ -69,7 +69,7 @@ export default class Transactions extends React.Component {
       <div className="container create-body overflow">
         <div className="mx-2 ">
           <h1 className="text-header dm-text">List of all Transactions:</h1>
-          <UpdateEntry test={asdf} />
+          {/* <UpdateEntry test={asdf} /> */}
         </div>
         <div className="border border-5 border-dark rounded transaction-history desktop-secondary">
           <div className="">
@@ -87,9 +87,11 @@ export default class Transactions extends React.Component {
               </div>
               <div className="flex flex-row">
                   <div className="flex flex-column">
-                    <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway my-3" onClick={this.saveId}>
-                      Update
-                    </button>
+                    <a href='#update-entry'>
+                      <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway my-3" onClick={this.saveId}>
+                        Update
+                      </button>
+                      </a>
                     <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway my-3" data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={this.saveId}>
                       Delete
                     </button>

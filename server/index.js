@@ -35,6 +35,24 @@ app.get('/api/entries', (req, res) => {
     });
 });
 
+app.get('/api/entries/:entryId', (req, res, next) => {
+  const entryId = parseInt(req.params.entryId);
+  const params = [entryId];
+  const sql = `
+  SELECT  "categoryId",
+  "amount",
+  "note",
+  "location",
+  "date"
+  FROM "entries"
+  WHERE "entryId" = $1
+  `;
+  db.query(sql, params)
+    .then(result => {
+      res.json(result.rows);
+    });
+});
+
 app.get('/api/transaction', (req, res) => {
   const sql = `
   SELECT
@@ -112,6 +130,7 @@ app.put('/api/entries/:entryId', (req, res, next) => {
   WHERE "entryId" = $1
   returning *
   `;
+
   const params = [entryId, 1, 1, categoryId, -amount, note, location, date];
   db.query(sql, params)
     .then(result => {

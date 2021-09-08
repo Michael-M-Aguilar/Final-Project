@@ -11,6 +11,7 @@ import Folder from './pages/folder';
 import CreateCategory from './pages/create-category';
 import SpendingChart from './pages/spending-chart';
 import Footer from './components/footer';
+import UpdateEntry from './components/update';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -69,6 +70,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'spending-chart') {
       return <SpendingChart />;
+    }
+    if (route.path === 'update-entry') {
+      return <UpdateEntry />;
     }
     return <NotFound />;
   }
