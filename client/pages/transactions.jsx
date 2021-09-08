@@ -77,15 +77,13 @@ export default class Transactions extends React.Component {
                 <p className="fs-5 dm-text mx-2 raleway">{(!key.location) ? null : 'Location: ' + key.location}</p>
               </div>
               <div className="flex flex-row">
-                  <div className="flex flex-column">
-                    <a href='#update-entry'>
-                      <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway my-3" onClick={this.saveId}>
-                        Update
-                      </button>
-                      </a>
-                    <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway my-3" data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={this.saveId}>
-                      Delete
-                    </button>
+                <div className="flex flex-column">
+                    <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway my-3" data-bs-toggle="modal" data-bs-target="#updateModal" onClick={this.saveId}>
+                    Update
+                  </button>
+                  <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway my-3" data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={this.saveId}>
+                    Delete
+                  </button>
                 </div>
                 <div className="mx-2">
                   <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dm-text dm-negative numbers text-end ' : 'fs-5 dm-text dm-positive numbers text-end'}>$ {key.amount}</p>
@@ -109,8 +107,11 @@ export default class Transactions extends React.Component {
                   <div className="modal-dialog">
                     <div className="modal-content">
                       <div className="modal-header">
-                        <h5 className="modal-title text-header dm-text" id="exampleModalLabel">Are you sure you want to delete this transaction?</h5>
+                        <p className="modal-title text-header dm-text fs-3" id="exampleModalLabel">Updating Entry</p>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div>
+                        aaaaa
                       </div>
                       <div className="modal-footer flex justify-content-between">
                         <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
