@@ -67,7 +67,7 @@ app.get('/api/transaction', (req, res) => {
   "catName"
   FROM "entries"
   JOIN "categories" using ("categoryId")
-  order by "entryId" desc
+  order by "date" desc
   `;
   db.query(sql)
     .then(result => {
