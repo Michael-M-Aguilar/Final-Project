@@ -49,6 +49,9 @@ app.get('/api/entries/:entryId', (req, res, next) => {
   `;
   db.query(sql, params)
     .then(result => {
+      if (!result.rows[0]) {
+        res.status(404).json(`cannot find product with entryId ${entryId}`);
+      }
       res.json(result.rows);
     });
 });
