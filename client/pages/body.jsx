@@ -170,7 +170,7 @@ export default class Body extends React.Component {
               <i className="fas fa-plus-circle fa-6x py-5 logo-icon"></i>
             </a>
         </div>
-        <div className="modal fade" id="budgetModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="budgetModal" tabIndex="-1" aria-labelledby="budgetModal" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
@@ -184,7 +184,7 @@ export default class Body extends React.Component {
                 </div>
                 <div className="modal-footer flex justify-content-between">
                   <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" id="submit" className="btn btn-dark rounded mx-4" onClick={this.justSubmitted}>Save</button>
+                  <button type="submit" id="submit" className="btn btn-dark rounded mx-4" onClick={this.justSubmitted} data-bs-dismiss="modal">Save</button>
                 </div>
               </form>
             </div>

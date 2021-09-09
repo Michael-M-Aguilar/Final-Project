@@ -1,7 +1,5 @@
 import React from 'react';
 import CreateEntry from '../components/create-entry';
-// import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-// import Spinner from '../components/spinner';
 
 export default class CreateCredit extends React.Component {
   constructor(props) {

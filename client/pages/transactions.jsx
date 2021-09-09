@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import Spinner from '../components/spinner';
+import UpdateEntry from '../components/update-entry';
+
 export default class Transactions extends React.Component {
   constructor(props) {
     super(props);
@@ -89,7 +91,7 @@ export default class Transactions extends React.Component {
                   <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dm-text dm-negative numbers text-end ' : 'fs-5 dm-text dm-positive numbers text-end'}>$ {key.amount}</p>
                   <p className="fs-5 dm-text raleway text-end">{moment(key.date).format('MMMM Do YYYY')}</p>
                 </div>
-                <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="deleteModal" aria-hidden="true">
                   <div className="modal-dialog">
                     <div className="modal-content">
                       <div className="modal-header">
@@ -103,7 +105,7 @@ export default class Transactions extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="modal fade" id="updateModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal fade" id="updateModal" tabIndex="-1" aria-labelledby="updateModal" aria-hidden="true">
                   <div className="modal-dialog">
                     <div className="modal-content">
                       <div className="modal-header">
@@ -111,11 +113,7 @@ export default class Transactions extends React.Component {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div>
-                        aaaaa
-                      </div>
-                      <div className="modal-footer flex justify-content-between">
-                        <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                        <button type="button" id={key.entryId} className="btn btn-dark rounded mx-4" data-bs-dismiss="modal" onClick={this.deleteEntries}>Delete</button>
+                        <UpdateEntry />
                       </div>
                     </div>
                   </div>

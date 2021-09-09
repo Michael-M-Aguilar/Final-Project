@@ -70,7 +70,7 @@ export default class Folders extends React.Component {
               <div key={key.categoryId} className="border-top border-1 py-1 mx-3 categories flex justify-content-between">
                 <p className="fs-2 dm-text mx-3 raleway">{key.catName}</p>
                   <button type="button" id={key.categoryId} className="delete-but text-center dm-text raleway" data-bs-toggle="modal" data-bs-target="#deleteCat" onClick={this.saveId}>Delete</button>
-                  <div className="modal fade" id="deleteCat" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div className="modal fade" id="deleteCat" tabIndex="-1" aria-labelledby="deleteCategory" aria-hidden="true">
                     <div className="modal-dialog">
                       <div className="modal-content">
                         <div className="modal-header flex flex-column">
