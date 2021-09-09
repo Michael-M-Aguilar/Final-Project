@@ -137,6 +137,10 @@ app.put('/api/entries/:entryId', (req, res, next) => {
   const params = [entryId, 1, 1, categoryId, -amount, note, location, date];
   db.query(sql, params)
     .then(result => {
+      const [entry] = result.rows;
+      if (!entry) {
+        res.status(404).json({ error: `cannot find entry with entryId ${entryId}` });
+      }
       res.status(200).json(req.body);
     })
     .catch(err => {

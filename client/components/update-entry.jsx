@@ -56,14 +56,14 @@ export default class UpdateEntry extends React.Component {
   }
 
   handleSubmit(event) {
-    fetch('/api/entries', {
+    fetch('/api/entries/:entryId', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(this.state)
     })
       .then(res => res.json())
       .then(() => {
-        location.hash = '#';
+        location.hash = '#transactions';
       })
       .catch(err => {
         console.error(err);
@@ -132,7 +132,7 @@ export default class UpdateEntry extends React.Component {
     const renderPlaces = this.renderPlaces();
     const { categories } = this.state;
     return (
-        <form className="" onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <div className="flex justify-content-between">
             <div className="input-group mx-3 border border-4 border-dark rounded ">
               <span className="input-group-text fs-5 text-header">$</span>
@@ -166,7 +166,7 @@ export default class UpdateEntry extends React.Component {
           </div>
           <div className="modal-footer flex justify-content-between">
             <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
-            <button type="button" id="entryId" className="btn btn-dark rounded mx-4" data-bs-dismiss="modal" onClick={this.deleteEntries}>Update</button>
+            <button type="submit" id="entryId" className="btn btn-dark rounded mx-4" data-bs-dismiss="modal">Update</button>
           </div>
         </form>
     );
