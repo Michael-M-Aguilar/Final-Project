@@ -66,21 +66,20 @@ export default class UpdateEntry extends React.Component {
     const updatedEntry = {
       entryId: eid,
       categoryId: category,
-      amount: -amount,
+      amount: amount,
       note: note,
       location: address,
       date: date
     };
 
-    fetch('/api/entries/:entryId', {
+    fetch(`/api/entries/${this.props.entryId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedEntry)
     })
       .then(res => res.json())
-      .then(console.log('updatedEntry', updatedEntry))
       .then(() => {
-        location.hash = '#transactions';
+        this.props.entries();
       })
       .catch(err => {
         console.error(err);
@@ -148,12 +147,6 @@ export default class UpdateEntry extends React.Component {
   render() {
     const renderPlaces = this.renderPlaces();
     const { categories } = this.state;
-    // console.log('This is my props', this.props.entryId);
-    console.log('Amount', this.state.amount);
-    console.log('Date', this.state.date);
-    console.log('Note', this.state.note);
-    console.log('Category', this.state.category);
-    console.log('Location', this.state.address);
     return (
         <form onSubmit={this.handleSubmit}>
           <div className="flex justify-content-between">

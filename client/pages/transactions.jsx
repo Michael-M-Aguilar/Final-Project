@@ -113,7 +113,7 @@ export default class Transactions extends React.Component {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div>
-                        <UpdateEntry entryId={this.state.entryId}/>
+                        <UpdateEntry entryId={this.state.entryId} entries={this.getEntries}/>
                       </div>
                     </div>
                   </div>
