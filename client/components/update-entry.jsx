@@ -56,10 +56,28 @@ export default class UpdateEntry extends React.Component {
   }
 
   handleSubmit(event) {
+    const entryId = parseInt(this.props.entryId);
+    const amount = this.state.amount;
+    const note = this.state.note;
+    const category = this.state.category;
+    const date = this.state.date;
+    const address = this.state.address;
+
+    const updatedEntry = {
+      entryId: entryId,
+      userId: 1,
+      accountId: 1,
+      amount: amount,
+      note: note,
+      categoryId: category,
+      date: date,
+      location: address
+    };
+
     fetch('/api/entries/:entryId', {
-      method: 'POST',
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.state)
+      body: JSON.stringify(updatedEntry)
     })
       .then(res => res.json())
       .then(() => {
@@ -131,6 +149,12 @@ export default class UpdateEntry extends React.Component {
   render() {
     const renderPlaces = this.renderPlaces();
     const { categories } = this.state;
+    // console.log('This is my props', this.props.entryId);
+    console.log('Amount', this.state.amount);
+    console.log('Date', this.state.date);
+    console.log('Note', this.state.note);
+    console.log('Category', this.state.category);
+    console.log('Location', this.state.location);
     return (
         <form onSubmit={this.handleSubmit}>
           <div className="flex justify-content-between">

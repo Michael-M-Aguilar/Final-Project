@@ -15,12 +15,12 @@ export default class Transactions extends React.Component {
     this.getEntries = this.getEntries.bind(this);
     this.deleteEntries = this.deleteEntries.bind(this);
     this.saveId = this.saveId.bind(this);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    // this.handleMouseEnter = this.handleMouseEnter.bind(this);
   }
 
-  handleMouseEnter() {
-    console.log('');
-  }
+  // handleMouseEnter() {
+  //   console.log('');
+  // }
 
   componentDidMount() {
     this.getEntries();
@@ -113,7 +113,7 @@ export default class Transactions extends React.Component {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div>
-                        <UpdateEntry />
+                        <UpdateEntry entryId={this.state.entryId}/>
                       </div>
                     </div>
                   </div>
