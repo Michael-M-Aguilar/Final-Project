@@ -1,7 +1,7 @@
 import React from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
-export default class UpdateEntry extends React.Component {
+export default class UpdateExpenseEntry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,10 +18,20 @@ export default class UpdateEntry extends React.Component {
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.renderPlaces = this.renderPlaces.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+    this.getIndivEid = this.getIndivEid.bind(this);
   }
 
   componentDidMount() {
+    this.getIndivEid();
     this.getCategories();
+  }
+
+  getIndivEid() {
+    fetch(`/api/entries/${this.props.entryId}`)
+      .then(res => res.json())
+      .then(results => {
+        this.setState({ result: results });
+      });
   }
 
   getCategories() {
@@ -147,6 +157,7 @@ export default class UpdateEntry extends React.Component {
   render() {
     const renderPlaces = this.renderPlaces();
     const { categories } = this.state;
+    console.log('result', this.state.result);
     return (
         <form onSubmit={this.handleSubmit}>
           <div className="flex justify-content-between">

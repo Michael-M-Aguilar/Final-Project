@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import Spinner from '../components/spinner';
-import UpdateEntry from '../components/update-entry';
+import UpdateExpenseEntry from '../components/update-entry';
 
 export default class Transactions extends React.Component {
   constructor(props) {
@@ -59,6 +59,7 @@ export default class Transactions extends React.Component {
     if (this.state.loading) {
       return <Spinner />;
     } else {
+      console.log(this.state.infos[0]);
       return (
       <div className="container create-body overflow">
         <div className="mx-2 ">
@@ -113,7 +114,7 @@ export default class Transactions extends React.Component {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div>
-                        <UpdateEntry entryId={this.state.entryId} entries={this.getEntries}/>
+                        <UpdateExpenseEntry entryId={this.state.entryId} entries={this.getEntries}/>
                       </div>
                     </div>
                   </div>
