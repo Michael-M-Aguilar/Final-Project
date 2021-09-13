@@ -59,7 +59,7 @@ export default class Transactions extends React.Component {
     if (this.state.loading) {
       return <Spinner />;
     } else {
-      console.log(this.state.infos[0]);
+      // console.log(this.state.entryId);
       return (
       <div className="container create-body overflow">
         <div className="mx-2 ">

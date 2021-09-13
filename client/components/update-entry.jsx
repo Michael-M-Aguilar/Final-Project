@@ -10,8 +10,10 @@ export default class UpdateExpenseEntry extends React.Component {
       category: '',
       date: '',
       address: '',
-      categories: ''
+      categories: '',
+      result: null
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getCategories = this.getCategories.bind(this);
@@ -21,8 +23,13 @@ export default class UpdateExpenseEntry extends React.Component {
     this.getIndivEid = this.getIndivEid.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.entryId && this.props.entryId !== prevProps.entryId) {
+      this.getIndivEid();
+    }
+  }
+
   componentDidMount() {
-    this.getIndivEid();
     this.getCategories();
   }
 
@@ -30,6 +37,7 @@ export default class UpdateExpenseEntry extends React.Component {
     fetch(`/api/entries/${this.props.entryId}`)
       .then(res => res.json())
       .then(results => {
+        console.log('Single entry:', results);
         this.setState({ result: results });
       });
   }
@@ -157,7 +165,9 @@ export default class UpdateExpenseEntry extends React.Component {
   render() {
     const renderPlaces = this.renderPlaces();
     const { categories } = this.state;
-    console.log('result', this.state.result);
+    console.log('Update Form entryId', this.props.entryId);
+    console.log('What result value is: ', this.state.result);
+
     return (
         <form onSubmit={this.handleSubmit}>
           <div className="flex justify-content-between">
@@ -178,7 +188,7 @@ export default class UpdateExpenseEntry extends React.Component {
           <div className="form-group input-group my-4">
             <label htmlFor="category" className="form-label raleway dm-text fs-3 mx-4">Categories:</label>
             <select className="form-select cat input-background raleway fs-5 dm-text border border-4 rounded-pill border-dark" id="categories" onChange={this.handleChange} required>
-              <option className="raleway fs-5 dm-text" value='' selected disabled>Choose a category...</option>
+              <option className="raleway fs-5 dm-text" defaultValue='' disabled>Choose a category...</option>
               {
                 (!categories.length)
                   ? '...'

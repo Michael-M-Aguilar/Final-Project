@@ -157,7 +157,7 @@ export default class CreateEntry extends React.Component {
         <div className="form-group input-group my-4">
           <label htmlFor="category" className="form-label raleway dm-text fs-3 mx-4">Categories:</label>
           <select className="form-select cat input-background raleway fs-5 dm-text border border-4 rounded-pill border-dark" id="categories" onChange={this.handleChange} required>
-            <option className="raleway fs-5 dm-text" value='' selected disabled>Choose a category...</option>
+            <option className="raleway fs-5 dm-text" defaultValue='' disabled>Choose a category...</option>
             {
               (!categories.length)
                 ? '...'
