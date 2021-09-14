@@ -24,6 +24,9 @@ export default class Folders extends React.Component {
       .then(data => {
         this.setState({ categories: data });
         this.setState({ loading: false });
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 

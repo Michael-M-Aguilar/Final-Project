@@ -36,6 +36,9 @@ export default class Body extends React.Component {
       .then(res => res.json())
       .then(info => {
         this.setState({ info: info });
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 
@@ -56,6 +59,9 @@ export default class Body extends React.Component {
       .then(res => res.json())
       .then(budget => {
         this.setState({ budget: budget });
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 
@@ -65,7 +71,9 @@ export default class Body extends React.Component {
       .then(transaction => {
         this.setState({ transaction: transaction });
         this.totalExpense();
-        // this.totalCredit();
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 
@@ -75,6 +83,9 @@ export default class Body extends React.Component {
       .then(debit => {
         this.setState({ debit: debit });
         this.setState({ loading: false });
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 

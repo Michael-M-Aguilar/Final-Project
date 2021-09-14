@@ -25,6 +25,9 @@ export default class Table extends React.Component {
         this.setState({ transaction: transaction });
         this.setState({ expenseTotal: transaction });
         this.letsReduce();
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 

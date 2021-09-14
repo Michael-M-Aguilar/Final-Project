@@ -32,6 +32,9 @@ export default class Transactions extends React.Component {
       .then(data => {
         this.setState({ infos: data });
         this.setState({ loading: false });
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 
