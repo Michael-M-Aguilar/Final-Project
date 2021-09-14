@@ -10,8 +10,7 @@ export default class UpdateExpenseEntry extends React.Component {
       category: '',
       date: '',
       address: '',
-      categories: '',
-      result: null
+      categories: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,26 +19,10 @@ export default class UpdateExpenseEntry extends React.Component {
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.renderPlaces = this.renderPlaces.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
-    this.getIndivEid = this.getIndivEid.bind(this);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.entryId && this.props.entryId !== prevProps.entryId) {
-      this.getIndivEid();
-    }
   }
 
   componentDidMount() {
     this.getCategories();
-  }
-
-  getIndivEid() {
-    fetch(`/api/entries/${this.props.entryId}`)
-      .then(res => res.json())
-      .then(results => {
-        console.log('Single entry:', results);
-        this.setState({ result: results });
-      });
   }
 
   getCategories() {
@@ -165,10 +148,13 @@ export default class UpdateExpenseEntry extends React.Component {
   render() {
     const renderPlaces = this.renderPlaces();
     const { categories } = this.state;
-    console.log('Update Form entryId', this.props.entryId);
-    console.log('What result value is: ', this.state.result);
-
-    return (
+    if (!this.props.result) {
+      console.log('error');
+      return null;
+    } else {
+      console.log('What result value is: ', this.props.result[0].amount);
+      console.log('this state amount', this.state.amount);
+      return (
         <form onSubmit={this.handleSubmit}>
           <div className="flex justify-content-between">
             <div className="input-group mx-3 border border-4 border-dark rounded ">
@@ -183,7 +169,7 @@ export default class UpdateExpenseEntry extends React.Component {
           </div>
           <div className="form-group input-group my-4">
             <label htmlFor="note" className="form-label raleway dm-text fs-3 mx-4">Notes:</label>
-            <input placeholder="Add a note..." className="form-control mx-4 input-background border border-4 rounded-pill border-dark dm-text fs-4 raleway" value={this.state.note}id="note" name="note" onChange={this.handleChange} required></input>
+            <input placeholder="Add a note..." className="form-control mx-4 input-background border border-4 rounded-pill border-dark dm-text fs-4 raleway" value={this.state.note} id="note" name="note" onChange={this.handleChange} required></input>
           </div>
           <div className="form-group input-group my-4">
             <label htmlFor="category" className="form-label raleway dm-text fs-3 mx-4">Categories:</label>
@@ -206,6 +192,7 @@ export default class UpdateExpenseEntry extends React.Component {
             <button type="submit" id="entryId" className="btn btn-dark rounded mx-4" data-bs-dismiss="modal">Update</button>
           </div>
         </form>
-    );
+      );
+    }
   }
 }

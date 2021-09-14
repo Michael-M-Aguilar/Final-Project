@@ -9,18 +9,29 @@ export default class Transactions extends React.Component {
     this.state = {
       info: [],
       infos: '',
-      loading: true
+      loading: true,
+      test: '',
+      result: ''
     };
 
     this.getEntries = this.getEntries.bind(this);
     this.deleteEntries = this.deleteEntries.bind(this);
     this.saveId = this.saveId.bind(this);
+    this.getIndivEid = this.getIndivEid.bind(this);
     // this.handleMouseEnter = this.handleMouseEnter.bind(this);
   }
 
   // handleMouseEnter() {
   //   console.log('');
   // }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.entryId && this.state.entryId !== prevState.entryId) {
+      // console.log('This', this.state.entryId);
+      // console.log('prev', prevState.entryId);
+      this.getIndivEid();
+    }
+  }
 
   componentDidMount() {
     this.getEntries();
@@ -35,8 +46,18 @@ export default class Transactions extends React.Component {
       });
   }
 
+  getIndivEid() {
+    fetch(`/api/entries/${this.state.entryId}`)
+      .then(res => res.json())
+      .then(results => {
+        this.setState({ result: results });
+        // console.log('Entry', this.state.result);
+      });
+  }
+
   saveId() {
     this.setState({ entryId: event.target.id });
+    // this.getIndivEid();
   }
 
   deleteEntries(event) {
@@ -59,7 +80,8 @@ export default class Transactions extends React.Component {
     if (this.state.loading) {
       return <Spinner />;
     } else {
-      // console.log(this.state.entryId);
+      // console.log('this is the entryId', this.state.entryId);
+      // console.log('This is the result', this.state.result);
       return (
       <div className="container create-body overflow">
         <div className="mx-2 ">
@@ -114,7 +136,7 @@ export default class Transactions extends React.Component {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div>
-                        <UpdateExpenseEntry entryId={this.state.entryId} entries={this.getEntries}/>
+                        <UpdateExpenseEntry result={this.state.result} entries={this.getEntries}/>
                       </div>
                     </div>
                   </div>
