@@ -1,6 +1,5 @@
 import React from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import CreditEntry from './credit-comp';
 
 export default class UpdateExpenseEntry extends React.Component {
   constructor(props) {
@@ -202,7 +201,6 @@ export default class UpdateExpenseEntry extends React.Component {
     if (!this.props.entryId) {
       return '';
     } else {
-      console.log('What result value is: ', this.state.category);
       if (this.state.category !== 9) {
         return (
         <form onSubmit={this.handleSubmit}>

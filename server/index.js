@@ -165,7 +165,7 @@ app.put('/api/debit/:entryId', (req, res, next) => {
   returning *
   `;
 
-  const params = [entryId, 1, 1, amount, note, date];
+  const params = [entryId, 1, 3, amount, note, date];
   db.query(sql, params)
     .then(result => {
       const [entry] = result.rows;
@@ -307,6 +307,7 @@ app.get('/api/chart', (req, res) => {
   "catName"
   FROM "entries"
   JOIN "categories" using ("categoryId")
+  WHERE "categoryId" != 9
   `;
   db.query(sql)
     .then(result => {
