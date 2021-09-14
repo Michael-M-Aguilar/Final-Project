@@ -23,6 +23,9 @@ export default class PieChart extends React.Component {
       .then(transaction => {
         this.setState({ transaction: transaction });
         this.letsReduce();
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 

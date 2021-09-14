@@ -35,6 +35,27 @@ app.get('/api/entries', (req, res) => {
     });
 });
 
+app.get('/api/entries/:entryId', (req, res, next) => {
+  const entryId = parseInt(req.params.entryId);
+  const params = [entryId];
+  const sql = `
+  SELECT  "categoryId",
+  "amount",
+  "note",
+  "location",
+  "date"
+  FROM "entries"
+  WHERE "entryId" = $1
+  `;
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rows[0]) {
+        res.status(404).json(`cannot find product with entryId ${entryId}`);
+      }
+      res.json(result.rows);
+    });
+});
+
 app.get('/api/transaction', (req, res) => {
   const sql = `
   SELECT
@@ -46,7 +67,7 @@ app.get('/api/transaction', (req, res) => {
   "catName"
   FROM "entries"
   JOIN "categories" using ("categoryId")
-  order by "entryId" desc
+  order by "date" desc
   `;
   db.query(sql)
     .then(result => {
@@ -112,9 +133,45 @@ app.put('/api/entries/:entryId', (req, res, next) => {
   WHERE "entryId" = $1
   returning *
   `;
+
   const params = [entryId, 1, 1, categoryId, -amount, note, location, date];
   db.query(sql, params)
     .then(result => {
+      const [entry] = result.rows;
+      if (!entry) {
+        res.status(404).json({ error: `cannot find entry with entryId ${entryId}` });
+      }
+      res.status(200).json(req.body);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occured'
+      });
+    });
+});
+
+app.put('/api/debit/:entryId', (req, res, next) => {
+  const { amount, note, date } = req.body;
+  const entryId = parseInt(req.params.entryId);
+  const sql = `
+  UPDATE "entries"
+  SET "userId"= $2,
+  "accountId"= $3,
+  "amount" = $4,
+  "note" = $5,
+  "date" = $6
+  WHERE "entryId" = $1
+  returning *
+  `;
+
+  const params = [entryId, 1, 3, amount, note, date];
+  db.query(sql, params)
+    .then(result => {
+      const [entry] = result.rows;
+      if (!entry) {
+        res.status(404).json({ error: `cannot find entry with entryId ${entryId}` });
+      }
       res.status(200).json(req.body);
     })
     .catch(err => {
@@ -250,6 +307,7 @@ app.get('/api/chart', (req, res) => {
   "catName"
   FROM "entries"
   JOIN "categories" using ("categoryId")
+  WHERE "categoryId" != 9
   `;
   db.query(sql)
     .then(result => {

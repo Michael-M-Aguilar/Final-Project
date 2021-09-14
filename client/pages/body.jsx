@@ -36,6 +36,9 @@ export default class Body extends React.Component {
       .then(res => res.json())
       .then(info => {
         this.setState({ info: info });
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 
@@ -56,6 +59,9 @@ export default class Body extends React.Component {
       .then(res => res.json())
       .then(budget => {
         this.setState({ budget: budget });
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 
@@ -65,7 +71,9 @@ export default class Body extends React.Component {
       .then(transaction => {
         this.setState({ transaction: transaction });
         this.totalExpense();
-        this.totalCredit();
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 
@@ -75,6 +83,9 @@ export default class Body extends React.Component {
       .then(debit => {
         this.setState({ debit: debit });
         this.setState({ loading: false });
+      })
+      .catch(err => {
+        console.error(err);
       });
   }
 
@@ -117,15 +128,15 @@ export default class Body extends React.Component {
           </div>
         </div>
         <div className="row">
-            <div className="desktop-secondary border border-dark border-3 rounded col-md-4 col-sm-6">
+          <div className="desktop-secondary border border-dark border-3 rounded col-md-4 col-sm-6">
             <button type="button" id="budget-btn" className="btn" data-bs-toggle="modal" data-bs-target="#budgetModal" data-tooltip="Click to create a budget">
-                <p className="fs-4 text-center text-header my-3 dm-text">{(!this.state.budget.length) ? 'Please Insert a Budget' : 'Budget: $' + this.state.budget[0].amount}</p>
+              <p className="fs-4 text-center text-header my-3 dm-text">{(!this.state.budget.length) ? 'Please Insert a Budget' : 'Budget: $' + this.state.budget[0].amount}</p>
             </button>
           </div>
-            <div className="desktop-secondary border border-dark border-3 rounded col-md-4 col-sm-6">
+          <div className="desktop-secondary border border-dark border-3 rounded col-md-4 col-sm-6 flex justify-content-center align-items-center">
             <p className="fs-4 text-center text-header my-3 dm-text">Expense: <span className="dm-negative numbers">{(!transaction.length) ? '...' : '$' + this.totalExpense()}</span></p>
           </div>
-            <div className="desktop-secondary border border-dark border-3 rounded col-md-4 col-sm-6">
+            <div className="desktop-secondary border border-dark border-3 rounded col-md-4 col-sm-6 flex justify-content-center align-items-center">
             <p className="fs-4 text-center text-header my-3 dm-text">Income: <span className="dm-positive numbers">{(!debit.length) ? 'Time to deposit some money!' : '$' + this.totalCredit()}</span></p>
           </div>
         </div>
@@ -170,7 +181,7 @@ export default class Body extends React.Component {
               <i className="fas fa-plus-circle fa-6x py-5 logo-icon"></i>
             </a>
         </div>
-        <div className="modal fade" id="budgetModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="budgetModal" tabIndex="-1" aria-labelledby="budgetModal" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
@@ -184,7 +195,7 @@ export default class Body extends React.Component {
                 </div>
                 <div className="modal-footer flex justify-content-between">
                   <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" id="submit" className="btn btn-dark rounded mx-4" onClick={this.justSubmitted}>Save</button>
+                  <button type="submit" id="submit" className="btn btn-dark rounded mx-4" onClick={this.justSubmitted} data-bs-dismiss="modal">Save</button>
                 </div>
               </form>
             </div>
