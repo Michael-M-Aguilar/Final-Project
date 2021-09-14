@@ -243,7 +243,7 @@ export default class UpdateExpenseEntry extends React.Component {
         );
       } else {
         return (
-          <form className="" onSubmit={this.handleCreditSubmit}>
+          <form onSubmit={this.handleCreditSubmit}>
             <div className="flex justify-content-between">
               <div className="input-row-1 input-group mx-3 border border-4 border-dark rounded ">
                 <span className="input-group-text"><i className="fas fa-money-bill-alt fa-2x logo-icon"></i></span>
