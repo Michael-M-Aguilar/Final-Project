@@ -151,6 +151,37 @@ app.put('/api/entries/:entryId', (req, res, next) => {
     });
 });
 
+app.put('/api/debit/:entryId', (req, res, next) => {
+  const { amount, note, date } = req.body;
+  const entryId = parseInt(req.params.entryId);
+  const sql = `
+  UPDATE "entries"
+  SET "userId"= $2,
+  "accountId"= $3,
+  "amount" = $4,
+  "note" = $5,
+  "date" = $6
+  WHERE "entryId" = $1
+  returning *
+  `;
+
+  const params = [entryId, 1, 1, amount, note, date];
+  db.query(sql, params)
+    .then(result => {
+      const [entry] = result.rows;
+      if (!entry) {
+        res.status(404).json({ error: `cannot find entry with entryId ${entryId}` });
+      }
+      res.status(200).json(req.body);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'an unexpected error occured'
+      });
+    });
+});
+
 app.delete('/api/categories', (req, res, next) => {
   const { categoryId } = req.body;
   const sql = `

@@ -59,7 +59,6 @@ export default class Transactions extends React.Component {
     if (this.state.loading) {
       return <Spinner />;
     } else {
-      // console.log(this.state.entryId);
       return (
       <div className="container create-body overflow">
         <div className="mx-2 ">
@@ -77,7 +76,7 @@ export default class Transactions extends React.Component {
               <div className="flex flex-column">
                 <p className="fs-5 dm-text mx-2 raleway">{key.note}</p>
                 <p className="fs-5 dm-text mx-2 raleway">Category: {key.catName}</p>
-                <p className="fs-5 dm-text mx-2 raleway">{(!key.location) ? null : 'Location: ' + key.location}</p>
+                <p className="fs-5 dm-text mx-2 raleway">{(!key.location) ? '' : 'Location: ' + key.location}</p>
               </div>
               <div className="flex flex-row">
                 <div className="flex flex-column">
