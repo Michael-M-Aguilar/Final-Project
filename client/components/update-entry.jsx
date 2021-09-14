@@ -10,8 +10,7 @@ export default class UpdateExpenseEntry extends React.Component {
       category: '',
       date: '',
       address: '',
-      categories: '',
-      result: null
+      categories: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,8 +36,14 @@ export default class UpdateExpenseEntry extends React.Component {
     fetch(`/api/entries/${this.props.entryId}`)
       .then(res => res.json())
       .then(results => {
-        console.log('Single entry:', results);
-        this.setState({ result: results });
+        this.setState({
+          amount: Math.abs(results[0].amount),
+          note: results[0].note,
+          category: results[0].categoryId,
+          date: results[0].date.slice(0, 10),
+          address: results[0].location
+        });
+        // console.log('Single entry:', results);
       });
   }
 
@@ -139,7 +144,7 @@ export default class UpdateExpenseEntry extends React.Component {
         <div className="location-dropdown">
           {loading
             ? <div> ... loading </div>
-            : null}
+            : ''}
           {suggestions.map(suggestion => {
             const className = suggestion.active
               ? 'suggestion-item-active'
@@ -165,10 +170,12 @@ export default class UpdateExpenseEntry extends React.Component {
   render() {
     const renderPlaces = this.renderPlaces();
     const { categories } = this.state;
-    console.log('Update Form entryId', this.props.entryId);
-    console.log('What result value is: ', this.state.result);
-
-    return (
+    if (!this.props.entryId) {
+      return null;
+    } else {
+      console.log('What result value is: ', this.state.category);
+      if (this.state.category !== 9) {
+        return (
         <form onSubmit={this.handleSubmit}>
           <div className="flex justify-content-between">
             <div className="input-group mx-3 border border-4 border-dark rounded ">
@@ -206,6 +213,12 @@ export default class UpdateExpenseEntry extends React.Component {
             <button type="submit" id="entryId" className="btn btn-dark rounded mx-4" data-bs-dismiss="modal">Update</button>
           </div>
         </form>
-    );
+        );
+      } else {
+        return (
+        <div>HELLO</div>
+        );
+      }
+    }
   }
 }

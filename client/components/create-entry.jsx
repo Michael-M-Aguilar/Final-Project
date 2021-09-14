@@ -108,7 +108,7 @@ export default class CreateEntry extends React.Component {
         <div className="location-dropdown">
           {loading
             ? <div> ... loading </div>
-            : null}
+            : ''}
           {suggestions.map(suggestion => {
             const className = suggestion.active
               ? 'suggestion-item-active'

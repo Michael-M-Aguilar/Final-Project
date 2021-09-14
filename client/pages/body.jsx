@@ -65,7 +65,7 @@ export default class Body extends React.Component {
       .then(transaction => {
         this.setState({ transaction: transaction });
         this.totalExpense();
-        this.totalCredit();
+        // this.totalCredit();
       });
   }
 
