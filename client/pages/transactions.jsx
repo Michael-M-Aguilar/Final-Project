@@ -9,18 +9,22 @@ export default class Transactions extends React.Component {
     this.state = {
       info: [],
       infos: '',
-      loading: true
+      loading: true,
+      isHovered: false
     };
 
     this.getEntries = this.getEntries.bind(this);
     this.deleteEntries = this.deleteEntries.bind(this);
     this.saveId = this.saveId.bind(this);
-    // this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.transition = this.transition.bind(this);
   }
 
-  // handleMouseEnter() {
-  //   console.log('');
-  // }
+  handleMouseEnter() {
+    this.setState(prevState => ({
+      isHovered: !prevState.isHovered
+    }));
+  }
 
   componentDidMount() {
     this.getEntries();
@@ -57,6 +61,14 @@ export default class Transactions extends React.Component {
       });
   }
 
+  transition() {
+    if (this.state.isHovered === false) {
+      return 'transaction-button-hidden my-3';
+    } else {
+      return 'transaction-button my-3';
+    }
+  }
+
   render() {
     const { infos } = this.state;
     if (this.state.loading) {
@@ -75,7 +87,7 @@ export default class Transactions extends React.Component {
           (!this.state.infos.length)
             ? ''
             : infos.map(key => (
-            <div key={key.entryId} entryid={key.entryId} onMouseEnter={this.handleMouseEnter} className="transactions flex space-between border-top border-2">
+              <div key={key.entryId} entryid={key.entryId} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseEnter} className="transactions flex space-between border-top border-2 py-2">
               <div className="flex flex-column">
                 <p className="fs-5 dm-text mx-2 raleway">{key.note}</p>
                 <p className="fs-5 dm-text mx-2 raleway">Category: {key.catName}</p>
@@ -83,10 +95,10 @@ export default class Transactions extends React.Component {
               </div>
               <div className="flex flex-row">
                 <div className="flex flex-column">
-                    <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway my-3" data-bs-toggle="modal" data-bs-target="#updateModal" onClick={this.saveId}>
+                  <button type="button" id={key.entryId} className={this.transition()} data-bs-toggle="modal" data-bs-target="#updateModal" onClick={this.saveId}>
                     Update
                   </button>
-                  <button type="button" id={key.entryId} className="delete-but text-center dm-text raleway my-3" data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={this.saveId}>
+                  <button type="button" id={key.entryId} className={this.transition()} data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={this.saveId}>
                     Delete
                   </button>
                 </div>
