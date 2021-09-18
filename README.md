@@ -52,20 +52,30 @@ Try the live application here: https://wallet-manager-finance.herokuapp.com/
 
 ## Getting Started
 1. Clone the repository.
-```git@github.com:Michael-M-Aguilar/wallet-manager.git```
+```
+git@github.com:Michael-M-Aguilar/wallet-manager.git
+```
 
 2. Install all dependencies with NPM.
-```npm install```
+```
+npm install
+```
 
 3. Create a database in your dev environment.
-```createdb (database name of your choosing)```
+```
+createdb (database name of your choosing)
+```
 
-4. In the env.example file provided, change the file name to `.env`. 
+4. In the `env.example` file provided, change the file name to `.env`. 
  
-5. In the .env file, change the "changeMe", to the name of the database you chose in step 3. 
+5. In the `.env` file, change the "changeMe", to the name of the database you chose in step 3. 
 
 6. Import sample data into PostgreSQL.
-```npm run db:import```
+```
+npm run db:import
+```
 
 7. Start the application. You can then view by opening http://localhost:3001/ in your browser.
-```npm run dev```
+```
+npm run dev
+```
