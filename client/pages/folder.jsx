@@ -7,11 +7,14 @@ export default class Folders extends React.Component {
     this.state = {
       category: '',
       categories: '',
-      loading: true
+      loading: true,
+      isHovered: false
     };
     this.getCategories = this.getCategories.bind(this);
     this.deleteCategories = this.deleteCategories.bind(this);
     this.saveId = this.saveId.bind(this);
+    this.transition = this.transition.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +31,20 @@ export default class Folders extends React.Component {
       .catch(err => {
         console.error(err);
       });
+  }
+
+  handleMouseEnter() {
+    this.setState(prevState => ({
+      isHovered: !prevState.isHovered
+    }));
+  }
+
+  transition() {
+    if (this.state.isHovered === false) {
+      return 'transaction-button-hidden my-3';
+    } else {
+      return 'transaction-button my-3';
+    }
   }
 
   saveId() {
@@ -70,9 +87,9 @@ export default class Folders extends React.Component {
               (!categories.length)
                 ? '...'
                 : categories.filter(cat => (cat.categoryId !== 9)).map(key => (
-              <div key={key.categoryId} className="border-top border-1 py-1 mx-3 categories flex justify-content-between">
+                  <div key={key.categoryId} className="border-top border-1 py-1 mx-3 categories flex justify-content-between" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseEnter}>
                 <p className="fs-2 dm-text mx-3 raleway">{key.catName}</p>
-                  <button type="button" id={key.categoryId} className="delete-but text-center dm-text raleway" data-bs-toggle="modal" data-bs-target="#deleteCat" onClick={this.saveId}>Delete</button>
+                  <button type="button" id={key.categoryId} className={this.transition()} data-bs-toggle="modal" data-bs-target="#deleteCat" onClick={this.saveId}>Delete</button>
                   <div className="modal fade" id="deleteCat" tabIndex="-1" aria-labelledby="deleteCategory" aria-hidden="true">
                     <div className="modal-dialog">
                       <div className="modal-content">
