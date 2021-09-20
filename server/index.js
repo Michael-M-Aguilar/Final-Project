@@ -23,8 +23,8 @@ app.get('/api/entries', (req, res) => {
   "entryId",
   "amount",
   "note",
-  "date",
-  "location"
+  "location",
+  to_char("date", 'Mon DD, YYYY') AS "date"
   FROM "entries"
   order by "entryId" desc
   `;
@@ -62,9 +62,9 @@ app.get('/api/transaction', (req, res) => {
   "entryId",
   "amount",
   "note",
-  "date",
   "location",
-  "catName"
+  "catName",
+  to_char("date", 'Mon DD, YYYY') AS "date"
   FROM "entries"
   JOIN "categories" using ("categoryId")
   order by "date" desc
