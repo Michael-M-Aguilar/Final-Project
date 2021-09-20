@@ -104,7 +104,7 @@ export default class Transactions extends React.Component {
                 </div>
                 <div className="mx-2">
                   <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dm-text dm-negative numbers text-end ' : 'fs-5 dm-text dm-positive numbers text-end'}>$ {key.amount}</p>
-                  <p className="fs-5 dm-text raleway text-end">{moment(key.date).local().format('MMMM Do YYYY')}</p>
+                  <p className="fs-5 dm-text raleway text-end">{moment(key.date).local(true).format('MMMM Do YYYY')}</p>
                 </div>
                 <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="deleteModal" aria-hidden="true">
                   <div className="modal-dialog">

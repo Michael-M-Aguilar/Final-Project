@@ -152,8 +152,8 @@ export default class Body extends React.Component {
                         <p className="fs-5 dm-text raleway">{(!key) ? '...' : key.note}</p>
                       </div>
                       <div className="flex flex-column">
-                        <p className={(!key) ? '...' : (key.amount[0] === '-') ? 'fs-5 dm-text numbers dm-negative numbers text-end' : 'fs-5 dm-text numbers dm-positive numbers text-end'}>{(!key) ? 'Loading ...' : '$ ' + key.amount}</p>
-                        <p className="fs-5 dm-text raleway text-end">{(!key) ? '...' : moment(key.date).local().format('MMMM Do YYYY')}</p>
+                        <p className={(key.amount[0] === '-') ? 'fs-5 dm-text numbers dm-negative numbers text-end' : 'fs-5 dm-text numbers dm-positive numbers text-end'}>{'$ ' + key.amount}</p>
+                        <p className="fs-5 dm-text raleway text-end">{ moment(key.date).local(true).format('MMMM Do YYYY')}</p>
                       </div>
                     </div>
                   ))
