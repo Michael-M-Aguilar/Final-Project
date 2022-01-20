@@ -87,8 +87,9 @@
     display: none;
   }
 
-  .transaction-button {
-    opacity: 1;
+  .transaction-button,
+  .category-button {
+    display: none;
     font-family: 'Raleway', sans-serif;
     background-color: #3e4c59;
     color: #deedf0;
@@ -96,8 +97,9 @@
     text-align: center;
   }
 
-  .transaction-button-hidden {
-    opacity: 0;
+  .container .transaction-history .flex:hover .transaction-button,
+  .overflow .category .categories:hover .category-button {
+    display: inline-block;
   }
 
   .desktop-body {

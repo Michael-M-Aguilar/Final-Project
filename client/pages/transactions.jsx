@@ -17,7 +17,6 @@ export default class Transactions extends React.Component {
     this.deleteEntries = this.deleteEntries.bind(this);
     this.saveId = this.saveId.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.transition = this.transition.bind(this);
   }
 
   handleMouseEnter() {
@@ -61,84 +60,160 @@ export default class Transactions extends React.Component {
       });
   }
 
-  transition() {
-    if (this.state.isHovered === false) {
-      return 'transaction-button-hidden my-3';
-    } else {
-      return 'transaction-button my-3';
-    }
-  }
-
   render() {
     const { infos } = this.state;
     if (this.state.loading) {
       return <Spinner />;
     } else {
       return (
-      <div className="container create-body overflow">
-        <div className="mx-2 ">
-          <h1 className="text-header dm-text">List of all Transactions:</h1>
-        </div>
-        <div className="border border-5 border-dark rounded transaction-history desktop-secondary">
-          <div className="">
-            <p className="text-header dm-text mx-2 fs-3">Transactions</p>
+        <div className="container create-body overflow">
+          <div className="mx-2 ">
+            <h1 className="text-header dm-text">List of all Transactions:</h1>
           </div>
-        {
-          (!this.state.infos.length)
-            ? ''
-            : infos.map(key => (
-              <div key={key.entryId} entryid={key.entryId} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseEnter} className="transactions flex space-between border-top border-2 py-2">
-              <div className="flex flex-column">
-                <p className="fs-5 dm-text mx-2 raleway">{key.note}</p>
-                <p className="fs-5 dm-text mx-2 raleway">Category: {key.catName}</p>
-                <p className="fs-5 dm-text mx-2 raleway">{(!key.location) ? '' : 'Location: ' + key.location}</p>
-              </div>
-              <div className="flex flex-row">
-                <div className="flex flex-column">
-                  <button type="button" id={key.entryId} className={this.transition()} data-bs-toggle="modal" data-bs-target="#updateModal" onClick={this.saveId}>
-                    Update
-                  </button>
-                  <button type="button" id={key.entryId} className={this.transition()} data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={this.saveId}>
-                    Delete
-                  </button>
-                </div>
-                <div className="mx-2">
-                  <p className={(!this.state.infos.length) ? 'Loading...' : (key.amount[0] === '-') ? 'fs-5 dm-text dm-negative numbers text-end ' : 'fs-5 dm-text dm-positive numbers text-end'}>$ {key.amount}</p>
-                  <p className="fs-5 dm-text raleway text-end">{moment(key.date).format('MMMM Do YYYY')}</p>
-                </div>
-                <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="deleteModal" aria-hidden="true">
-                  <div className="modal-dialog">
-                    <div className="modal-content">
-                      <div className="modal-header">
-                        <h5 className="modal-title text-header dm-text" id="exampleModalLabel">Are you sure you want to delete this transaction?</h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div className="modal-footer flex justify-content-between">
-                        <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                        <button type="button" id={key.entryId} className="btn btn-dark rounded mx-4" data-bs-dismiss="modal" onClick={this.deleteEntries}>Delete</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="modal fade" id="updateModal" tabIndex="-1" aria-labelledby="updateModal" aria-hidden="true">
-                  <div className="modal-dialog">
-                    <div className="modal-content">
-                      <div className="modal-header">
-                        <p className="modal-title text-header dm-text fs-3" id="exampleModalLabel">Updating Entry</p>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div>
-                        <UpdateExpenseEntry entryId={this.state.entryId} entries={this.getEntries}/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div className="border border-5 border-dark rounded transaction-history desktop-secondary">
+            <div className="">
+              <p className="text-header dm-text mx-2 fs-3">Transactions</p>
             </div>
-            ))
-        }
+            {!this.state.infos.length
+              ? ''
+              : infos.map(key => (
+                  <div
+                    key={key.entryId}
+                    entryid={key.entryId}
+                    onMouseEnter={this.handleMouseEnter}
+                    onMouseLeave={this.handleMouseEnter}
+                    className="transactions flex space-between border-top border-2 py-2"
+                  >
+                    <div className="flex flex-column">
+                      <p className="fs-5 dm-text mx-2 raleway">{key.note}</p>
+                      <p className="fs-5 dm-text mx-2 raleway">
+                        Category: {key.catName}
+                      </p>
+                      <p className="fs-5 dm-text mx-2 raleway">
+                        {!key.location ? '' : 'Location: ' + key.location}
+                      </p>
+                    </div>
+                    <div className="flex flex-row">
+                      <div className="flex flex-column mx-4">
+                        <button
+                          type="button"
+                          id={key.entryId}
+                          className="transaction-button my-3"
+                          data-bs-toggle="modal"
+                          data-bs-target="#updateModal"
+                          onClick={this.saveId}
+                        >
+                          Update
+                        </button>
+                        <button
+                          type="button"
+                          id={key.entryId}
+                          className="transaction-button my-3"
+                          data-bs-toggle="modal"
+                          data-bs-target="#deleteModal"
+                          onClick={this.saveId}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                      <div className="mx-2">
+                        <p
+                          className={
+                            !this.state.infos.length
+                              ? 'Loading...'
+                              : key.amount[0] === '-'
+                                ? 'fs-5 dm-text dm-negative numbers text-end '
+                                : 'fs-5 dm-text dm-positive numbers text-end'
+                          }
+                        >
+                          $ {key.amount}
+                        </p>
+                        <p className="fs-5 dm-text raleway text-end">
+                          {moment(key.date).format('MMMM Do YYYY')}
+                        </p>
+                      </div>
+                      <div
+                        className="modal fade"
+                        id="deleteModal"
+                        tabIndex="-1"
+                        aria-labelledby="deleteModal"
+                        aria-hidden="true"
+                      >
+                        <div className="modal-dialog">
+                          <div className="modal-content">
+                            <div className="modal-header">
+                              <h5
+                                className="modal-title text-header dm-text"
+                                id="exampleModalLabel"
+                              >
+                                Are you sure you want to delete this
+                                transaction?
+                              </h5>
+                              <button
+                                type="button"
+                                className="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            <div className="modal-footer flex justify-content-between">
+                              <button
+                                type="button"
+                                className="btn btn-dark"
+                                data-bs-dismiss="modal"
+                              >
+                                Close
+                              </button>
+                              <button
+                                type="button"
+                                id={key.entryId}
+                                className="btn btn-dark rounded mx-4"
+                                data-bs-dismiss="modal"
+                                onClick={this.deleteEntries}
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        className="modal fade"
+                        id="updateModal"
+                        tabIndex="-1"
+                        aria-labelledby="updateModal"
+                        aria-hidden="true"
+                      >
+                        <div className="modal-dialog">
+                          <div className="modal-content">
+                            <div className="modal-header">
+                              <p
+                                className="modal-title text-header dm-text fs-3"
+                                id="exampleModalLabel"
+                              >
+                                Updating Entry
+                              </p>
+                              <button
+                                type="button"
+                                className="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            <div>
+                              <UpdateExpenseEntry
+                                entryId={this.state.entryId}
+                                entries={this.getEntries}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              ))}
+          </div>
         </div>
-      </div>
       );
     }
   }
